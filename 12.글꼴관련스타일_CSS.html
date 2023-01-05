@@ -36,15 +36,18 @@
         #fw2{
             font-weight: bold;
         }
+        #fw3{
+            font-weight: bolder; /* == 900 */
+        }
         #fw{
-            font-weight: 900;
+            font-weight: lighter;
         }
     </style>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <h1>글꼴 관련 스타일 속성(font~)</h1>
@@ -86,13 +89,32 @@
             font-weight : normal/bold/bolder/lighter/100/400/900;
         }
     
-    <!-- ul>li#fw$*4 -->
-    <ul>
-        <li id="fw1">원래 굵기</li>
-        <li id="fw2">굵은 글꼴로 변경</li>
-        <li id="fw3">원래 굵기보다 더 굵게</li>
-        <li id="fw4">원래 굵기보다 더 가늘게</li>
-    </ul>
+        <!-- ul>li#fw$*4 -->
+        <ul>
+            <li id="fw1" style="font-weight: normal;">원래 굵기</li>
+            <li id="fw2">굵은 글꼴로 변경</li>
+            <li id="fw3">원래 굵기보다 더 굵게</li>
+            <li id="fw4">원래 굵기보다 더 가늘게</li>
+        </ul>
     </pre>
+    <hr>
+
+    <h3>font-variant : 텍스트 문구를 작은 대문자로 변경할 때 사용</h3>
+    <pre>
+        선택자 {font-variant : smaill-cpas;}
+    </pre>
+
+    <p>I LOVE YOU</p>
+    <p style="font-variant: small-caps;">i love you</p>
+
+    <h3>font-style: 텍스트 문구를 기울이고자 할 때 사용</h3>
+    <pre>
+        선택자 {font-style:normal/italic/oblique}
+    </pre>
+
+    <ul>
+        <li style="font-style: italic;">italic : 기울임 글꼴</li>
+        <li style="font-style: oblique;">oblique : 원래 글자를 기울인 셈</li>
+    </ul>
 </body>
 </html>

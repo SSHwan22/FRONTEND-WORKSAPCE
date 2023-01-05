@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경관련스타일</title>
+    <style>
+        body{
+            background-color: skyblue;
+        }
+        #div-bg{
+            background-color: white;
+            border: 30px dashed blue;
+            padding: 20px;
+            width: 50%;
+            /* div의 content의 가로길이는 부모(body)요소의 50%로 지정하겠다. */
+            box-sizing: border-box;
+            /* 가로길이를 border까지 포함해서 지정하겠따 라는 뜻 */
+        }
+        .div-test{
+            margin: 30px;
+            border: 10px dashed;
+            padding: 20px;
+            background-color: yellow;
+        }
+
+        #div1{
+            background-clip: border-box;
+
+        }
+        #div2{
+            background-clip: padding-box;
+        }
+        #div3{
+            background-clip: content-box;
+        }
+        #bg-img{
+            border : 1px solid black;
+            width: 70%;
+            height: 800px;
+
+            background-image: url(resources/image/bono.jpg);
+            background-repeat: repeat-y; /* 사진들이 새로로만 반복됨 */
+            background-size: contain; /* 가로 세로 상관없이 둘 중에 하나가 가득 찰 때까지 크기를 맞춤 */
+            background-position: 50% 50%; /*또는 center center 또는 50px 50px */
+            background-attachment: fixed; /* 스크롤 이동이 있어도 그 자리 그대로 고정 */
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>배경 관련 스타일(background~)</h1>
+
+    <h3>background-color : 배경색을 지정하고자 할 때 사용</h3>
+    <div id="div-bg">
+        같이, 생생하며, 물방아 것이다. 불러 열락의 지혜는 살 인생을 하였으며, 속잎나고, 있는가? 청춘의 할지니, 부패를 착목한는 봄바람이다.
+    </div>
+
+    <br>
+    <h3>background-clip : 배경을 적용시키고자 하는 범위를 지정할 때</h3>
+    
+    <pre>
+        선택자{
+            background-clip : border-box(기본값)/padding-box/content-box;
+        }
+    </pre>
+
+    <div class="div-test" id="div1">
+        같이, 생생하며, 물방아 것이다. 불러 열락의 지혜는 살 인생을 하였으며, 속잎나고, 있는가? 청춘의 할지니, 부패를 착목한는 봄바람이다.
+    </div>
+    <div class="div-test" id="div2">
+        같이, 생생하며, 물방아 것이다. 불러 열락의 지혜는 살 인생을 하였으며, 속잎나고, 있는가? 청춘의 할지니, 부패를 착목한는 봄바람이다.
+    </div>
+    <div class="div-test" id="div3">
+        같이, 생생하며, 물방아 것이다. 불러 열락의 지혜는 살 인생을 하였으며, 속잎나고, 있는가? 청춘의 할지니, 부패를 착목한는 봄바람이다.
+    </div>
+
+    <h3>배경 이미지 테스트</h3>
+    <pre>
+        선택자{
+            background-image : url(이미지경로);
+            background-repeat:repeat/repeat-x/repeat-y/no-repeat;
+            background-size : auto/contrain/cover/px px/%;
+            background-position : 좌/우/가운데_중_1개 위/아래/가운데_중_1개 px/% %;
+            background-attachment: scroll/fixed;
+        }
+    </pre>
+
+    <div id="bg-img"></div>
+</body>
+</html>
