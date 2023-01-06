@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 관련 스타일</title>
+    <style>
+        .anitest1:hover{
+            width: 200px;
+        }
+
+        @keyframes ani{
+            from{
+                background-color: green;
+                border: 1px solid black;
+            }
+            to{
+                background-color: yellow;
+                border-radius: 50%;
+                transform: rotate(720deg);
+                border: 3px solid re;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>애니메이션 관련 스타일</h1>
+    <h2>애니메이션 </h2>
+    <p>
+        속성을 점차적으로 변화시켜 움직이는 효과를 내는 기법
+        트랜지션과 비교했을 때 시작 스타일과 종료스타일을 부드럽게 이어주는 기능을 하는 
+    </p>
+
+    <br>
+    <br>
+    <hr>
+
+    <h3>keyframes</h3>
+    <p>
+        애니메이션 시작지점과 종료지점의 스타일을 정하고 key frames의 이름을 지정.
+        시작 지점과 종료지점 두 개만 설정할 경우 from to로 설정
+        중간에 작업이 더 있다면, %로 구분하여 설정
+    </p>
+    <pre>
+        @keyframes 키프레임명{
+            선택자 {스타일;}
+        }
+    </pre>
+
+    <div class="anitest1">기본 애니메이션효과 적용</div>
+    <div class="anitest2">이것도 적용시키기</div>
+</body>
+</html>

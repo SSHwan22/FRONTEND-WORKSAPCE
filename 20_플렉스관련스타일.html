@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플렉스관련스타일</title>
+    <link rel="stylesheet" href="resources/CSS/flexstyle.css">
+</head>
+<body>
+    <h1>플렉스관련 스타일</h1>
+
+    <h3>display : flex</h3>
+    <pre>
+        선택자{
+            display:flex;
+        }
+        * 요소를 통해 레이아웃을 구성시 유연하게(flex)위치를 선정할 수 있도록 도와주는 속성.
+        단, flex요소끼리만 영향을 끼침
+    </pre>
+
+    <div class="container">
+        <div>FLEX</div>
+        <div>FLEX</div>
+    </div>
+
+    <h3>justify-content : 요소들을 가로로 정렬하도록 도와주는 속성</h3>
+    <pre>
+        선택자 {
+            justify-content: flex-start/flex-end-center/space-between/space-around/space-evenly
+            flex-start : 요소들을 왼쪽으로 정렬.
+            flex-end : 요소들을 오른쪽으로 정렬.
+            center : 가운데정렬
+            space-between : 요소들 사이에 동일한 간격을 부여하여 정렬.
+            space-around : 요소들 주위(양옆)에 동일한 간격을 부여하여 정렬.
+            space-evenly : 요소들 마다 동일한 간격을 부여하여 정렬
+        }
+    </pre>
+
+    <div class="container justify-content-test">
+        <div>FLEX</div>
+        <div>FLEX</div>
+    </div>
+
+    <h3>
+        flex-direction : flex요소들의 정렬 방향 지정(행, 열단위)
+    </h3>
+    <pre>
+        선택자{
+            flex-direction: row/row-reverse/column/column-reverse
+            row: 요소들을 텍스트방향과 동일하게 정렬
+            row-reverse: 요소들을 텍스트의 반대방향으로 정렬
+            column : 요소들을 위에서 아래로 정렬
+            column : 요소들을 아래에서 위로 정렬
+        }
+    </pre>
+    <div class="container flex-direction-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+    </div>
+
+    <h3>align-items : 요소들을 세로기준으로 정렬하게 도와주는 속성</h3>
+    <pre>
+        선택자 {
+            align-items: flext-start/flex-end/center/strech
+            flex-start: 요소들을 맨 위로 정렬
+            flex-end: 요소들을 맨 아래로 정렬
+            center: 가운데로 정렬
+            strech : 요소들을 컨테이너(부모요소)의 크기에 맞도록 늘려주는 속성
+
+        }
+    </pre>
+
+    <div class="container align-items-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+    </div>
+
+    <h3>order: 특정요소만 정렬 순서를 바꿔주는 속성</h3>
+    <pre>
+        선택자 {
+            order: 숫자(default : 0)
+        }
+    </pre>
+
+    <div class="container align-items-test">
+        <div>FLEX1</div>
+        <div>FLEX2</div>
+        <div class="order-test1">FLEX3</div>
+        <div class="order-test2">FLEX4</div>
+        <div>FLEX5</div>
+    </div>
+
+    <h3>align-self : align-items가 갖는 속성값을 그대로 사용가능하며, 개별요소의 세로정렬을 도와주는 속성</h3>
+    <pre>
+        선택자{
+            align-self : flex-start/flex-end/center/strech;
+        }
+    </pre>
+    
+    <div class="container align-items-test">
+        <div>FLEX1</div>
+        <div class="align-self-test">FLEX2</div>
+        <div>FLEX3</div>
+        <div>FLEX4</div>
+        <div>FLEX5</div>
+    </div>
+
+    <h3>flex-wrap : 요소들을 한 줄로 정렬할지, 여러 줄로 정렬할지 정하는 속성</h3>
+    <pre>
+        선택자{
+            flex-wrap : nowrap/wrap/wrap-reverse;
+            nowrap : 요소들을 한 줄로만 정렬시키는 속성
+            wrap : 요소들을 여러 줄로 정렬시키는 속성
+            wrap-reverse : 요소들을 여러 줄로 반대로 정렬시키는 속성
+        }
+    </pre>
+
+    <div class="container flex-wrap-test">
+        <div>FLEX01</div>
+        <div>FLEX02</div>
+        <div>FLEX03</div>
+        <div>FLEX04</div>
+        <div>FLEX05</div>
+        <div>FLEX06</div>
+        <div>FLEX07</div>
+        <div>FLEX08</div>
+        <div>FLEX09</div>
+        <div>FLEX10</div>
+        <div>FLEX11</div>
+        <div>FLEX12</div>
+        <div>FLEX13</div>
+        <div>FLEX14</div>
+        <div>FLEX15</div>
+    </div>
+
+    <h3>flex-flow : flex-direction과 flex-wrap을 합쳐놓은 형태</h3>
+
+    <div class="container flex-flow-test">
+        <div>FLEX01</div>
+        <div>FLEX02</div>
+        <div>FLEX03</div>
+        <div>FLEX04</div>
+        <div>FLEX05</div>
+        <div>FLEX06</div>
+        <div>FLEX07</div>
+        <div>FLEX08</div>
+        <div>FLEX09</div>
+        <div>FLEX10</div>
+        <div>FLEX11</div>
+        <div>FLEX12</div>
+        <div>FLEX13</div>
+        <div>FLEX14</div>
+        <div>FLEX15</div>
+    </div>
+
+    <h3>align-content : 여러 줄을 컨트롤하기위한 속성</h3>
+    <pre>
+        선택자 {
+            align-content : flex-start/flext-end/center/space-between/space-around/stretch
+            flex-start : 각 여러 줄을 꼭대기에 정렬
+            flext-end : 각 여러 줄들을 바닥에 정렬
+            center : 각 여러 줄들을 세로선상의 가운데에 정렬
+        }
+    </pre>
+    <div class="container align-centent-test">
+        <div>FLEX01</div>
+        <div>FLEX02</div>
+        <div>FLEX03</div>
+        <div>FLEX04</div>
+        <div>FLEX05</div>
+        <div>FLEX06</div>
+        <div>FLEX07</div>
+        <div>FLEX08</div>
+        <div>FLEX09</div>
+        <div>FLEX10</div>
+        <div>FLEX11</div>
+        <div>FLEX12</div>
+        <div>FLEX13</div>
+        <div>FLEX14</div>
+        <div>FLEX15</div>
+    </div>
+</body>
+</html>
