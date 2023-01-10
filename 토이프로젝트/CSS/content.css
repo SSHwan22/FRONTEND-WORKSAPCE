@@ -1,0 +1,55 @@
+#prd_img{
+    width: 100%;
+    height: 100%;
+}
+
+#prd_list{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.box>a {
+    color: black;
+    text-decoration: none;
+}
+.name>span{
+    color: black;
+}
+.name{
+    font-size: 14px;
+    width: 100%;
+}
+.price, .sale_price{
+    font-size: 12px;
+    font-weight: bold;
+}
+.sale_price_KRW{
+    font-size: 12px;
+}
+.box_li {
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 10rem;
+    width: 25%;
+    text-align: center;
+    line-height: 1.5; /*줄과 줄 사이 간격*/
+    vertical-align: top; /* 수직으로 위, 가운데, 아래 정렬 top, middle, bottom*/
+}
+#content_prd{
+    padding: 0% 8%;
+}
+.txt-info{
+    padding: 10px 0px;
+}
+.prd_price{
+    visibility: hidden;
+}
+.box>a:hover .prd_price{
+    visibility: visible;
+}
+.price>span{
+    text-decoration: line-through;
+}
+.price_line_none>span{
+    text-decoration: none;
+}
