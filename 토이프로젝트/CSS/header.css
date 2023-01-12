@@ -3,47 +3,89 @@ ul, li{
     padding: 0px;
 }
 #header{
+    position: relative;
     width: 100%;
-    padding: 0 1.5%;
+    padding: 0 20px;
+    position: fixed;
+    top: 0px;
+    background-color: white;
 }
+
 #header_bar{
     display: flex;
     justify-content: space-between;
-    margin: 1.2% 0;
+    margin: 1rem 0;
 }
 #logo{
     margin: 0 32px 0 0;
     width: 65px;
     height: 45px;
+    transition: 1s;
+    z-index: 8;
+    backface-visibility: visible; 
 }
+#logo:hover{
+    transform: rotateY(-360deg);
+}
+
 #header_bar a{
     font-size: 12px;
     color: black;
     text-decoration: none;
 }
+#header_bar label{
+    font-size: 12px;
+    color: black;
+}
+#header_bar>div{
+    flex-basis: 50%;
+    align-self: center;
+}
 #header_bar_left{
     display: flex;
-    flex-basis: 50%;
 }
-#menu_left_list{
-    display: flex;
-    width: 300px;
-    /* padding: 0px; */
-    justify-content: space-between;
+#menu_left{
+    align-self: center;
 }
-#menu_right_list{
-    display: flex;
-    width: 300px;
-    justify-content: space-between;
-    flex-direction: row-reverse;
+#header_bar_right{
+    text-align: right;
+}
+#menu_right{
+    text-align: right;
+}
+#SHOP_list>li, #INFO_list>li{
+    line-height: 30px !important;
+}
+#country>li{
+    line-height: 30px !important;
 }
 
+#menu_left_list>li, #menu_right_list>li{
+    display: inline-block;
+    vertical-align: middle;
+    margin-inline-end: 15px;
+    position: relative;
+}
+#menu_left_list, #menu_right_list{
+    display: inline;
+    vertical-align: middle;
+    margin: 0;
+}
+
+#menu_left_list li a, #menu_right_list li a{
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+}
+
+#menu_right_list{
+    margin: 0 0;
+}
+#menu_right_list img{
+    vertical-align: bottom;
+}
 #SHOP_list, #INFO_list, #country{
     display: none;
-    /* padding: 0px; */
-}
-#SHOP_list:hover, #INFO_list:hover, #country:hover{
-    display: block;
 }
 #menu_left_list>li>a:hover+ul{
     display: block;
@@ -51,26 +93,121 @@ ul, li{
 #menu_right_list>li>a:hover+ul{
     display: block;
 }
-#menu_left_list>li{
-    position: relative;
+#SHOP_list:hover, #INFO_list:hover, #country:hover{
+    display: block;
 }
-#menu_left_list>li>ul{
+
+#SHOP_list, #INFO_list{
     position: absolute;
-    top: 30px;
-    left: 0px;
+    top: 13px;
+    left: -1rem;
+    padding: 1rem;
 }
-#menu_right_list>li{
-    position: relative;
-}
-#menu_right_list>li>ul{
+
+#country{
     position: absolute;
-    width: 115px;
-    top: 30px;
-    right: 0px;
+    width: 200px;
+    top: 13px;
+    right: -1.3rem;
     text-align: right;
-}
-#header{
-    position: sticky;
-    top: 0px;
+    padding: 1rem;
+} 
+
+#SHOP_list::after, #INFO_list::after{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100vh;
     background-color: white;
+    z-index: -1;
 }
+#country::after{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: auto;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: white;
+    z-index: -1;
+}
+/* .sub_list a{
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+.sub_list li{
+    line-height: 20px !important;
+    white-space: nowrap;
+} */
+.sub_list img{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    vertical-align: middle !important;
+    margin-left: 5px;
+    margin-right: 8px;
+}
+#korea img, #japan img{
+margin-right: 5px !important;
+border: 1px solid #ddd;
+}
+
+#icon{
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    min-width: auto;
+    max-width: 100%;
+    min-width: auto;
+    bottom: 25px;
+    right: 35px;
+    cursor: pointer;
+    z-index: 9;
+}
+
+
+/* 체크박스 사이드바 */
+input#sidebar {display:none;}
+
+/* 헤더영역 */
+#header label.menu {
+    /* position:absolute; */
+    right:10px;
+    transform:translateY(-50%);
+    cursor:pointer;
+}
+
+
+/* 사이드바 */
+.sidebar_content {
+    position:fixed;
+    top:0;
+    right:-500px;
+    width:500px;
+    height:100%;
+    background: white;
+    border-left: 1px solid #000;
+    transition:all .35s;
+    z-index:5;
+}
+
+/* 사이드바 외 배경영역 */
+.background {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.7);
+    transition:all .35s;
+    opacity:0;
+    visibility:hidden;
+    z-index:1;}
+
+/* input 체크 */
+input#sidebar:checked ~ #header label {background-position:-24px 0;}
+input#sidebar:checked ~ .sidebar_content {right:0;}
+input#sidebar:checked ~ .background  {opacity:1;visibility:visible;}
+
