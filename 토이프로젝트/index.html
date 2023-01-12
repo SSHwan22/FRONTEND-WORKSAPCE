@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/content.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
     <style>
         *{
-            font-family: 'Red Hat Display', sans-serif;
+            font-family: "Red Hat Display","Helvetica Neue","Helvetica",'Spoqa Han Sans Neo';
             box-sizing: border-box;
         }
         div{
@@ -74,6 +75,7 @@
 </div>
 <body>
     <input type="checkbox" id="sidebar">
+    <input type="checkbox" id="search_checkbox">
     <div id="wrap">
         <div id="header">
             <div id="header_bar">
@@ -106,7 +108,7 @@
                                 </ul>
                             </li>
                             <li><a href="">ARCHIVE</a></li>
-                            <li><a href="">SEARCH</a></li>
+                            <li><label for="search_checkbox" class="search">SEARCH</label></li>
                         </ul>
                     </div>
                 </div>
@@ -1370,6 +1372,20 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search_wrap search_bg">
+        <div class="search_close">
+            <label for="search_checkbox">X</label>
+        </div>
+        <div class="search_bar_wrap">
+            <div class="search_bar_td">
+                <input type="text" id="search_bar">
+                <div class="guide_word">
+                    <div id="guide_ko">검색어를 입력하시고 엔터를 누르세요.</div>
+                    <div id="guide_eng">Enter keywords and press Return to search.</div>
                 </div>
             </div>
         </div>

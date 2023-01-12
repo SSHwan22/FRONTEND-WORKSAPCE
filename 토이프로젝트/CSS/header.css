@@ -134,17 +134,9 @@ ul, li{
     background-color: white;
     z-index: -1;
 }
-/* .sub_list a{
-    vertical-align: baseline;
-    white-space: nowrap;
-}
-.sub_list li{
-    line-height: 20px !important;
-    white-space: nowrap;
-} */
+
 .sub_list img{
-    overflow-clip-margin: content-box;
-    overflow: clip;
+
     vertical-align: middle !important;
     margin-left: 5px;
     margin-right: 8px;
@@ -169,13 +161,10 @@ border: 1px solid #ddd;
 
 
 /* 체크박스 사이드바 */
-input#sidebar {display:none;}
+input#sidebar{display:none;}
 
 /* 헤더영역 */
 #header label.menu {
-    /* position:absolute; */
-    right:10px;
-    transform:translateY(-50%);
     cursor:pointer;
 }
 
@@ -207,7 +196,75 @@ input#sidebar {display:none;}
     z-index:1;}
 
 /* input 체크 */
-input#sidebar:checked ~ #header label {background-position:-24px 0;}
 input#sidebar:checked ~ .sidebar_content {right:0;}
 input#sidebar:checked ~ .background  {opacity:1;visibility:visible;}
 
+
+/* search input_checkbox */
+input#search_checkbox{display: none;}
+input#search_checkbox:checked ~ .search_bg {opacity: 1; visibility: visible;}
+
+.search{
+    cursor: pointer;
+}
+
+.search_bg{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    opacity: 0;
+    visibility: hidden;
+    z-index:1;
+}
+
+.search_close{
+    text-align: right;
+    margin-top: 60px;
+    margin-right: 80px;
+    vertical-align: bottom;
+}
+.search_close>label{
+    cursor: pointer;
+    color: white;
+    font-size: 25px;
+    font-weight: 400px;
+    list-style: 25px;
+}
+
+.search_bar_wrap{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.search_bar_td{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+#search_bar{
+    width: 100%;
+    max-width: 360px;
+    padding: 0 0 16px 0;
+    text-align: center;
+    font-size: 2.25rem;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 1px solid white;
+}
+#search_bar:focus {
+    border-bottom: 1px solid rgba(255,255,255,1);
+    outline: none;
+    color: white;
+}
+.guide_word{
+    margin-top: 50px;
+}
+#guide_ko, #guide_eng{
+    font-size: 12px;
+    margin: 0 0 5px 0;
+    vertical-align: baseline;
+    color: white;
+}
