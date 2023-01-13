@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터입출력</title>
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트에서 데이터 입/출력</h1>
+    <!-- 
+        window : 자바스크립트 내장객체 브라우저 창이 열릴때마다 하나씩만 만들어지는 객체,
+                 브라우저 창 안에 존재하는 모든 요소들의 최상위 객체
+                 (즉, 모든 곳에 적용되기 때문에 생략 가능)
+                 windwos.alert => alert / console.log => window.console.log
+
+        document : 웹 문서마다 하나씩 만들어지는 객체
+                   HTML문서에 대한 정보들을 가지고 있음.
+    -->
+
+    <h2>1. 데이터를 출력하는 기본 구문</h2>
+    <p>
+        1) windows.alert("알림창에 출력할 문구");<br>
+        2) windows.console.log("콘솔창에 출력할 문구") <br>
+        3) document.write("화면에 출력할 문구"); <br>
+        4) 선택한요소.innerHTML/innerText = "해당 요소에 출력할 문구";
+    </p>
+
+    <h3> document.write("화면에 출력할 문구");</h3>
+    <button onclick="documentWrite();">화면에 출력해보기</button>
+
+    <script>
+        function documentWrite(){
+            // document.write("잘 출력 되나?");
+            // document.write("<br>잘 출력 되나...?</b><br><br><br><h2>호호</h2>");
+            /*
+                화면에 출력할 문자열에 html태그에 포함되어있을경우, 진짜 html태그로 해석됨.
+            */
+           let table = "<table border = '1'>";
+               table += "<tr>";
+               table += "<td>1</td>";
+               table += "<td>2</td>";
+               table += "</tr>";
+               table += "</table>";
+            
+            document.write(table);
+        }
+    </script>
+
+    <h3>4) 선택한요소.innerHTML/innerText = "해당요소에 출력할 문구";</h3>
+    <div class="area" id="area1">
+        자바스크립트에서 어떤 요소(element)안의 값(content 값을)을 가지고 온다거나 <br>
+        변경하고자 할 때 <b>innerHTML, innerText</b> 라는 속성에 접근 가능.
+    </div>
+
+    <button onclick="tagValue();">확인</button>
+    <script>
+        function tagValue(){
+            // 특정 요소의 값을 가지고 온다거나, 변경하고자 할 때
+            // 먼저 해당 요소 객체를 가져와서 변수에 담아둘것.
+            
+            let divEl = document.getElementById("area1");
+
+            console.log(divEl);
+            console.dir(divE1);
+        }
+    </script>
+</body>
+</html>
