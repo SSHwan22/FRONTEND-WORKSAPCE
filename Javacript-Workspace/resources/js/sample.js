@@ -1,5 +1,5 @@
 function test(){
-    windwos.alert("external 테스트");
+    window.alert("external 테스트");
 }
 
 let lastBtn = document.getElementById("lastBtn");

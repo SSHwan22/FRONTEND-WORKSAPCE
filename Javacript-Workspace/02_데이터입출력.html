@@ -69,7 +69,95 @@
             let divEl = document.getElementById("area1");
 
             console.log(divEl);
-            console.dir(divE1);
+            console.dir(divEl);
+            // 해당값의 디렉토리 구조를 보고자할 때(속성들에 대한 정보)
+            // 속성들에 직접 접근 가능.
+            console.log(divEl.id);// id 해당 요소의 값
+            console.log(divEl.className); // className : 해당 요소의 클래스 값
+            
+            // 선택된 요소의 content영역 안의 값에 접근할 때
+            console.log(divEl.innerHTML);
+            // innerHTML : 요소의 content 영역 안의 html태그까지 다 포함해서 가져옴.
+            console.log(divEl.innerText);
+            // innerText : content값 내의 텍스트만 포함하여 가져옴.(html태그는 가져오지 않음)
+
+            // 위와 같이 속성에 직접 접근해서 값을 가지고 오는 것도 가능하지만, 직접 접근해서
+            // 값을 변경하는것도 가능
+
+            divEl.innerHTML = "<b>innerHtml로 속성값을 변경함!!</b>";
+            // innerHTML로 변경하면 출력할 문구에 html태그가 있을경우 태그로 인식
+            divEl.innerText = "<b>innerText로 속성값을 변경함!!</b> <br> aaaaa";
+            //innerText로 변경하면 출력할 문구에 있는 html태그도 문자열로 인식
+        }
+    </script>
+    <hr>
+    <h2>2. 데이터를 입력받는 기본구문(변수에 기록 가능)</h2>
+    <p>
+        1) 변수 = window.confirm("질문내용");<br>
+        2) 변수 = window.prompt("질문내용");<br>
+        3) 변수 = 선택한요소.속성(id/className/innerHTML...);<br>
+        4) 변수 = 선택한input요소.value;
+    </p>
+
+    <h3>1) windwo.confirm("질문내용");</h3>
+    <p>
+        confirm호출 시 "질문내용"과 "확인/취소"버튼이 존재하는 알림창 발생<br>
+        확인버튼 클릭시 true/ 취소버튼 클릭시  false를 반환한다.
+    </p>
+
+    <button onclick="testConfirm();">클릭</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        function testConfirm(){
+            let result = window.confirm("졸리면 확인, 아니면 취소를 누르세요.");
+
+            let divEl = document.querySelector("#area2");
+
+            if(result){
+                divEl.innerHTML = "<h2>졸립니다 ㅠㅠ</h2>";
+            }else{
+                divEl.innerHTML = "<h2>안 졸립니다^^</h3>";
+            }
+        }
+    </script>
+    <br>
+    <h3>2) window.prompt("질문내용");</h3>
+    <p>
+        prompt 호출 시 "질문내용"과 입력할 수 있는 "텍스트 상자"와 "확인/취소"버튼이 보여지는 알림창 발생 <br>
+        - 확인버튼 클릭 시 텍스트 상자에 입력되어있는 값이 반환 <br>
+        - 취소버튼 클릭 시 null를 반환.
+    </p>
+
+    <button onclick="testPrompt();">클릭</button>
+    <div class="area" id="area3"></div>
+
+    <script>
+        function testPrompt(){
+            let name = window.prompt("당신의 이름은 무엇입니까?");
+            let age = prompt("당신의 나이는 몇 살입니까?");
+
+            let divEl = document.getElementById("area3");
+            // divEl.innerHTML = "당신은 "+age+"살 "+name+"님 이군용 반갑습니다 ^^";
+            divEl.innerHTML = `당신은 ${age}살 ${name}님이군요 반갑습니다^^;`;
+        }
+    </script>
+
+    <h3>4) 선택한input요소.value;</h3>
+    아이디 : <input type="text" id="userId"><br>
+    비밀번호 : <input type="password" id="userPwd"><br>
+
+    <button onclick="testInput();">클릭</button>
+
+    <script>
+        function testInput(){
+            let input1 = document.getElementById('userId');
+            let input2 = document.getElementById("userPwd");
+
+            console.log(input1.value);
+            console.log(input2.value);
+
+            input1.value = "";
         }
     </script>
 </body>
