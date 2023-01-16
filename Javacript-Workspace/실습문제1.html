@@ -17,43 +17,119 @@
     <h1>Practice1</h1>
     <fieldset>
         <legend>취미</legend>
-        <input type="checkbox" name="hobby" id="all">
-        <label for="all">전체선택</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">종합</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">소설</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">시/에세이</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">경제/경영</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">자기계발</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">아동</label>
-        <input type="checkbox" name="" id="">
-        <label for="">여행</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">과학</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">역사/문화</label>
-        <input type="checkbox" name="hobby" id="">
-        <label for="">외국어</label>
-        <input type="checkbox" name="hobby" id="computer">
-        <label for="">컴퓨터</label>
-        <input type="checkbox" name="hobby" id="comic">
-        <label for="comic">만화</label>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" name="hobby" id="all" onclick="allCheck();">
+                    <label for="all">전체선택</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="Synthesis" onclick="checkedBox();">
+                    <label for="Synthesis">종합</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="fiction" onclick="checkedBox();">
+                    <label for="fiction">소설</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="poerty" onclick="checkedBox();">
+                    <label for="poerty">시/에세이</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="economics" onclick="checkedBox();">
+                    <label for="economics">경제/경영</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="self-improvement" onclick="checkedBox();">
+                    <label for="self-improvement">자기계발</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="children's" onclick="checkedBox();">
+                    <label for="children's">아동</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="checkbox" name="hobby" id="travel" onclick="checkedBox();">
+                    <label for="travel">여행</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="science" onclick="checkedBox();">
+                    <label for="science">과학</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="history" onclick="checkedBox();">
+                    <label for="history">역사/문화</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="foreign" onclick="checkedBox();">
+                    <label for="foreign">외국어</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="computer" onclick="checkedBox();">
+                    <label for="computer">컴퓨터</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hobby" id="comic" onclick="checkedBox();">
+                    <label for="comic">만화</label>
+                </td>  
+            </tr>
+        </table>
     </fieldset>
     <br>
     <button onclick="category();">카테고리 선택</button>
     <div id="box"></div>
     <script>
+        function allCheck(){
+            let hobby = document.getElementsByName("hobby");
+
+            for(let i=0; i<hobby.length; i++){
+                if(hobby[0].checked==true){
+                    hobby[i].checked=true;
+                } 
+            }
+            for(let i=0; i<hobby.length; i++){
+                if(hobby[0].checked==false){
+                    hobby[i].checked=false;
+                }
+            }
+        }
+        function checkedBox(){
+            let hobby = document.getElementsByName("hobby");
+            let checkbool = true;
+
+            for(let i=1; i<hobby.length; i++){
+                if(!hobby[i].checked){
+                    checkbool = false;
+                } 
+            }
+
+            document.getElementById('all').checked = checkbool;
+        }
         function category(){
             let hobby = document.getElementsByName("hobby");
+            let checkedBox = " ";
             console.log(hobby);
-            let checkedBox = "";
-
+            
+            for(let i=1; i<hobby.length; i++){
+                if(hobby[i].checked){
+                checkedBox += hobby[i].nextElementSibling.outerText+" ";
+                }
+            }
+            document.getElementById("box").innerHTML = checkedBox;
         }
+
+        // function category2(){
+        //     let hobby2 = document.querySelectorAll("input[name=hobby]:checked+label");
+        //     let checkedBox = "";
+
+        //     for(let i=0; i<hobby2.length; i++){
+        //         checkedBox += hobby2[i].innerHTML+" ";
+        //     }
+
+        //     document.getElementById("box").innerHTML = checkedBox;
+        // }
     </script>
 </body>
 </html>

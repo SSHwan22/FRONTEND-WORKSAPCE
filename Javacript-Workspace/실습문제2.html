@@ -19,15 +19,42 @@
     <input type="number" name="" id="num2">
     <button onclick="arithmetic();">=</button>
     <input type="text" size="8px" id="result">
+    
     <script>
         function arithmetic(){
             let num1 = Number(document.getElementById("num1").value);
             let num2 = Number(document.getElementById("num2").value);
-            let result = "";
-            let arithmetic = document.getElementsByTagName("option");
+            let resultBox = document.getElementById("result");
+            let result = 0;
 
-
-            document.getElementById("result").value = result;
+            let selected = (select.options[select.selectedIndex].value);
+            console.log(selected);
+            switch(selected){
+                case '+':
+                    result = num1+num2;
+                    break;
+                case '-':
+                    result = num1-num2;
+                    break;
+                case '*':
+                    result = num1*num2;
+                    break;
+                case '/':
+                    result = num1/num2;
+                    break;
+                case '%':
+                    result = num1%num2;
+                    break;
+            }
+            if(result=='Infinity' || isNaN(result)){
+                resultBox.style.backgroundColor = "red";
+                resultBox.style.color = "white";
+                resultBox.value = "연산불가";
+            }else{
+                resultBox.style.backgroundColor = "white";
+                resultBox.style.color = "black";
+                resultBox.value = result;
+            }
         }
     </script>
 </body>
