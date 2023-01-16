@@ -27,8 +27,8 @@
 
     <h2>1. 데이터를 출력하는 기본 구문</h2>
     <p>
-        1) windows.alert("알림창에 출력할 문구");<br>
-        2) windows.console.log("콘솔창에 출력할 문구") <br>
+        1) window.alert("알림창에 출력할 문구");<br>
+        2) window.console.log("콘솔창에 출력할 문구"); <br>
         3) document.write("화면에 출력할 문구"); <br>
         4) 선택한요소.innerHTML/innerText = "해당 요소에 출력할 문구";
     </p>
@@ -38,8 +38,8 @@
 
     <script>
         function documentWrite(){
-            // document.write("잘 출력 되나?");
-            // document.write("<br>잘 출력 되나...?</b><br><br><br><h2>호호</h2>");
+            document.write("잘 출력 되나?");
+            document.write("<br>잘 출력 되나...?</b><br><br><br><h2>호호</h2>");
             /*
                 화면에 출력할 문자열에 html태그에 포함되어있을경우, 진짜 html태그로 해석됨.
             */
@@ -99,7 +99,7 @@
         4) 변수 = 선택한input요소.value;
     </p>
 
-    <h3>1) windwo.confirm("질문내용");</h3>
+    <h3>1) window.confirm("질문내용");</h3>
     <p>
         confirm호출 시 "질문내용"과 "확인/취소"버튼이 존재하는 알림창 발생<br>
         확인버튼 클릭시 true/ 취소버튼 클릭시  false를 반환한다.
