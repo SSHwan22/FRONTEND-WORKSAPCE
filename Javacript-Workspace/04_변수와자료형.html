@@ -79,7 +79,7 @@
         }
 
         function test(){
-            console.log("전역변수들 출력")
+            console.log("전역변수들 출력");
             console.log(str);
             console.log(str2);
             console.log(str3);
@@ -143,7 +143,7 @@
             let noVal;
 
             // let divEl = document.getElementById("area");
-            // 자료형 확인시 사용되는 함수 : typeof(변수;명)
+            // 자료형 확인시 사용되는 함수 : typeof(변수명);
             // divE1.innerHTML = name +"의 자료형 : "+ typeof(name)+"<br>";
             printDivEl(name);
             printDivEl(age);
@@ -159,13 +159,13 @@
             // 하위호환성을 위해 오류를 수정하지 않고 남겨둔 상황.
 
             // 객체 내부의 속성에 접근할 때 ==> .(온점)으로 접근
-            let divE1 = document.getElementById("area");
-            divE1.innerHTML += user.name +"의 나이는 : "+user.age+"살이며 아이디는 "+user.id+"입니다.<br>";
+            let divEl = document.getElementById("area");
+            divEl.innerHTML += user.name +"의 나이는 : "+user.age+"살이며 아이디는 "+user.id+"입니다.<br>";
 
         }
         function printDivEl(value){
-            let divE1 = document.getElementById("area");
-            divE1.innerHTML += value+"의 자료형 :"+typeof(value)+"<br>";
+            let divEl = document.getElementById("area");
+            divEl.innerHTML += value+"의 자료형 :"+typeof(value)+"<br>";
         }
     </script>
 

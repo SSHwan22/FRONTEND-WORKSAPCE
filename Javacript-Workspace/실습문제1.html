@@ -98,11 +98,11 @@
         function checkedBox(){
             let hobby = document.getElementsByName("hobby");
             let checkbool = true;
-
+            
             for(let i=1; i<hobby.length; i++){
                 if(!hobby[i].checked){
                     checkbool = false;
-                } 
+                }
             }
 
             document.getElementById('all').checked = checkbool;
