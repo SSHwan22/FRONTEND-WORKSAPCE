@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사칙연산</title>
+</head>
+<body>
+    <h1>Practice2</h1>
+    <input type="number" name="" id="num1">
+    <select name="" id="arithmetic">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="number" name="" id="num2">
+    <button onclick="arithmetic();">=</button>
+    <input type="text" size="8px" id="result">
+    <script>
+        function arithmetic(){
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+            let result = "";
+            let arithmetic = document.getElementsByTagName("option");
+
+
+            document.getElementById("result").value = result;
+        }
+    </script>
+</body>
+</html>

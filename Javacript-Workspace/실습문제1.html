@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 카테고리 선택</title>
+    <style>
+        #box{
+            width: 100%;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice1</h1>
+    <fieldset>
+        <legend>취미</legend>
+        <input type="checkbox" name="hobby" id="all">
+        <label for="all">전체선택</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">종합</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">소설</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">시/에세이</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">경제/경영</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">자기계발</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">아동</label>
+        <input type="checkbox" name="" id="">
+        <label for="">여행</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">과학</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">역사/문화</label>
+        <input type="checkbox" name="hobby" id="">
+        <label for="">외국어</label>
+        <input type="checkbox" name="hobby" id="computer">
+        <label for="">컴퓨터</label>
+        <input type="checkbox" name="hobby" id="comic">
+        <label for="comic">만화</label>
+    </fieldset>
+    <br>
+    <button onclick="category();">카테고리 선택</button>
+    <div id="box"></div>
+    <script>
+        function category(){
+            let hobby = document.getElementsByName("hobby");
+            console.log(hobby);
+            let checkedBox = "";
+
+        }
+    </script>
+</body>
+</html>
