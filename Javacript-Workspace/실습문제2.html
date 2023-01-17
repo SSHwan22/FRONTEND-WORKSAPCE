@@ -24,11 +24,12 @@
         function arithmetic(){
             let num1 = Number(document.getElementById("num1").value);
             let num2 = Number(document.getElementById("num2").value);
+            let select = document.getElementById("arithmetic");
             let resultBox = document.getElementById("result");
             let result = 0;
 
-            let selected = (select.options[select.selectedIndex].value);
-            console.log(selected);
+           let selected = (select.options[select.selectedIndex].value);
+
             switch(selected){
                 case '+':
                     result = num1+num2;
