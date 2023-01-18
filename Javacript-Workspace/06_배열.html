@@ -445,8 +445,9 @@
 
             let boolean;
 
-            // 내가 원하는 요소를 찾으면 true값을 반환 후 반복종료(찾는 값이 없다면 undefined 변환)
-            bolean == a.find(function(item,index,array){
+            // 내가 원하는 요소를 찾으면 true값을 반환시킨 후 item값을 최종적으로 반환 후
+            // 반복종료(찾는 값이 없다면 undefined 변환)
+            boolean == a.find(function(item,index,array){
                 console.log(item, index, array);
                 if(item.id == 'alsrudals2'){
                     return true;

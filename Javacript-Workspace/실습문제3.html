@@ -10,16 +10,43 @@
     <fieldset>
         <legend>회원가입</legend>
         
-        아이디 : <input type="text" name="" id="">
+        아이디 : <input type="text" name="" id="inputId" onkeyup="idCheck();"> <label for="" id="textId">asdfasdf</label>
         <br><br>
-        비밀번호 : <input type="password" name="" id="">
+        비밀번호 : <input type="password" name="" id="inputPwd">
         <br><br>
-        비밀번호 확인 : <input type="password" name="" id="">
+        비밀번호 확인 : <input type="password" name="" id="inputPwd2" onblur="pwdCheck"> <label for="" id="textPwd">asdfasdf</label>
         <br><br>
-        이름 : <input type="text" name="" id="">
+        이름 : <input type="text" name="" id="name">
         <br><br>
-        <button onclick="">회원가입</button>
+        <button onclick="join()">회원가입</button>
 
     </fieldset>
+    <script>
+        let user = "user01";
+        function idCheck(){
+            console.log(user);
+            let inputId = document.getElementById("inputId");
+            let textId = document.getElementById("textId");
+            if(user==inputId.value){
+                textId.innerHTML = "이미 존재하는 아이디입니다.";
+            }else{
+                textId.innerHTML = "사용가능한 아이디입니다.";
+            }
+        }
+        function pwdCheck(){
+            let inputPwd = document.getElementById("inputPwd");
+            let inputPwd2 = document.getElementById("inputPwd2");
+            let textPwd = document.getElementById("textPwd");
+            if(inputPwd==inputPwd2){
+                textPwd.innerHTML = "비밀번호가 일치합니다.";
+            }else{
+                textPwd.innerHTML = "비밀번호가 일치하지 않습니다.";
+            }
+        }
+
+        function join(){
+
+        }
+    </script>
 </body>
 </html>
