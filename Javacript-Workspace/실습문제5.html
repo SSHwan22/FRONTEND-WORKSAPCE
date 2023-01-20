@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice5</title>
+    <style>
+        #wrap{
+            width: 50%;
+            margin-left: 25%;
+        }
+        fieldset{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .back{
+            background-color: lightgray;
+            height:  70px;
+            display: none;
+        }
+        .content{
+            padding: 10px;
+        }
+        .searchBtn{
+            margin-left: 15px;
+        }
+        #textBox{
+            width: 75%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h1>Practice5</h1>
+    <fieldset>
+        <legend style="text-align: center;">검색할 항목을 선택하세요.</legend>
+        <input type="radio" name="search" class="radioClick" id="title"><label for="title">제목</label>
+        <input type="radio" name="search" id="date" class="radioClick"><label for="date">날짜</label>
+        <input type="radio" name="search" id="user" class="radioClick"><label for="user">작성자</label>
+    </fieldset>
+    <div class="back" id="title_div">
+        <div class="content">
+            <label for="">검색할 제목을 입력하세요:</label><br>
+            <input type="text" name="" id="textBox" size="50">
+            <button class="searchBtn">검색</button>
+        </div>
+    </div>    
+    <div class="back" id="date_div">
+        <div class="content">
+            <label for="">검색할 날짜를 선택하세요:</label><br>
+            <input type="date" name="" id="" size="50"> - <input type="date" name="" id="">
+            <button class="searchBtn">검색</button>
+        </div>
+    </div>
+    <div class="back" id="user_div">
+    <div class="content">
+        <label for="">검색할 제목을 입력하세요:</label><br>
+        <input type="text" name="" id="">
+        <button class="searchBtn">검색</button>
+        </div>
+    </div>
+    </div>
+    <script>
+        let back = document.getElementsByClassName("back");
+        let radio = document.getElementsByClassName("radioClick");
+
+        let searchRadio = addEventListener("click",function(){
+            for(let i=0; i<radio.length; i++){
+                if(radio[i].checked){
+                    back[i].style.display="block";
+                }else{
+                    back[i].style.display="none";
+                }   
+            }
+        })
+    </script>
+</body>
+</html>
