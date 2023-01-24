@@ -22,10 +22,10 @@
 
     <script>
         function test1(){
-            let student0 =  {name:"감갑생", java:100, oracle:90, html:60, cass:85};
-            let student1 =  {name:"감유신", java:88, oracle:10, html:90, cass:65};
-            let student2 =  {name:"홍길동", java:55, oracle:90, html:20, cass:60};
-            let student3 =  {name:"나훈아", java:77, oracle:56, html:90, cass:75};
+            let student0 =  {name:"감갑생", java:100, oracle:90, html:60, css:85};
+            let student1 =  {name:"감유신", java:88, oracle:10, html:90, css:65};
+            let student2 =  {name:"홍길동", java:55, oracle:90, html:20, css:60};
+            let student3 =  {name:"나훈아", java:77, oracle:56, html:90, css:75};
             
             let students = [];
 
@@ -37,7 +37,7 @@
             for(let student of students){
                 student.javascript = 100;
                 student.getSum = function(){
-                    return this.java + this.oracle + this.html + this.ccs + this.javascript;
+                    return this.java + this.oracle + this.html + this.css + this.javascript;
                 }
                 student.getAvg = function(){
                     return this.getSum()/5;
@@ -75,7 +75,7 @@
             let students = [student0, student1, student2];
 
             for(let student of students){
-                document.getElementById("area2").innerHTML += students.toString()+"<br>";
+                document.getElementById("area2").innerHTML += student.toString()+"<br>";
             }
         }
         function Student(name, java, oracle, html, css, javascript){

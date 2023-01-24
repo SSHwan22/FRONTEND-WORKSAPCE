@@ -70,11 +70,6 @@
             // area1.innerHTML += "product.$kind kind : "+product.$kind kind+"<br>"; //에러!
             
             // 방법2. 대괄호를 이용하는 방법 : 객체명["속성명"]
-            area1.innerHTML += "<b>방법2. 객체명['속성명']으로 접근</b><br>";
-            area1.innerHTML += "product['pName'] : "+product['pName']+"<br>";
-            area1.innerHTML += "product['price'] : "+product['price']+"<br>";
-            area1.innerHTML += "product['ingredient'] : "+product['ingredient']+"<br>";
-            area1.innerHTML += "product['$kind kind'] : "+product['$kind kind']+"<br>";
         }
     </script>
 
@@ -95,11 +90,14 @@
             "2_pwd" : 400,
             "3_email" : 900
         }
-        let area2 = document.getElementById("area2");
+
         
         // 대괄호 이용하여 area2요소에 출력
-        for(let key in user){
-            area2.innerHTML += key+" : "+user[key]+"<br>";
+        function test2(){
+            let area2 = document.getElementById("area2");
+            for(let key in user){
+                area2.innerHTML += key+" : "+user[key]+"<br>";
+            }
         }
 
     </script>
@@ -171,20 +169,20 @@
         }
     </script>
 
-<hr>
+    <hr>        
 
-<h3>* in과 with 키워드</h3>
-<p>
-    in : 객체 내에 해당 속성이 있는지 확인해주는 키워드 <br>
-    with : 객체명 제시하는 것을 생략할 수 있는 키워드(코드를 줄여줌)
-</p>
+    <h3>* in과 with 키워드</h3>
+    <p>
+        in : 객체 내에 해당 속성이 있는지 확인해주는 키워드 <br>
+        with : 객체명 제시하는 것을 생략할 수 있는 키워드(코드를 줄여줌)
+    </p>
 
-<button onclick="test5();">실행확인</button> <br>
-이름 : <input type="text" id="name"><br>
-국어 : <input type="number" id="kor"><br>
-수학 : <input type="number" id="math"><br>
-영어 : <input type="number" id="eng"><br>
-<div id="area5" class="area big"></div>
+    <button onclick="test5();">실행확인</button> <br>
+    이름 : <input type="text" id="name"><br>
+    국어 : <input type="number" id="kor"><br>
+    수학 : <input type="number" id="math"><br>
+    영어 : <input type="number" id="eng"><br>
+    <div id="area5" class="area big"></div>
 
     <script>
         function test5(){
@@ -200,7 +198,7 @@
                 math,
                 eng,
                 toString : function(){
-                    return this.name + " "+this.kor+" "+this.math+" "+this.eng
+                    return this.name + " "+this.kor+" "+this.math+" "+this.eng;
                 },
                 getSum: function(){
                     return this.kor + this.math + this.eng;
