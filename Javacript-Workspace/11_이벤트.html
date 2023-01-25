@@ -141,5 +141,95 @@
         }
     </script>
 
+    <hr>
+
+    <h2>3. 태그별 기본적으로 가지고있는 이벤트 제거</h2>
+    <p>
+        기본적으로 이벤트를 가지고 있는 요소 <br>
+        - a태그 : 클릭시 href에 제시되어있는 url를 요청하는 기본이벤트 가지고 있음<br>
+        - form태그 내의 submit버튼 : 클릭시 사용자가 입력한 정보들을 action에 제시되어있는 url로 제출하면서 요청하는 기본이벤트 가지고 있음 <br>
+        <br>
+        태그 내에 기본적으로 설정되어있는 이벤트를 제거하고자 한다면, 이벤트 핸들러의 return값을 false로 리턴하면 기본이벤트는 무시가 됨.
+    </p>
+
+    <!--
+        기본이벤트가 있는 요소에 onclick속성을 부여하면 onclick이 우선적으로 먼저 실행됨. -> 이제는 바뀌어서 href(기본이벤트)가 먼저 실행됨. 
+        기본이벤트가 수행이 되지 않게 하려면 return false;를 적어주면 된다.
+    -->
+    <a href="https://www.naver.com" onclick="alert('네이버로 이동'); return false;">네이버</a>
+
+    <form action="test.do" method="get">
+        아이디 : <input type="text" name="userId" id="userId"> <br>
+        <label style="font-size: 10px; color:gray;">영문자 또는 숫자로만 5~12자 사이로 입력해주세요.</label>
+
+        비밀번호 : <input type="password" name="userPwd" id="userPwd"> <br>
+        비밀번호확인 : <input type="password" id="checkPwd"> <br>
+
+        <input type="submit" value="회원가입" onclick="return validate();">
+    </form>
+    <script>
+        
+        // 유효성검사 함수
+        function validate(){
+
+            let userId = document.getElementById("userId").value;
+            let userPwd = document.getElementById("userPwd").value;
+            let checkPwd = document.getElementById("checkPwd").value;
+
+            //아이디에 대한 유효성 검사
+            // 1. 영문자 또는 숫자로만 5글자 이상 12글자 이하가 맞는지 검사
+            // 맞지 않을경우 제출이 불가능하게끔 false값을 리턴.
+
+        //     if(userId.length >= 5 && userId.length <= 12){
+                
+        //         // 각각의 문자들이 영문자(대, 소문자) 또는 숫자로만 이루어져있는지 체크
+        //         for(let i=0; i<userId.length; i++){
+        //             if ( (userId.charAt(i) >= 0 && userId.charAt(i) < 10)
+        //               || (userId.charAt(i) >= 'a' && userId.charAt(i) <= 'z')
+        //               || (userId.charAt(i) >= 'A' && userId.charAt(i) <= 'Z')
+        //                ){
+
+        //                }else{
+        //                  return false;
+        //                }
+        //         }
+
+        //     }else{
+        //         return false;
+        //     }
+        // 로직이 너무 복잡하고, 길기 떄문에 정규표현식을 통해 유효성검사를 한다.
+
+        // 정규표현식을 통해 유효한 아이디에 해당되는 패턴을 만들어 보기.
+
+        // 정규표현식 객체 regular expression;
+
+            let regExp = /^[a-zA-Z0-9]{5,12}$/;
+            // 1단계 : // 정규표현식
+            // 2단계 : /^$/ ^시작부터 $끝까지
+            // 3단계 : /^[]$/ --> []내의 문자 중 하나라도 존재하는지 체크
+            // 4단계 : /^[a-z]$/ --> 문자중 소문자 a부터 z까지 존재하는지 체크
+            // 5단계 : /^[a-zA-Z]$/ --> 대문자 A부터 Z까지 존재하는지 체크
+            // 6단계 : /^[a-zA-Z0-9]$/ --> 숫자 0부터 9까지 체크
+            // 7단계 : /^[a-zA-Z0-9]{5,12}$/ --> 5글자 이상 12글자 이하인지 체크
+            
+            if( !regExp.test(userId)){ // 정규표현식 객체에서 제공하는 test함수 : 해당 정규표현식을 만족하는지 묻는 함수
+                alert("유효한 아이디가 아닙니다! 다시입력해주세요."); // 아이디가 잘못 되었다고 알림
+
+                document.getElementById("userId").select();// 사용자에게 다시 입력을 유도
+
+                return false;
+            }
+
+            // 비밀번호에 대한 유효성 검사
+            // 비밀번호와 확인비밀번호가 일치하는 검사
+            // 일치하지 않을경우 제출이 불가능하게끔 false값을 리턴
+
+            if(userPwd != checkPwd){
+                alert("비밀번호가 일치하지 않습니다.");
+                return false;
+            }
+        }
+    </script>
+
 </body>
 </html>

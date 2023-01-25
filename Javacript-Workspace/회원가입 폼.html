@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    <form action="test.do" method="get">
+        * 아이디 : <input type="text" name="" id="userId"> <br><br>
+        * 비밀번호 : <input type="password" name="" id="userPwd"> <br><br>
+        * 비밀번호 확인 : <input type="password" name="" id="checkPwd"> <br><br>
+        * 이름 : <input type="text" name="" id="name"> <br><br>
+        * 이메일 : <input type="email" name="" id="email"> <br><br>
+        * 취미 : <input type="text" name="" id="hobby" placeholder="축구,농구,야구,독서 등"> <br><br>
+        * 거주지 : <select name="" id="address"><option value="서울">서울</option></select> <br><br>
+        <input type="submit" value="회원가입" onclick="return validate();">
+        <input type="reset" value="취소">
+    </form>
+    <script>
+        function validate(){
+            let userId = document.getElementById("userId");
+            let userPwd = document.getElementById("userPwd");
+            let checkPwd = document.getElementById("checkPwd");
+            let name = document.getElementById("name");
+            let email = document.getElementById("email");
+
+            let regExpId = /^[a-zA-Z][a-zA-Z0-9]{3,11}$/;
+            if(!regExpId.test(userId.value)){
+                alert("아이디가 조건성립하지 않습니다.");
+                userId.select();
+
+                return false;
+            }
+
+            let regExpPwd = /^{8,15}$/;
+            if(!regExpPwd.test(userPwd.value)){
+                alert("비밀번호가 조건성립하지 않습니다.");
+                userPwd.select();
+
+                return false;
+            }
+
+            if(checkPwd.value!=userPwd.value){
+                alert("비밀번호가 다릅니다.");
+                checkPwd.select();
+
+                return false;
+            }
+
+            let regExpName = /^[가-힣]{2,}$/;
+            if(!regExpName.test(name.value)){
+                alert("이름이 조건성립하지 않습니다.");
+                name.select();
+
+                return false;
+            }
+
+            // let redExpEmail = /^[@]+$/;
+        }
+    </script>
+</body>
+</html>
