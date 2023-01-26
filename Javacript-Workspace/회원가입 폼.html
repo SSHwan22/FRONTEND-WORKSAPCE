@@ -5,16 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
+    <style>
+        form{
+            border: 1px solid lightgray;
+            padding: 20px;
+        }
+        label{
+            color : gray;
+            font-size: 10px;
+        }
+    </style>
 </head>
 <body>
     <form action="test.do" method="get">
-        * 아이디 : <input type="text" name="" id="userId"> <br><br>
-        * 비밀번호 : <input type="password" name="" id="userPwd"> <br><br>
-        * 비밀번호 확인 : <input type="password" name="" id="checkPwd"> <br><br>
-        * 이름 : <input type="text" name="" id="name"> <br><br>
-        * 이메일 : <input type="email" name="" id="email"> <br><br>
-        * 취미 : <input type="text" name="" id="hobby" placeholder="축구,농구,야구,독서 등"> <br><br>
-        * 거주지 : <select name="" id="address"><option value="서울">서울</option></select> <br><br>
+        * 아이디 : <input type="text" name="userId" id="userId"> <br>
+        <label>첫글자는 반드시 영문자로, 그리고 영문자, 숫자를 포함하여 총 4~12자로 입력하시오.</label>
+        <br><br>
+
+        * 비밀번호 : <input type="password" name="userPwd" id="userPwd"> <br>
+        <label>영문자, 숫자, 특수문자(!@#$%^)로 총 8~15자로 입력하시오.</label>
+        <br><br>
+
+        * 비밀번호 확인 : <input type="password" name="checkPwd" id="checkPwd"> <br>
+        <label>위의 비밀번호와 일치하게 입력하시오.</label>
+        <br><br>
+
+        * 이름 : <input type="text" name="name" id="name"> <br>
+        <label>한글로만 이루어져야 하며 2글자 이상으로 입력하시오.</label>
+        <br><br>
+
+        * 이메일 : <input type="email" name="email" id="email"> <br>
+        <label>이메일 형식에 맞춰서 입력하시오.</label>
+        <br><br>
+
+        * 취미 : <input type="text" name="" id="hobby" placeholder="축구,농구,야구,독서 등" list="hobbyList"> <br><br>
+        <datalist id="hobbyList">
+            <option value="soccer">축구</option>
+            <option value="basketball">농구</option>
+            <option value="baseball">야구</option>
+            <option value="reading">독서</option>
+        </datalist>
+
+        * 거주지 : <select name="" id="address">
+                    <option value="서울">서울</option>
+                    <option value="incheon">인천</option>
+                    <option value="busan">부산</option>
+                  </select> <br><br>
+
         <input type="submit" value="회원가입" onclick="return validate();">
         <input type="reset" value="취소">
     </form>
@@ -34,8 +71,12 @@
                 return false;
             }
 
-            let regExpPwd = /^{8,15}$/;
-            if(!regExpPwd.test(userPwd.value)){
+            // let regExpPwd = /^[a-z\d!@#$%^]{8,15}$/i;
+            let regExpPwd2 = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^]).{8,15}/;
+            // let reg = /^[a-z]+$/i;
+            // let reg2 = /^[0-9]+$/i;
+            // let reg3 = /^[!@#$%^&]+$/i; // reg, reg2, reg3를 if문 조건으로 하나라도 거짓일 때 조건성립하지 않는다.
+            if(!regExpPwd2.test(userPwd.value)){
                 alert("비밀번호가 조건성립하지 않습니다.");
                 userPwd.select();
 
@@ -45,7 +86,7 @@
             if(checkPwd.value!=userPwd.value){
                 alert("비밀번호가 다릅니다.");
                 checkPwd.select();
-
+                checkPwd.value = "";
                 return false;
             }
 
