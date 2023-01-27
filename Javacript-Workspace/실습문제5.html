@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,17 +63,41 @@
     </div>
     <script>
         let back = document.getElementsByClassName("back");
-        let radio = document.getElementsByClassName("radioClick");
+        let categorys = document.getElementsByName("search");
+        let radio = document.getElementsByClassName("radioClick"); //forEach문 안 됨
 
-        let searchRadio = addEventListener("click",function(){
-            for(let i=0; i<radio.length; i++){
-                if(radio[i].checked){
-                    back[i].style.display="block";
+        // let searchRadio = addEventListener("click",function(){
+        //     for(let i=0; i<radio.length; i++){
+        //         if(radio[i].checked){
+        //             back[i].style.display="block";
+        //         }else{
+        //             back[i].style.display="none";
+        //         }   
+        //     }
+        // });
+
+        console.log(categorys);
+        console.log(radio);
+        console.log(back);
+        // NodeList는 forEach문을 사용할 수 있지만 HTMLCollection은 사용할 수 없는거 같다.
+
+        categorys.forEach(function(item, index){
+            item.addEventListener('change',function(){
+
+                for(let e of back){
+                    e.style.display = "none";
+                }
+
+                if(this.id == 'title'){
+                    back[0].style.display = 'block';
+                }else if(this.id == 'date'){
+                    back[1].style.display = 'block';
                 }else{
-                    back[i].style.display="none";
-                }   
-            }
-        })
+                    back[2].style.display = 'block';
+                }
+            });
+        });
+        
     </script>
 </body>
 </html>

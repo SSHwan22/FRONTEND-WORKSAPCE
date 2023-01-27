@@ -9,7 +9,13 @@
         fieldset{
             width: 400px;
         }
-
+        textarea:hover{
+            outline: none;
+            border-color: black;
+        }
+        textarea{
+            border-color: black;
+        }
     </style>
 </head>
 <body>
@@ -28,7 +34,7 @@
         </fieldset>
         <br>
         <button id="btn">입력 값 출력하기</button><br><br>
-        <textarea name="" id="textArea" cols="48" rows="8" style="resize: none;"></textarea>
+        <textarea name="" id="textArea" cols="48" rows="8" style="resize: none;" readonly></textarea>
         </div>
     <script>
         let btn = document.getElementById("btn");
@@ -44,9 +50,6 @@
             textArea.value += "납품등급 : "+inputValue[4].value+"등급\n";
             textArea.value += "기타사항 : "+text.value+"\n";
         })
-    </script>
-    <script>
-        
     </script>
 </body>
 </html>

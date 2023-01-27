@@ -36,9 +36,11 @@
             if("user01"===inputId){
                 span_id.innerHTML = "이미 존재하는 아이디입니다.";
                 span_id.style.color="red";
+                return false;
             }else{
                 span_id.innerHTML = "사용가능한 아이디입니다.";
                 span_id.style.color="green";
+                return true;
             }
         }
         function pwdCheck(){
@@ -49,9 +51,11 @@
             if(inputPwd===inputCheckPwd){
                 span_pwd.innerHTML = "비밀번호가 일치합니다.";
                 span_pwd.style.color="green";
+                return true;
             }else{
                 span_pwd.innerHTML = "비밀번호가 일치하지 않습니다.";
                 span_pwd.style.color="red";
+                return false;
             }
         }
 
@@ -63,12 +67,24 @@
                 if(inputs[i].value.length == 0){
                     alert(inputNames[i]+"를 입력해 주세요");
                     inputs[i].focus();
-                    return;
+                    return; //return을 해야 밑에 두 개의 if문을 실행하지 않고 함수 종료
                 }
             }
+            // console.log(typeof(!idCheck()));
             //2. 사용할 수 있는 아이디인지 체크
-
+            if(!idCheck()){
+                alert("사용할 수 없는 아이디입니다.");
+                userId.focus();
+                return;
+            }
             //3. 비밀번호가 일치하는지 체크
+            let inputCheckPwd = document.getElementById("inputCheckPwd");
+            if(!pwdCheck()){
+                alert("비밀번호가 일치하지 않습니다.");
+                inputCheckPwd.focus();
+                inputCheckPwd.value="";
+                return;
+            }
         }
     </script>
 </body>
