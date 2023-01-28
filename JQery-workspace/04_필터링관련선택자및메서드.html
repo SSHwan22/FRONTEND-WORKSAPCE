@@ -74,14 +74,13 @@
             $("h4").first().css("font-size","20px");
 
             //가장 마지막 요소를 선택
-            $("h4").first().css("font-size","30px");
+            $("h4").last().css("font-size","30px");
 
             // h4요소들을 가져온 후 .test이라는 클래스명이 있는 요소만 남김
-            $("h4").filter(".test").html("zzz");
+            $("h4").filter(".test").html("filter");
 
             // h4요소들 중 2번째 요소를 선택함(0부터 시작)
-            $("h4").eq(2).text("eq로 선택됨");
-            // .text() : 선택된 요소의 innerText와 관련된 기능을 수행하는 메소드
+            $("h4").eq(2).css("color", "red");
 
             
         });
