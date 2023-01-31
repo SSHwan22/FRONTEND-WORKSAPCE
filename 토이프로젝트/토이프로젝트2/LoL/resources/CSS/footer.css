@@ -1,0 +1,134 @@
+        /* 풋터 */
+        #footer{
+            background-color: #111;
+            padding: 0px 0px 48px 0px;
+            border-top: 2px solid #343434;
+            font-size: 13px;
+            font-family: "RixGo", "Tahoma", "sans-serif";
+        }
+        #footer *{
+            user-select: none;
+        }
+
+        /* 라이엇 정책바 */
+        #riotbar-links{
+            background-color: #292929;;
+            user-select: none;
+            text-align: center;
+            padding: 24px;
+            color: #7e7e7e;
+            /* height: 100px; */
+        }
+        #riotbar-links ul{
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 소셜 바 */
+        #riotbar-social-links{
+            padding: 18px;
+        }
+        #riotbar-social-links ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #riotbar-social-links li{
+            margin: 6px;
+            background: rgba(128,128,128,.2);
+            border-radius: 12px;
+            width: 32px;
+            height: 32px;
+        }
+        #riotbar-social-links a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height: 100%;
+        }
+        #riotbar-social-links svg{
+            width: 16px;
+            height: 16px;
+            fill: #f9f9f9;
+            fill-rule: evenodd;
+        }
+        
+        /* 라이엇 로고 */
+        #riotbar-logo{
+            padding: 24px 0px 20px;
+        }
+        #riotbar-logo a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+        #riotbar-logo svg{
+            fill: #737373;
+        }
+        #riotbar-logo svg:hover{
+            fill: #f9f9f9;
+        }
+
+        /* copylight markup */
+        .copylight-class{
+            margin: 0 auto;
+            max-width: 640px;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 140%;
+            color: #7e7e7e;
+            text-align: center;
+        }
+        /* 서비스 약관 */
+        #riotbar-legal{
+            padding: 24px 0 28px;
+        }
+        #riotbar-legal>ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        /* 이용등급 */
+        #riotbar-game-ratings{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #riotbar-game-rating{
+            background: #292929;
+            border-radius: 8px;
+            padding: 8px 12px;
+            max-width: 100%;
+        }
+        #riotbar-game-rating-img-Warpper{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 고객지원, 학부모 라인과 서비스 약관과 개인정보 처리방침 라인 같은 스타일 적용 */
+        .footer-legal-a-btnStyle{
+            padding: 8px 16px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #f9f9f9;
+        }
+
+        .footer-legal-a-btnStyle:hover{
+            background: rgba(128,128,128,.3);
+            border-radius: 6.4px;
+            transition: all 0.2s linear;
+        }
+
+        /* 처음 보는 스타일 : fill , fill-rule , line-height(문단간격) , user-select*/
