@@ -1,0 +1,215 @@
+/* 플레이 방법 가이드 및 플레이하기 */
+#play_legend_area{
+    position: relative;
+    height: auto;
+    min-height: 800px;
+    padding-bottom: 9.375rem;
+    background-color: rgb(3, 6, 8);
+    color: white;
+}
+#play_legend_area::after{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    width: 100%;
+    height: 460px;
+    background-image: url(../Image/tile-background.png);
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+#play_legend_flex{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+#play_legend_flex::after{
+    display: block;
+    content: "";
+    width: 60px;
+}
+/* 세로 텍스트 스타일 */
+#play-guide-wrapper{
+    width: 60px;
+    flex: 0 0 auto;
+    position: relative;
+    align-self: center;
+}
+#play-guide-text{
+    color: white;
+}
+
+/* 이미지 및 텍스트 버튼 */
+#legend-start-img{
+    flex: 1 1 100%;
+    min-width: 0px;
+}
+#legend-start-flex{
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+}
+#legend-start-map-wrapper{
+    flex: 1 1 auto;
+    min-width: 0px;
+}
+#legend-start-map-over-area{
+    width: 200%;
+    margin: 10% 0px 0px -50%;
+    max-width: 1500px;
+}
+#legend-start-map-width-over-area{
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: calc(230px - 17%) 10.5% 0px;
+}
+#legend-start-map-img-wrapper{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding-top: 65.9722%;
+}
+#legend-start-map-centent-wrapper{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+#legend-start-map-img-centent-area{
+    transform-origin: center top;
+    animation: 3.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s 1 normal forwards running dEfjBQ;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0px);
+}
+#map-img{
+    width: 100%;
+    height: auto;
+    border-style: none;
+}
+
+/* 전설의 시작 영역 */
+#legend-start{
+    z-index: 1;
+    text-align: center;
+}
+#legend-title-wrapper{
+    margin: 0px;
+    font-weight: normal;
+}
+#legend-top-title-wrapper{
+    line-height: 1.1;
+    display: block;
+    font-size: 1.5rem;;
+    font-weight: 600;
+}
+#legend-top-title-text-wrapper{
+    animation-duration: 2800ms;
+    animation-delay: 200ms;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-block;
+}
+#start-text-wrapper{
+    font-size: calc(37.09px + 1.82vw);
+    line-height: 1.1;
+    display: block;
+    font-weight: 800;
+}
+#start-title-wrapper{
+    animation-duration: 2000ms;
+    animation-delay: 100ms;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-block;
+}
+#start-title-text{
+    display: block;
+    padding: 0px 15px 10px;
+    margin-bottom: -10px;
+}
+#legend-start-middle-text{
+    line-height: 1.6;
+    position: relative;
+    max-width: 600px;
+    text-align: center;
+    padding: 0px 10%;
+    margin: 12px auto 0px;
+    font-size: 0.875rem;
+    transition: opacity 500ms ease-out 500ms;
+    opacity: 1; 
+}
+
+/* 전설의 시작 버튼 */
+#start-legend-btn-wrapper{
+    margin-top: 25px;
+}
+.start-legend-btn-class{
+    color: rgb(1, 1, 1);
+    min-width: 10.75rem;
+    margin: 12px;
+    position: relative;
+    display: inline-block;
+    height: 56px;
+    padding: 0px;
+    font-size: 0.8125rem;
+    font-weight: bold;
+    background-color: transparent;
+    border: 0px;
+}
+.start-legend-btn-flex{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 195px;
+    height: 56px;
+    padding: 0px 40px;
+}
+.start-legend-btn-background-wrapper{
+    animation-duration: 1000ms;
+    animation-delay: 250ms;
+    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+#legend-start-btn-background-start{
+    background-color: rgb(208, 168, 92);
+}
+#legend-start-btn-background-free-play{
+    background-color: rgb(11, 198, 227);
+}
+.start-legend-btn-background{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    min-width: 195px;
+    height: 56px;
+}
+.start-legend-btn-text{
+    position: relative;
+    animation: 0.6s cubic-bezier(0.77, 0, 0.175, 1) 700ms 1 normal forwards running visible-opacity-ani;
+    z-index: 1;
+    opacity: 0;
+}
+.start-legend-btn-canvas-wrapper{
+    position: absolute;
+    inset: 1px;
+    pointer-events: none;
+}
+.start-legend-btn-canvas{
+    position: absolute;
+    display: block;
+}

@@ -1,0 +1,74 @@
+ /* 공식 소셜 채널 살펴보기 */
+ #official-social-area {
+    margin: 70px 60px;
+}
+
+#official-social-area-flex {
+    display: flex;
+    position: relative;
+}
+
+#official-social-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#official-social-title {
+    display: inline-block;
+    text-align: right;
+    padding: 0px 30px;
+    margin-right: 22px;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 600;
+    border-right: 1px solid rgb(255, 255, 255);
+}
+
+#official-social-icons {
+    margin: 16px 0px;
+    padding-right: 20px;
+    display: inline-block;
+}
+
+.official-social-icon-link {
+    padding: 4px 8px;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}
+
+.official-social-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    fill: rgb(255, 255, 255);
+}
+.official-social-canvas-wrapper{
+    display: inline-block;
+    width: inherit;
+    max-width: 1680px;
+    height: inherit;
+    margin: 0px auto;
+    z-index: 0;
+    position: absolute;
+    inset: 1px;
+    pointer-events: none;
+
+}
+#official-social-canvas-style{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* canvas { border: 1px solid black; } */
+
+
+/* 처음 보는 속성 : pinter-events ,  */

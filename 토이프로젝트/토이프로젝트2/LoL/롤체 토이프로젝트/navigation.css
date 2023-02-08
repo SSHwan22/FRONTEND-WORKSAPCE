@@ -1,0 +1,593 @@
+#header {
+  display: flex;
+  height: 80px;
+  box-sizing: border-box;
+  background-color: rgb(18, 18, 18);
+  position: fixed;
+  z-index: 99;
+}
+
+#header1 {
+  width: 131px;
+  margin: 0 0 0 36px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* .mainBtn>svg:hover {} */
+
+#riotbar_logo {
+  display: flex;
+  align-items: center;
+  width: 121px;
+  height: 32px;
+}
+
+#riotbar_logo:hover > div > svg {
+  fill: #eb0029;
+  cursor: pointer;
+}
+
+#main-logo {
+  width: 95px;
+  height: 32px;
+  margin: 0;
+  fill: #f9f9f9;
+}
+
+#riotgame-menu {
+  width: 100%;
+  height: 100%;
+}
+
+#main-btn {
+  width: 23px;
+  height: 17px;
+  fill: #7e7e7e;
+}
+
+#riotgame-menuBtn {
+  width: 7.18px;
+  height: 4.59px;
+  margin: 0 0 4.5px 2.4px;
+}
+
+#header2 {
+  width: 100%;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+#nav-menu {
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  display: flex;
+  margin: 0 0 0 18px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* #nav-menu>div {} */
+
+#nav-link {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+#menu1 {
+  width: 75px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#menu2 {
+  width: 91.81px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#menu3 {
+  width: 90px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#menu3-btn {
+  fill: #7e7e7e;
+  width: 7.18px;
+  height: 4.59px;
+  margin: 0 0 1.5px 1px;
+}
+
+#nav-menu > div > a {
+  display: flex;
+  margin: auto;
+  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  height: 66px;
+  color: #f9f9f9;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 120%;
+  height: 32px;
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 8px 16px;
+  white-space: nowrap;
+}
+
+#nav-menu > div:hover > a {
+  position: relative;
+  border-radius: 6.4px;
+  background: rgba(128, 128, 128, 0.2);
+  margin-right: 10px;
+}
+
+#nav-menu > div:hover > a > p > svg {
+  fill: #f9f9f9;
+}
+
+#menu1:hover > div {
+  display: block;
+  background-color: rgb(158, 108, 54);
+  position: absolute;
+  bottom: 8px;
+  height: 4px;
+  border-radius: 2px;
+  width: 72px;
+  box-sizing: border-box;
+}
+
+#menu2:hover > div {
+  display: block;
+  background-color: rgb(158, 108, 54);
+  position: absolute;
+  bottom: 8px;
+  height: 4px;
+  border-radius: 2px;
+  width: 90px;
+}
+
+#menu3:hover > div {
+  display: block;
+  background-color: rgb(158, 108, 54);
+  position: absolute;
+  bottom: 8px;
+  height: 4px;
+  border-radius: 2px;
+  width: 180px;
+}
+
+#menu3_1 {
+  position: absolute;
+  left: 10;
+  top: 59px;
+  list-style-type: none;
+  background-color: #292929;
+  box-shadow: 0px 4px 16px 0px rgb(0 0 0 / 20%);
+  border-radius: 0 0 2px 2px;
+  text-align: left;
+  font-size: 13px;
+  width: 140px;
+  height: 105px;
+  opacity: 1;
+  /* transition: opacity .5s cubic-bezier(0.06, 0.81, 0, 0.98) 0s,visibility 0s; */
+  display: none;
+  z-index: 100;
+}
+
+/* .nav-links>#menu3_1:hover{
+    display: block;
+    z-index: 100;
+} */
+
+.nav-links:hover > #menu3_1 {
+  display: block;
+  z-index: 100;
+}
+
+.menuHover > a {
+  color: #f9f9f9;
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 0px;
+  border: none;
+  height: 100%;
+  width: 100%;
+  margin: 10px -5px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+/* 추가 기능 */
+/* .menuHover>a:hover{
+    border-radius: 6.4px;
+    background: rgba(128, 128, 128, .2);
+    position: relative;
+} */
+
+#tft-logo {
+  width: 38px;
+  margin: 0 0 0 22px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#tft-logo > div > a > img {
+  width: 30px;
+  height: 30px;
+}
+
+#header3 {
+  width: 243px;
+  margin: 0 32px 0 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+#lang {
+  width: 32px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.lang > a {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+}
+
+.lang > a > svg {
+  height: 16px;
+  width: 16px;
+  /* border: 1px solid greenyellow; */
+}
+
+#lang-switch {
+  fill: rgb(232, 232, 232);
+}
+
+.lang {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  padding: 0;
+}
+
+/* .lang *{
+    z-index: 1000000;
+    display: inline-block;
+} */
+
+#sign {
+  width: 179px;
+  display: flex;
+  position: relative;
+  /* box-sizing: border-box; */
+}
+
+#login > a {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(128, 128, 128, 0.2);
+  padding: 8px 16px;
+  border-radius: 6.4px;
+  line-height: 120%;
+  height: 32px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #f9f9f9;
+}
+
+#login {
+  width: 83px;
+  padding: 0px 6px;
+}
+
+#join > a {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(128, 128, 128, 0.2);
+  padding: 8px 16px;
+  border-radius: 12px;
+  line-height: 16px;
+  text-align: center;
+  height: 32px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    132.87deg,
+    rgb(255, 100, 51) 0%,
+    rgb(254, 157, 58) 96.39%
+  );
+  text-decoration: none;
+  color: #111;
+}
+
+#join {
+  width: 96px;
+  padding: 0px 6px;
+}
+
+#header4 {
+  position: fixed;
+  width: 1920px;
+  height: 530.391px;
+  z-index: 0;
+  /* overflow: hidden; */
+}
+
+#header4_0 {
+  height: 0px;
+  overflow: hidden;
+}
+
+#header4_bkg {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  /* animation: navibar .15s forwards linear; */
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes navibar {
+  0% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0%, 100% 80px, 25% 80px, 0 80px);
+  }
+
+  50% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0%, 100% 40%, 25% 70%, 0 40%);
+  }
+
+  100% {
+    opacity: 1;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 25% 100%, 0 100%);
+  }
+}
+
+#header4_1 {
+  box-sizing: border-box;
+  min-height: 320px;
+  position: relative;
+  pointer-events: auto;
+  font-size: 16px;
+  color: #111;
+  width: 100%;
+  padding: 0;
+  opacity: 0;
+  /* animation: portal 1s .15s forwards; */
+}
+
+#header4_1_1 {
+  display: block;
+  box-sizing: border-box;
+  opacity: 0;
+  margin: 0;
+  padding: 24px 24px 0 24px;
+  color: #111;
+  /* animation: portal .25s forwards; */
+  /* animation-delay: .2s; */
+}
+
+#header4_1_logo {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  height: 50px;
+  margin-left: 42px;
+  width: 75px;
+  cursor: pointer;
+}
+
+#header_riotgames {
+  box-sizing: border-box;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -30px;
+  width: 85px;
+  height: 27px;
+}
+
+#logoDownButton {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 87px;
+  fill: #7e7e7e;
+  width: 8px;
+  height: 5px;
+}
+
+#header4_1_xBox {
+  display: block;
+  box-sizing: border-box;
+  /* position: absolute; */
+  top: 25px;
+  right: 34px;
+  cursor: pointer;
+}
+
+#header_xBox {
+  vertical-align: middle;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 1860px;
+  bottom: 405px;
+  border-radius: 12px;
+}
+
+#header4_1_2 {
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 0 10px 32px;
+}
+
+#new_navi_content {
+  box-sizing: border-box;
+  display: flex;
+  padding: 0px 24px;
+  flex-direction: row;
+  flex-basis: 100%;
+  width: 100%;
+  flex: 1;
+  gap: 16px;
+  max-width: 1920px;
+}
+
+#new_navi_content_1 {
+  box-sizing: border-box;
+  width: 50%;
+  columns: 10em 3;
+  column-gap: 10px;
+}
+
+.navi_menus {
+  overflow-x: auto;
+  width: 100%;
+  display: block;
+  break-inside: avoid;
+  padding-bottom: 16px;
+}
+
+#navi_menu_1 {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.navi_menus_title {
+  box-sizing: border-box;
+  background: rgba(186, 186, 186, 0.1);
+  border-radius: 6.4px;
+  width: 100%;
+  position: static;
+  height: 32px;
+  margin: 0px;
+  padding: 8px 12px 8px 16px;
+  font-size: 13px;
+  text-align: left;
+  font-weight: bold;
+  line-height: 120%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+}
+
+.navi_menus_content {
+  width: 100%;
+  position: static;
+  height: auto;
+  margin: 4px 0px;
+  font-size: 13px;
+  line-height: 120%;
+  color: #4a4a4a;
+}
+
+#header_riotgames:hover > * {
+  fill: #eb0029;
+  cursor: pointer;
+}
+
+.navi_menus_content:hover {
+  background-color: rgba(186, 186, 186, 0.3);
+  cursor: pointer;
+  border-radius: 6.4px;
+}
+
+.navi_content_bkg {
+  text-decoration: none;
+}
+
+.navi_content_1 {
+  box-sizing: border-box;
+  display: block;
+  visibility: visible;
+  padding: 8px 16px;
+  color: #4a4a4a;
+  white-space: nowrap;
+}
+
+#new_navi_content_2 {
+  width: 50%;
+}
+
+#new_navi_content_2_0 {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  flex-direction: row;
+  max-width: 1920px;
+}
+
+#new_navi_content_2_1 {
+  float: left;
+  display: block;
+  visibility: visible;
+  width: 50%;
+  max-width: 452px;
+}
+
+#new_navi_content_2_2 {
+  float: left;
+  display: block;
+  visibility: visible;
+  width: 50%;
+  max-width: 452px;
+}
+
+.new_navi_content_2_img {
+  width: 100%;
+  height: auto;
+  max-width: 452px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: block;
+}
+
+.new_navi_content_2_text {
+  color: #0a0a0a;
+  margin: 16px 0 0 0;
+  letter-spacing: 0.03em;
+  width: 100%;
+  position: static;
+  display: inline-block;
+  left: 0px;
+  bottom: 8px;
+  text-transform: unset;
+  font-family: unset;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 15.6px;
+  text-align: left;
+}

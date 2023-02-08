@@ -1,0 +1,186 @@
+ /* 시작 메인 비디오 */
+ #beginVideo-Wrapper {
+    position: relative;
+    min-height: 31.25rem;
+    padding: 3.75rem;
+}
+
+/* 백그라운드 비디오 */
+#background-Wrapper {
+    /* overflow: hidden; */
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: rgb(7, 18, 26);
+}
+
+#background-style {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(7, 18, 26);
+    position: relative;
+    z-index: 0;
+}
+
+#background-video {
+    object-fit: cover;
+    object-position: center top;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 포지그라운드 비디오 */
+#forgeground-Wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 105rem;
+    height: 55vh;
+    min-height: 31.25rem;
+    margin: 0px auto;
+}
+
+#forgeground-style-Wrapper {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(7, 18, 26);
+}
+
+#forgeground-style {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    z-index: 0;
+}
+
+#forgeground-video {
+    object-fit: cover;
+    object-position: center center;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 포지그라운드 캔버스 */
+#forgeground-container-canvas {
+    position: absolute;
+    inset: 1px;
+    pointer-events: none;
+}
+
+#forgegorund-canvas-style {
+    position: absolute;
+    display: block;
+}
+
+/* 포지그라운드 로고 */
+#forgegroundInner {
+    width: 100%;
+}
+
+#forgeground-logo-wrap {
+    width: 100%;
+    margin-top: 0.625rem;
+    text-align: center;
+}
+
+#forgeground-logo {
+    display: inline-block;
+    position: relative;
+    width: 40vw;
+    height: calc(17.6333vw);
+    max-width: 37.5rem;
+    max-height: 16.5312rem;
+}
+
+#forgeground-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+
+}
+
+/* 포지그라운드 버튼 */
+#forgeground-btn-wrap {
+    width: 100%;
+    margin-top: 0.625rem;
+    text-align: center;
+}
+
+#forgeground-btn-link {
+    position: relative;
+    display: inline-block;
+    min-width: 195px;
+    height: 56px;
+    padding: 0px;
+    margin: 5px;
+    color: rgb(1, 1, 1);
+    border: 0px;
+    /* background-color: transparent; */
+    text-decoration: none;
+}
+
+#forgeground-btn-inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 195px;
+    height: 56px;
+    padding: 0px 40px;
+}
+
+#forgeground-btn-inner-style-wrap {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#forgeground-btn-inner-style {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    min-width: 195px;
+    height: 56px;
+    opacity: 1;
+    background-color: rgb(11, 198, 227);
+    transition: background-color 200ms ease 0s, opacity 0.01s ease 400ms;
+}
+
+#forgeground-btn-text {
+    animation: 0.6s cubic-bezier(0.77, 0, 0.175, 1) 450ms 1 normal forwards running visible-opacity-ani;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    color: rgb(1, 1, 1);
+    font-size: 0.8125rem;
+    font-weight: bold;
+}
+
+#frgeground-btn-container {
+    position: absolute;
+    inset: 1px;
+}
+
+#container-canvas-style {
+    position: absolute;
+    display: block;
+}

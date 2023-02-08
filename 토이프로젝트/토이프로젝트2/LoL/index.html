@@ -1,487 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko-kr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리그 오브 레전드</title>
-    <link rel="icon" type="image/x-icon" href="./resources/title-icon.ico">
+    <link rel="icon" type="image/x-icon" href="./resources/Image/title-icon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="./resources/CSS/animation.css"> <!-- 애니메이션 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/navigation.css"> <!-- header navibar css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/main_video.css"> <!-- 메인 비디오 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/news.css"> <!-- 뉴스 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/official_social.css"> <!-- 공식 소셜 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/champions.css"> <!-- 챔피언 직업군 소개 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/champion_skins.css"> <!-- 챔피언 스킨 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/gamemode.css"> <!-- 게임모드 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/how_to_play_guide.css"> <!-- 플레이 방법 가이드 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/more_to_discover.css"> <!-- 더 자세히 알아보기 css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/end_video.css"> <!-- 롤 app css파일 -->
+    <link rel="stylesheet" href="./resources/CSS/lol_app.css"> <!-- 롤 app css파일 -->
     <link rel="stylesheet" href="./resources/CSS/footer.css"> <!-- 풋터 css파일 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Noto Sans 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Sans:wght@700&display=swap" rel="stylesheet"> <!-- Noto Sans 폰트 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
-        *{
+        * {
             box-sizing: border-box;
         }
-        html{
-            line-height: 1.15px;
+        :lang(ko-kr){
+            word-break: keep-all;
+            letter-spacing: normal !important;
+            line-height: 1.15;
         }
-        body{
+
+        /* html>*{
+            word-break: keep-all;
+            letter-spacing: normal !important;
+        } */
+
+        body {
             margin: 0;
             width: 100%;
             font-family: "NotoSans-Medium", "sans-serif";
         }
-        /* section{
-            display: block;
+        /* div {
+            border: 1px solid red;
         } */
-        div {
-            /* display: block; */
-            /* border: 1px solid red; */
+        canvas{
+            /* border: 1px solid blue; */
         }
-        a{
+
+        a {
             text-decoration: none;
         }
-
-        /* 시작 메인 비디오 */
-        #beginVideo-Wrapper{
-            position: relative;
-            min-height: 31.25rem;
-            padding: 3.75rem;
+        h1{
+          font-size: 2em;
         }
-
-        /* 백그라운드 비디오 */
-        #background-Wrapper{
-            /* overflow: hidden; */
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            bottom: 0px;
-            width: 100%;
-            background: rgb(7, 18, 26);
-        }
-        #background-style{
-            width: 100%;
-            height: 100%;
-            background-color: rgb(7, 18, 26);
-            position: relative;
-            z-index: 0;
-        }
-        #background-video{
-            object-fit: cover;
-            object-position: center top;
-            position: relative;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* 포지그라운드 비디오 */
-        #forgeground-Wrapper{
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 105rem;
-            height: 55vh;
-            min-height: 31.25rem;
-            margin: 0px auto;
-        }
-        #forgeground-style-Wrapper{
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(7, 18, 26);
-        }
-        #forgeground-style{
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: relative;
-            z-index: 0;
-        }
-        #forgeground-video{
-            object-fit: cover;
-            object-position: center center;
-            position: relative;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* 포지그라운드 캔버스 */
-        #forgeground-container-line{
-            position: absolute;
-            inset: 1px;
-        }
-        #canvas-style{
-            position: absolute;
-            display: block;
-        }
-
-        /* 포지그라운드 로고 */
-        #forgegroundInner{
-            width: 100%;
-        }
-        #forgeground-logo-wrap{
-            width: 100%;
-            margin-top: 0.625rem;
-            text-align: center;
-        }
-        #forgeground-logo{
-            display: inline-block;
-            position: relative;
-            width: 40vw;
-            height: calc(17.6333vw);
-            max-width: 37.5rem;
-            max-height: 16.5312rem;
-        }
-        #forgeground-img{
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            display: block;
-            width: 100%;
-            height: 100%;
-            margin: 0px;
-
-        }
-
-        /* 포지그라운드 버튼 */
-        #forgeground-btn-wrap{
-            width: 100%;
-            margin-top: 0.625rem;
-            text-align: center;
-        }
-        #forgeground-btn-link{
-            position: relative;
-            display: inline-block;
-            min-width: 195px;
-            height: 56px;
-            padding: 0px;
-            margin: 5px;
-            color: rgb(1, 1, 1);
-            border: 0px;
-            /* background-color: transparent; */
-            text-decoration: none;
-        }
-        #forgeground-btn-inner{
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 195px;
-            height: 56px;
-            padding: 0px 40px;
-        }
-        #forgeground-btn-inner-style-wrap{
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-        }
-        #forgeground-btn-inner-style{
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            min-width: 195px;
-            height: 56px;
-            opacity: 1;
-            background-color: rgb(11, 198, 227);
-        }
-        #forgeground-btn-text{
-            position: relative;
-            z-index: 1;
-            /* opacity: 0; <- 애니메이션을 위한 투명도*/ 
-            color: rgb(1, 1, 1);
-            font-size: 0.8125rem;
-            font-weight: bold;
-        }
-        #frgeground-btn-container{
-            position: absolute;
-            inset: 1px;
-        }
-        #container-canvas-style{
-            position: absolute;
-            display: block;
-            border: 1px solid white;
-        }
-
-        #news-list-area{
-            margin-top: -120px;
-            padding-top: 120px;
-            position: relative;
-            padding-bottom: 40px;
-            background: url(./resources/Image/news-list-background.png) left top repeat-x rgb(247, 247, 247);
-        }
-        #news-list-flex1{
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-        /* #news-list-verticalText{} */
-        #news-list-contents-wapper{
-            flex: 1 1 100%;
-            min-width: 0px;
-        }
-        #news-list-flex2{
-            display: flex;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-            max-width: 1560px;
-            margin: 0px auto;
-        }
-        #news-list-content-flex{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 200px;
-            width: 100%;
-        }
-        .news-list-content-wapper{
-            width: 30%;
-            height: 100%;
-        }
-        .news-list-content-area-flex{
-            display: flex;
-            height: 100%;
-            position: relative;
-            align-items: center;
-        }
-        .new-list-img-class{
-            width: 100%;
-            height: 90%;
-            max-width: 145px;
-            /* opacity: 0; 애니메이션효과 스타일*/
-            overflow: hidden;
-        }
-        .new-list-img{
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .new-list-text-class{
-            width: 100%;
-            max-width: 85%;
-            height: 100%;
-            padding: 10px;
-            overflow: hidden;
-        }
-        .new-list-text-class p,h1{
-            margin: 0px;
-        }
-        .small-title{
-            margin: 0px;
-            color: rgb(188, 188, 188);
-            font-size: 10px;
-            font-weight: 600;
-            /* opacity: 0; 애니메이션*/
-        }
-        .middle-title{
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            color : rgb(26, 29, 33);
-            text-overflow: ellipsis;
-            overflow: hidden;
+        h1,h2,h3,h4,h5,h6{
             line-height: .85;
-            margin-top: 10px;
-            /* opacity: 0; */
-            /* margin: 0.67em 0px; */
-            /* margin-block-start: 1em;
-            margin-block-end: 1em; */
+            font-weight: 800;
         }
-        .middle-text{
-            line-height: 1.1;
-            position: relative;
-            margin-top: 8px;
-            color: rgb(26, 29, 33);
-            text-overflow: hidden;
-            font-size: 12px;
-            /* opacity: 0; */
+        h1{
+            margin: 0.67em 0px;
+        }
+        h1,h2,h3,h4,h5,h6,p{
+            margin: 0px;
+        }
+        h1,h2,h3,h4,h5,h6{
+            margin-bottom: 0px;
+        }
+        button, [type="button"], [type="reset"], [type="submit"]{
+            appearance: button;
+        }
+        button, select{
+            text-transform: none;
+        }
+        button,input{
+            overflow: visible;
+        }
+        button, input/*, optgroup, select, textarea */{
+            font-family: inherit;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0px;
+        }
+        button{
+            cursor: pointer;
+        }
 
+        /* 왼쪽 세로 텍스트 스타일 */
+        .vertical-area-class{
+            z-index: 10;
+            position: relative;
+            display: inline-block;
+            margin-left: 50%;
+            transform: translateX(-50%);
         }
-        /* .news-list-canvas-container-class{
-            left: 10px;
-            right: 2px;
-            position: absolute;
-            inset: 1px;
-            pointer-events: none;
+        .vertical-text-class{
+            padding-top: 100%;
+            transform: rotate(-90deg) translate(-100%, -50%);
+            transform-origin: left top;
+            white-space: nowrap;
+            font-size: 0.625rem;
+            font-weight: bold;
+        }
+        .vertical-text-class::after{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 1.4em;
+            height: 1px;
+            margin-left: 0.5em;
+            background-color: currentColor; /* 색상값이 부모의 값의 상속처리 */
+        }
+        /* #header {
+            width: 100%;
+            display: block;
+        }
+        */
+        #header{
+            width: 100%;
+        }
+        /* #header div{
+            width: 100%;
         } */
-        #news-list-all-link{
-            /* opacity: 1; 애니메이션*/
-            display: inline-block;
-            margin-top: 1.5625rem;
-        }
-        #news-list-all-text{
-            color: rgb(0, 0, 0);
-            font-size: 12px;
-            font-weight: 600;
-            vertical-align: middle;
-        }
-        #news-list-all-arrow{
-            width: 15px;
-            height: 15px;
-            vertical-align: middle;
-            margin-left: 6px;
-            fill: rgb(11, 198, 228);
-        }
+        
 
-
-
-        /* 공식 소셜 채널 살펴보기 */
-        #official-social-area{
-            margin: 70px 60px;
-        }
-        #official-social-area-flex{
-            display: flex;
-            position: relative;
-        }
-        #official-social-flex{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
+        /* div{
             width: 100%;
-            align-items: center;
-            position: relative;
-            top: 0px;
-            left: 0px;
-            z-index: 1;
-        }
-        #official-social-title{
-            display: inline-block;
-            text-align: right;
-            padding: 0px 30px;
-            margin-right: 22px;
-            color: rgb(255, 255, 255);
-            font-size: 18px;
-            font-weight: 600;
-            border: 1px solid rgb(255, 255, 255);
-        }
-        #official-social-icons{
-            margin: 16px 0px;
-            padding-right: 20px;
-            display: inline-block;
-        }
-        .official-social-icon-link{
-            padding: 4px 8px;
-            display: inline-block;
-            height: 24px;
-            width: 24px;
-        }
-        .official-social-icon{
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            fill: rgb(255, 255, 255);
-        }
+        } */
 
 
-
-        /* 마지막 동영상 영역 */
-        #end-content-video{
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 400px;
-            max-height: 1200px;
-        }
-        #video-container-flex{
-            overflow: hidden;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            display: flex;
-            width: 100%;
-            height: 100%;
-            align-items: center;
-            background: rgb(7, 18, 26);
-        }
-        #video-container-wrapper{
-            /* opacity: 0.904695; */
-            position: relative;
-            z-index: 0;
-            width: 100%;
-            height: 140%;
-        }
-        #end-video{
-            object-fit: cover;
-            object-position: center top;
-            position: relative;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-
-        /* 리그오브 레전드 앱 */
-        #lol-app-area{
-            background-color: rgb(6, 28, 37);
-            color: rgb(209, 218, 222);
-        }
-        #lol-app-flex{
-            max-width: 1800px;
-            margin: 0px auto;
-            padding: 20px 60px;
-            display: flex;
-            align-items: center;
-            color: rgb(209, 218, 222);
-        }
-        #lol-app-left{
-            flex: 0 0 25%;
-            margin: 0px;
-            font-size: 12.32px;
-            font-weight: bold;
-            line-height: .85;
-            color: rgb(209, 218, 222);
-        }
-        #lol-app-center{
-            flex: 1 1 auto;
-            text-align: center;
-            font-size: 12.32px;
-            color: rgb(209, 218, 222);
-        }
-        #lol-app-right{
-            text-align: right;
-            flex: 0 0 25%;
-            min-width: 300px;
-            color: rgb(209, 218, 222);
-        }
-        #lol-app-apple{
-            width: 110px;
-            position: relative;
-            display: inline-block;
-            box-sizing: border-box;
-            margin: 0px 5px;
-            vertical-align: middle;
-            text-align: right;
-        }
-        #lol-app-google{
-            width: 124px;
-            position: relative;
-            display: inline-block;
-            box-sizing: border-box;
-            margin: 0px 5px;
-            vertical-align: middle;
-            text-align: right;
-        }
-        #lol-app-apple-img{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            /* text-align: right; */
-        }
-        #lol-app-google-img{
-            width: 114%;
-            height: 150%;
-            transform: translate(-6%, -16%);
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* text-align: right; */
-        }
-        /* 처음 접한 스타일 속성 : object-fit , obejct-position , clip-path , inset text-overflow*/
+        /* 처음 접한 스타일 속성 : object-fit , obejct-position , clip-path , inset text-overflow , flex*/
     </style>
 </head>
+
 <body>
-    <div id="header"></div>
+    <div>
+        <div id="header">
+            <div id="header1">
+                <a id="riotbar_logo">
+                    <div id="main-logo" class="mainBtn">
+                        <svg width="85" height="27" class="_32ANSIZormifc9Vc6VVwrx" viewBox="0 0 587.93 165"><title>mainLogoRiotFist21</title><path d="M98.77.33L0 46.07l24.61 93.66 18.73-2.3-5.15-58.89 6.15-2.74L54.96 136l32.01-3.93-5.69-65 6.09-2.71 11.68 66.23 32.38-3.98-6.23-71.25 6.16-2.74 12.77 72.43 32.01-3.93V19.71L98.77.33zm2.32 142.05l1.63 9.22 73.42 12.24v-30.68l-75.01 9.22h-.04zm144.49-19.22v12.63h15.57a14.84 14.84 0 01-1.92 7.31 13 13 0 01-5.6 5.11 20 20 0 01-8.9 1.8 17.53 17.53 0 01-10-2.8 17.87 17.87 0 01-6.44-8.14 33.06 33.06 0 01-2.27-12.93 31.81 31.81 0 012.32-12.81 18.14 18.14 0 016.5-8 17.27 17.27 0 019.82-2.78 19.31 19.31 0 015.36.71 14.15 14.15 0 014.33 2.09 12.92 12.92 0 013.18 3.29 15.61 15.61 0 012 4.44h17.27a27.22 27.22 0 00-3.46-10.28 28.84 28.84 0 00-7.05-8.1 32.6 32.6 0 00-9.91-5.29 37.91 37.91 0 00-12.06-1.86 37.32 37.32 0 00-14 2.6 32.6 32.6 0 00-11.36 7.61 35 35 0 00-7.61 12.21 46.15 46.15 0 00-2.73 16.44q0 11.94 4.54 20.59a32.4 32.4 0 0012.69 13.27 39.84 39.84 0 0035.84.84 28.39 28.39 0 0011.67-11q4.25-7.19 4.24-17.2v-9.76zm215.03 40.81V88.53h51.67v13.96h-34.62v16.76h27.99v13.96h-27.99v16.8h34.7v13.96h-51.75zm101.83-53.3a9 9 0 00-3.54-6.64c-2.09-1.59-5-2.38-8.69-2.38a16.63 16.63 0 00-6.26 1 8.62 8.62 0 00-3.83 2.78 6.74 6.74 0 00-1.33 4 6.2 6.2 0 00.79 3.29 7.27 7.27 0 002.4 2.45 16.54 16.54 0 003.7 1.79 40.14 40.14 0 004.64 1.31l6.63 1.54a47.19 47.19 0 019.45 3.08 27.46 27.46 0 017.2 4.68 18.84 18.84 0 014.58 6.39 20.37 20.37 0 011.61 8.29 20.65 20.65 0 01-3.54 12.11 22.56 22.56 0 01-10.15 7.85 41.31 41.31 0 01-15.93 2.76 42.69 42.69 0 01-16.17-2.81 23.22 23.22 0 01-10.72-8.48q-3.83-5.66-4-14.12h16.43a10.68 10.68 0 007.05 9.94 19.37 19.37 0 007.24 1.26 18.44 18.44 0 006.66-1.09 10 10 0 004.33-3 7.22 7.22 0 001.57-4.48 6.16 6.16 0 00-1.42-4 10.86 10.86 0 00-4.14-2.81 42.07 42.07 0 00-6.89-2.14l-8.07-1.95q-9.65-2.3-15.23-7.26t-5.54-13.44a19.86 19.86 0 013.72-12.12 24.74 24.74 0 0110.33-8.11 36.74 36.74 0 0115-2.91 35.62 35.62 0 0114.92 2.91 23.43 23.43 0 019.91 8.14 21.54 21.54 0 013.6 12.12zm-113.99 53.3h-16.87v-57.35l-1.73-.02-17.04 57.37h-16.86l-16.58-57.37-2.15.02v57.35h-16.87V88.53h28.67l14.48 50.56h1.75l14.48-50.56h28.72v75.44zm-114.66 0h18.27l-25.33-75.43h-23.15l-25.37 75.43h18.3l4.93-16.54h27.42zm-28.43-29.7l8.22-27.65h3.1l8.26 27.65zm278.58-37.76a4 4 0 01-3.67-2.44 4 4 0 010-3.1 4 4 0 01.85-1.27 4.25 4.25 0 011.27-.86 4.15 4.15 0 013.1 0 4.13 4.13 0 011.27.86 4.08 4.08 0 01.86 1.27 4 4 0 010 3.1 4.08 4.08 0 01-.86 1.27 4 4 0 01-1.27.86 4 4 0 01-1.55.31zm0-1.09a2.84 2.84 0 001.47-.39 2.94 2.94 0 001.05-1 2.93 2.93 0 000-2.92 3 3 0 00-1.06-1 2.93 2.93 0 00-2.92 0 3 3 0 00-1 1 2.86 2.86 0 000 2.92 3 3 0 001 1 2.83 2.83 0 001.46.39zm-1.46-1.15V90.6h1.78a1.52 1.52 0 01.69.15 1.13 1.13 0 01.47.42 1.24 1.24 0 01.17.66 1.16 1.16 0 01-.18.66 1 1 0 01-.48.41 1.56 1.56 0 01-.7.14h-1.2v-.72h1a.52.52 0 00.36-.12.5.5 0 00.14-.37.47.47 0 00-.14-.37.52.52 0 00-.36-.12h-.55v2.93zm2.39-1.68l.82 1.68h-1.11l-.75-1.68zM282.41 1.03h17.05v75.44h-17.05zm98.02 37.72q0 12.42-4.71 21a32.67 32.67 0 01-12.79 13.17 38.57 38.57 0 01-36.31 0 32.75 32.75 0 01-12.79-13.2q-4.71-8.66-4.71-21t4.71-21.05a32.67 32.67 0 0112.75-13.14 38.65 38.65 0 0136.31 0 32.67 32.67 0 0112.79 13.17q4.71 8.64 4.71 21.05m-17.35 0a33.35 33.35 0 00-2.23-13 17.47 17.47 0 00-6.33-8 18.57 18.57 0 00-19.45 0 17.57 17.57 0 00-6.35 8 38.59 38.59 0 000 26 17.49 17.49 0 006.35 8 18.57 18.57 0 0019.45 0 17.39 17.39 0 006.33-8 33.4 33.4 0 002.23-13M246.58 50.17l8.76 26.3h18.71l-9.74-28.33h-13.23l-.79-2.44c2.52-.49 6.83-1.25 10.65-3.85a20 20 0 008.75-16.39 24.15 24.15 0 00-3.26-12.75 21.9 21.9 0 00-9.36-8.64 32.56 32.56 0 00-14.64-3H212v75.4h17.06v-26.3zm-.32-15.61a19.35 19.35 0 01-7.26 1.18h-9.94V14.88h9.91a18.68 18.68 0 017.25 1.24 9.12 9.12 0 014.4 3.7 10 10 0 011.5 5.64 9.65 9.65 0 01-1.48 5.55 8.86 8.86 0 01-4.38 3.55M382.04 1.03v14h29.3l.8 2.45c-2.48.48-6.67 1.22-10.43 3.7v55.31h16.87v-61.5h19.62v-14z"></path></svg>
+                    </div>
+                    <div id="main-btn" class="mainBtn">
+                        <svg id="riotgame-menuBtn" viewBox="0 0 8 5">
+                            <path
+                                d="M.707 1.707l2.586 2.586a1 1 0 001.414 0l2.586-2.586C7.923 1.077 7.477 0 6.586 0H1.414C.524 0 .077 1.077.707 1.707z" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            <div id="header2">
+                <div id="tft-logo">
+                    <div>
+                        <a href="">
+                            <svg id="lol_header_logo"xmlns="http://www.w3.org/2000/svg" class="league" width="30" height="32" viewBox="0 0 30 32" fill="none"><g><path d="M1.80644 9.75049C0.655032 11.8373 0 14.2271 0 16.7683C0 19.3095 0.655032 21.7015 1.80644 23.7883V9.75049Z" fill="#C28F2C"></path> <path d="M15 2.02222C13.7829 2.02222 12.602 2.16921 11.4688 2.43647V4.75718C12.5907 4.44093 13.7738 4.26721 15 4.26721C22.0218 4.26721 27.7153 9.84627 27.7153 16.7305C27.7153 19.8307 26.5571 22.6659 24.6464 24.8463L24.2838 26.118L23.4814 28.9331C27.4184 26.2761 30.0023 21.8195 30.0023 16.7705C30 8.62355 23.2843 2.02222 15 2.02222Z" fill="#C28F2C"></path> <path d="M11.4688 24.4209H22.9737H23.2253C25.1723 22.4209 26.3713 19.7126 26.3713 16.7305C26.3713 10.5746 21.2806 5.58569 15 5.58569C13.767 5.58569 12.5816 5.78168 11.4688 6.1358V24.4209Z" fill="#C28F2C"></path> <path d="M10.1088 0H1.55029L3.16634 3.29844V28.7038L1.55029 32H21.1922L22.9737 25.7572H10.1088V0Z" fill="#C28F2C"></path></g></svg>
+                        </a>
+                    </div>
+                </div>
+                <div id="nav-menu">
+                    <div id="menu1" class="nav-link nav-size">
+                        <a href="">
+                            <p>게임정보</p>
+                        </a>
+                        <div></div>
+                    </div>
+                    <div id="menu2" class="nav-link nav-size">
+                        <a href="">
+                            <p>챔피언</p>
+                        </a>
+                        <div></div>
+                    </div>
+                    <div id="menu3" class="nav-links nav-size">
+                        <a href="">
+                            <p>
+                                새소식
+                                <svg id="menu3-btn" viewBox="0 0 8 5">
+                                    <path
+                                        d="M.707 1.707l2.586 2.586a1 1 0 001.414 0l2.586-2.586C7.923 1.077 7.477 0 6.586 0H1.414C.524 0 .077 1.077.707 1.707z" />
+                                </svg>
+                            </p>
+                        </a>
+                        <ul id="menu3_1">
+                            <li id="menu3_1_1" class="menuHover">
+                                <a href="">전체</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">게임 업데이트</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">공지</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">개발자 블로그</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">세계관</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">미디어</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">라이엇 스토어</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">E스포츠</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">라이엇 게임즈</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">커뮤니티</a>
+                            </li>
+                        </ul>
+                        <div></div>
+                    </div>
+                    <div id="menu2" class="nav-link nav-size">
+                        <a href="">
+                            <p>패치노트</p>
+                        </a>
+                        <div></div>
+                    </div>
+                    <div id="menu2" class="nav-link nav-size">
+                        <a href="">
+                            <p>다운로드</p>
+                        </a>
+                        <div></div>
+                    </div>
+                    <div id="menu1_c" class="nav-link nav-size">
+                        <a href="">
+                            <p>E스포츠</p>
+                        </a>
+                        <div></div>
+                    </div>
+                    <div id="menu3" class="nav-links nav-size">
+                        <a href="">
+                            <p>
+                                알아보기
+                                <svg id="menu3-btn" viewBox="0 0 8 5">
+                                    <path
+                                        d="M.707 1.707l2.586 2.586a1 1 0 001.414 0l2.586-2.586C7.923 1.077 7.477 0 6.586 0H1.414C.524 0 .077 1.077.707 1.707z" />
+                                </svg>
+                            </p>
+                        </a>
+                        <ul id="menu3_1">
+                            <li id="menu3_1_1" class="menuHover">
+                                <a href="">LoL 디스플레이</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">모바일 상점</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">라이엇 모바일</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">아바타 생성기</a>
+                            </li>
+                        </ul>
+                        <div></div>
+                    </div>
+                    <div id="menu3" class="nav-links nav-size">
+                        <a href="">
+                            <p>
+                                더보기
+                                <svg id="menu3-btn" viewBox="0 0 8 5">
+                                    <path
+                                        d="M.707 1.707l2.586 2.586a1 1 0 001.414 0l2.586-2.586C7.923 1.077 7.477 0 6.586 0H1.414C.524 0 .077 1.077.707 1.707z" />
+                                </svg>
+                            </p>
+                        </a>
+                        <ul id="menu3_1">
+                            <li id="menu3_1_1" class="menuHover">
+                                <a href="">라이엇 스토어</a>
+                            </li>
+                            <li id="ment3_1_2" class="menuHover">
+                                <a href="">고객지원</a>
+                            </li>
+                        </ul>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div id="header3">
+                <div id="lang">
+                    <div class="lang">
+                        <a href="">
+                            <svg id="lang-switch">
+                                <path
+                                    d="M7.992 0C3.576 0 0 3.584 0 8s3.576 8 7.992 8C12.416 16 16 12.416 16 8s-3.584-8-8.008-8zm5.544 4.8h-2.36c-.256-1-.624-1.96-1.104-2.848A6.424 6.424 0 0113.536 4.8zM8 1.632A11.27 11.27 0 019.528 4.8H6.472A11.27 11.27 0 018 1.632zM1.808 9.6A6.594 6.594 0 011.6 8c0-.552.08-1.088.208-1.6h2.704A13.212 13.212 0 004.4 8c0 .544.048 1.072.112 1.6H1.808zm.656 1.6h2.36c.256 1 .624 1.96 1.104 2.848A6.39 6.39 0 012.464 11.2zm2.36-6.4h-2.36a6.39 6.39 0 013.464-2.848A12.52 12.52 0 004.824 4.8zM8 14.368A11.27 11.27 0 016.472 11.2h3.056A11.27 11.27 0 018 14.368zM9.872 9.6H6.128A11.77 11.77 0 016 8c0-.544.056-1.08.128-1.6h3.744C9.944 6.92 10 7.456 10 8s-.056 1.072-.128 1.6zm.2 4.448a12.52 12.52 0 001.104-2.848h2.36a6.424 6.424 0 01-3.464 2.848zM11.488 9.6c.064-.528.112-1.056.112-1.6s-.048-1.072-.112-1.6h2.704c.128.512.208 1.048.208 1.6s-.08 1.088-.208 1.6h-2.704z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div id="sign">
+                    <div id="login">
+                        <a href="">로그인</a>
+                    </div>
+                    <div id="join">
+                        <a href="">회원가입</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header4">
+            <div id="header4_0">
+                <div id="header4_bkg">
+                    <div id="header4_1">
+                        <div id="header4_1_1">
+                            <div id="header4_1_logo">
+                                <span id="header_riotgames">
+                                    <svg viewBox="0 0 587.93 165">
+                                        <path
+                                            d="M98.77.33L0 46.07l24.61 93.66 18.73-2.3-5.15-58.89 6.15-2.74L54.96 136l32.01-3.93-5.69-65 6.09-2.71 11.68 66.23 32.38-3.98-6.23-71.25 6.16-2.74 12.77 72.43 32.01-3.93V19.71L98.77.33zm2.32 142.05l1.63 9.22 73.42 12.24v-30.68l-75.01 9.22h-.04zm144.49-19.22v12.63h15.57a14.84 14.84 0 01-1.92 7.31 13 13 0 01-5.6 5.11 20 20 0 01-8.9 1.8 17.53 17.53 0 01-10-2.8 17.87 17.87 0 01-6.44-8.14 33.06 33.06 0 01-2.27-12.93 31.81 31.81 0 012.32-12.81 18.14 18.14 0 016.5-8 17.27 17.27 0 019.82-2.78 19.31 19.31 0 015.36.71 14.15 14.15 0 014.33 2.09 12.92 12.92 0 013.18 3.29 15.61 15.61 0 012 4.44h17.27a27.22 27.22 0 00-3.46-10.28 28.84 28.84 0 00-7.05-8.1 32.6 32.6 0 00-9.91-5.29 37.91 37.91 0 00-12.06-1.86 37.32 37.32 0 00-14 2.6 32.6 32.6 0 00-11.36 7.61 35 35 0 00-7.61 12.21 46.15 46.15 0 00-2.73 16.44q0 11.94 4.54 20.59a32.4 32.4 0 0012.69 13.27 39.84 39.84 0 0035.84.84 28.39 28.39 0 0011.67-11q4.25-7.19 4.24-17.2v-9.76zm215.03 40.81V88.53h51.67v13.96h-34.62v16.76h27.99v13.96h-27.99v16.8h34.7v13.96h-51.75zm101.83-53.3a9 9 0 00-3.54-6.64c-2.09-1.59-5-2.38-8.69-2.38a16.63 16.63 0 00-6.26 1 8.62 8.62 0 00-3.83 2.78 6.74 6.74 0 00-1.33 4 6.2 6.2 0 00.79 3.29 7.27 7.27 0 002.4 2.45 16.54 16.54 0 003.7 1.79 40.14 40.14 0 004.64 1.31l6.63 1.54a47.19 47.19 0 019.45 3.08 27.46 27.46 0 017.2 4.68 18.84 18.84 0 014.58 6.39 20.37 20.37 0 011.61 8.29 20.65 20.65 0 01-3.54 12.11 22.56 22.56 0 01-10.15 7.85 41.31 41.31 0 01-15.93 2.76 42.69 42.69 0 01-16.17-2.81 23.22 23.22 0 01-10.72-8.48q-3.83-5.66-4-14.12h16.43a10.68 10.68 0 007.05 9.94 19.37 19.37 0 007.24 1.26 18.44 18.44 0 006.66-1.09 10 10 0 004.33-3 7.22 7.22 0 001.57-4.48 6.16 6.16 0 00-1.42-4 10.86 10.86 0 00-4.14-2.81 42.07 42.07 0 00-6.89-2.14l-8.07-1.95q-9.65-2.3-15.23-7.26t-5.54-13.44a19.86 19.86 0 013.72-12.12 24.74 24.74 0 0110.33-8.11 36.74 36.74 0 0115-2.91 35.62 35.62 0 0114.92 2.91 23.43 23.43 0 019.91 8.14 21.54 21.54 0 013.6 12.12zm-113.99 53.3h-16.87v-57.35l-1.73-.02-17.04 57.37h-16.86l-16.58-57.37-2.15.02v57.35h-16.87V88.53h28.67l14.48 50.56h1.75l14.48-50.56h28.72v75.44zm-114.66 0h18.27l-25.33-75.43h-23.15l-25.37 75.43h18.3l4.93-16.54h27.42zm-28.43-29.7l8.22-27.65h3.1l8.26 27.65zm278.58-37.76a4 4 0 01-3.67-2.44 4 4 0 010-3.1 4 4 0 01.85-1.27 4.25 4.25 0 011.27-.86 4.15 4.15 0 013.1 0 4.13 4.13 0 011.27.86 4.08 4.08 0 01.86 1.27 4 4 0 010 3.1 4.08 4.08 0 01-.86 1.27 4 4 0 01-1.27.86 4 4 0 01-1.55.31zm0-1.09a2.84 2.84 0 001.47-.39 2.94 2.94 0 001.05-1 2.93 2.93 0 000-2.92 3 3 0 00-1.06-1 2.93 2.93 0 00-2.92 0 3 3 0 00-1 1 2.86 2.86 0 000 2.92 3 3 0 001 1 2.83 2.83 0 001.46.39zm-1.46-1.15V90.6h1.78a1.52 1.52 0 01.69.15 1.13 1.13 0 01.47.42 1.24 1.24 0 01.17.66 1.16 1.16 0 01-.18.66 1 1 0 01-.48.41 1.56 1.56 0 01-.7.14h-1.2v-.72h1a.52.52 0 00.36-.12.5.5 0 00.14-.37.47.47 0 00-.14-.37.52.52 0 00-.36-.12h-.55v2.93zm2.39-1.68l.82 1.68h-1.11l-.75-1.68zM282.41 1.03h17.05v75.44h-17.05zm98.02 37.72q0 12.42-4.71 21a32.67 32.67 0 01-12.79 13.17 38.57 38.57 0 01-36.31 0 32.75 32.75 0 01-12.79-13.2q-4.71-8.66-4.71-21t4.71-21.05a32.67 32.67 0 0112.75-13.14 38.65 38.65 0 0136.31 0 32.67 32.67 0 0112.79 13.17q4.71 8.64 4.71 21.05m-17.35 0a33.35 33.35 0 00-2.23-13 17.47 17.47 0 00-6.33-8 18.57 18.57 0 00-19.45 0 17.57 17.57 0 00-6.35 8 38.59 38.59 0 000 26 17.49 17.49 0 006.35 8 18.57 18.57 0 0019.45 0 17.39 17.39 0 006.33-8 33.4 33.4 0 002.23-13M246.58 50.17l8.76 26.3h18.71l-9.74-28.33h-13.23l-.79-2.44c2.52-.49 6.83-1.25 10.65-3.85a20 20 0 008.75-16.39 24.15 24.15 0 00-3.26-12.75 21.9 21.9 0 00-9.36-8.64 32.56 32.56 0 00-14.64-3H212v75.4h17.06v-26.3zm-.32-15.61a19.35 19.35 0 01-7.26 1.18h-9.94V14.88h9.91a18.68 18.68 0 017.25 1.24 9.12 9.12 0 014.4 3.7 10 10 0 011.5 5.64 9.65 9.65 0 01-1.48 5.55 8.86 8.86 0 01-4.38 3.55M382.04 1.03v14h29.3l.8 2.45c-2.48.48-6.67 1.22-10.43 3.7v55.31h16.87v-61.5h19.62v-14z">
+                                        </path>
+                                    </svg>
+                                    <svg id="logoDownButton">
+                                        <path
+                                            d="M7.3 2.9L4.7.3c-.4-.4-1-.4-1.4 0L.7 2.9c-.6.6-.2 1.7.7 1.7h5.2c.9 0 1.3-1.1.7-1.7z">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div id="header4_1_xBox">
+                                <svg id="header_xBox">
+                                    <path
+                                        d="M0 12C0 5.373 5.373 0 12 0h8c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12h-8C5.373 32 0 26.627 0 20v-8z"
+                                        fill="#BABABA" fill-opacity=".2"></path>
+                                    <path
+                                        d="M20.667 12.274l-.94-.94L16 15.061l-3.726-3.727-.94.94 3.726 3.727-3.726 3.726.94.94L16 16.941l3.727 3.726.94-.94-3.727-3.726 3.727-3.727z"
+                                        fill="#0A0A0A"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div id="header4_1_2">
+                            <div id="new_navi_content">
+                                <div id="new_navi_content_1">
+                                    <div id="navi_menu_1" class="navi_menus">
+                                        <div class="navi_menus_title">게임</div>
+                                        <div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">리그 오브 레전드</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">발로란트</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="./롤체 토이프로젝트/롤토체스메인.html" class="navi_content_bkg">
+                                                    <span class="navi_content_1">전략적 팀 전투</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">레전드 오브 룬테라</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">리그 오브 레전드: 와일드 리프트</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="navi_menu_2" class="navi_menus">
+                                        <div class="navi_menus_title">RIOT FORGE</div>
+                                        <div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">마법공학 아수라장</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">몰락한 왕</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">시간/교차</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">누누의 노래</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">RIOT FORGE의 게임</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="navi_menu_3" class="navi_menus">
+                                        <div class="navi_menus_title">E스포츠</div>
+                                        <div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">리그 오브 레전드 e스포츠</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">발로란트 e스포츠</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="navi_menu_4" class="navi_menus">
+                                        <div class="navi_menus_title">엔터테인먼트</div>
+                                        <div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">아케인</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">유니버스</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">라이엇 게임즈 뮤직</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="navi_menu_5" class="navi_menus">
+                                        <div class="navi_menus_title">기타</div>
+                                        <div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">라이엇 게임즈</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">라이엇 스토어</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">라이엇 모바일</span>
+                                                </a>
+                                            </div>
+                                            <div class="navi_menus_content">
+                                                <a href="" class="navi_content_bkg">
+                                                    <span class="navi_content_1">라이엇 고객지원</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="new_navi_content_2">
+                                    <div id="new_navi_content_2_0">
+                                        <div id="new_navi_content_2_1">
+                                            <div>
+                                                <img class="new_navi_content_2_img"
+                                                    src="./resources/Image/LoR_6E_DS_WorldEnder_Riot_BarApplicationSwitcher_PromoCards_(660x428)_V2.jpg"
+                                                    alt="">
+                                            </div>
+                                            <div class="new_navi_content_2_text">신규 레전드 오브 룬테라 확장팩 – 다르킨 전설: 세계의 종결자</div>
+                                        </div>
+                                        <div id="new_navi_content_2_2">
+                                            <div>
+                                                <img class="new_navi_content_2_img"
+                                                    src="./resources/Image/Valorant_2022_EP6-1_PlayVALORANT_RiotBarHorizontal_660x428_MB01.jpg"
+                                                    alt="">
+                                            </div>
+                                            <div class="new_navi_content_2_text">신규 맵 로터스에서 숨겨진 고대의 비밀을 발견하고 세계를 수확하는 아락시스
+                                                스킨 시리즈를 무기로 삼으며
+                                                경쟁전 액트와 배틀패스를 새롭게 시작해보세요. 모두 에피소드 6 // 액트 I에서 즐기실 수 있습니다.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="content">
         <div id="begin-Wrapper"> <!-- 메인 동영상 -->
             <section id="beginVideo-Wrapper">
@@ -500,8 +506,8 @@
                             </video>
                         </div>
                     </div>
-                    <div id="forgeground-container-line">
-                        <!-- <canvas id="line-canvas-style" width="1123" height="549" style="height: 549.438px; left: 8px; top: -12px; width: 1123px;"></canvas> -->
+                    <div id="forgeground-container-canvas">
+                        <canvas id="forgegorund-canvas-style" class="style__Canvas-sc-1c9bc3r-1 hsvRhV" width="883" height="522" style="height: 522px; left: 8px; top: -12px; width: 883px;"></canvas>
                         <!-- canvas는 크기에 따라 동적 크기조정 -->
                     </div>
                     <div id="forgegroundInner">
@@ -513,13 +519,13 @@
                         <div id="forgeground-btn-wrap">
                             <a id="forgeground-btn-link" href="">
                                 <span id="forgeground-btn-inner">
-                                    <div id="forgeground-btn-inner-style-wrap">
+                                    <div id="forgeground-btn-inner-style-wrap" class="default-ani default-ani-show-nw" style="animation-duration: 1000ms;animation-delay: 1400ms;animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);">
                                         <span id="forgeground-btn-inner-style"></span>
                                     </div>
-                                    <span id="forgeground-btn-text">무료로 플레이하기</span>
+                                    <span id="forgeground-btn-text" class="visible-opacity">무료로 플레이하기</span>
                                 </span>
                                 <div id="frgeground-btn-container">
-                                    <canvas id="container-canvas-style" width="205" height="66" style="width: 205px; height: 66px; left: -6px; top: -6px;"></canvas>
+                                    <canvas id="container-canvas-style" width="205" height="66"style="width: 205px; height: 66px; left: -6px; top: -6px;"></canvas>
                                 </div>
                             </a>
                         </div>
@@ -530,52 +536,66 @@
         <div id="news-list-wrapper"><!-- 뉴스 리스트 -->
             <section id="news-list-area">
                 <div id="news-list-flex1">
-                    <div id="news-list-verticalText">
-                        <div id="news-list">ttt</div>
-                    </div>
+                    <div id="news-list-verticalText-wrapper">
+                        <div id="news-list-verticalText" class="vertical-area-class">
+                            <div id="news-list" class="vertical-text-class">주목할 만한 소식</div>
+                        </div>
+                     </div>
                     <div id="news-list-contents-wapper">
                         <div id="news-list-flex2">
                             <div id="news-list-content-flex">
                                 <article id="news-list-content1-wapper" class="news-list-content-wapper">
                                     <a id="news-list-content1" class="news-list-content-area-flex" href="">
                                         <!-- <div class="news-list-canvas-container-class"><canvas></canvas></div> -->
-                                        <div id="news-list-img-wrap1" class="new-list-img-class"><img class="new-list-img" src="./resources/Image/news-list-content-img1.jpg" alt=""></div>
-                                        <div id="news-list-text1" class="new-list-text-class">
-                                            <div class="small-title">게임 업데이트</div>
-                                            <h1 class="middle-title">13.1B 패치 상점 소식</h1>
-                                            <p class="middle-text">달빛 여왕, 황제, 수호자의 행차입니다.</p>
+                                        <div id="news-list-img-wrap1" class="news-list-img-class news-list-img-class-ani"><img class="news-list-img new-list-img-ani" src="./resources/Image/news-list-content-img1.jpg"alt=""></div>
+                                        <div id="news-list-text1" class="news-list-text-class">
+                                            <div class="small-title small-title-ani">게임 업데이트</div>
+                                            <h1 class="middle-title middle-title-ani">13.1B 패치 상점 소식</h1>
+                                            <p class="middle-text middle-text-ani">달빛 여왕, 황제, 수호자의 행차입니다.</p>
                                         </div>
-                                        <!-- <div id="canvas"></div> -->
+                                        <div class="news-list-canvas-wrapper news-list-canvas-wrapper2">
+                                            <canvas id="new-list-canvas-1" class="news-list-canvas" width="400" height="202" style="width: 400.891px; height: 202px; left: -2px; top: -2px;"></canvas>
+                                        </div>
                                     </a>
                                 </article>
                                 <article id="news-list-content2-wapper" class="news-list-content-wapper">
                                     <a id="news-list-content2" class="news-list-content-area-flex" href="">
                                         <!-- <div class="news-list-canvas-container-class"><canvas></canvas></div> -->
-                                        <div id="news-list-img-wrap2" class="new-list-img-class"><img class="new-list-img" src="./resources/Image/news-list-content-img2.jpg" alt=""></div>
-                                        <div id="news-list-text2" class="new-list-text-class">
-                                            <div class="small-title">게임 업데이트</div>
-                                            <h1 class="middle-title">13.1B 패치 상점 소식</h1>
-                                            <p class="middle-text">달빛 여왕, 황제, 수호자의 행차입니다.</p>
+                                        <div id="news-list-img-wrap2" class="news-list-img-class news-list-img-class-ani">
+                                            <img class="news-list-img new-list-img-ani" src="./resources/Image/news-list-content-img2.jpg" alt=""></div>
+                                        <div id="news-list-text2" class="news-list-text-class">
+                                            <div class="small-title small-title-ani">미디어</div>
+                                            <h1 class="middle-title middle-title-ani">올라타세요</h1>
+                                            <p class="middle-text middle-text-ani">모두 올라타셨나요? 이제 출발합니다! 마법 버스에 올라 인생 최고의 모험을 떠나보세요!</p>
                                         </div>
-                                        <!-- <div id="canvas"></div> -->
+                                        <div class="news-list-canvas-wrapper news-list-canvas-wrapper2">
+                                            <canvas id="new-list-canvas-2" class="news-list-canvas" width="400" height="202" style="width: 400.891px; height: 202px; left: -2px; top: -2px;"></canvas>
+                                        </div>
                                     </a>
                                 </article>
                                 <article id="news-list-content3-wapper" class="news-list-content-wapper">
                                     <a id="news-list-content3" class="news-list-content-area-flex" href="">
                                         <!-- <div class="news-list-canvas-container-class"><canvas></canvas></div> -->
-                                        <div id="news-list-img-wrap3" class="new-list-img-class"><img class="new-list-img" src="./resources/Image/news-list-content-img3.jpg" alt=""></div>
-                                        <div id="news-list-text3" class="new-list-text-class">
-                                            <div class="small-title">게임 업데이트</div>
-                                            <h1 class="middle-title">13.1B 패치 상점 소식</h1>
-                                            <p class="middle-text">달빛 여왕, 황제, 수호자의 행차입니다.</p>
+                                        <div id="news-list-img-wrap3" class="news-list-img-class news-list-img-class-ani"><img class="news-list-img new-list-img-ani" src="./resources/Image/news-list-content-img3.jpg" alt=""></div>
+                                        <div id="news-list-text3" class="news-list-text-class">
+                                            <div class="small-title small-title-ani">개발자 블로그</div>
+                                            <h1 class="middle-title middle-title-ani">2023년 1월 게임플레이에 대한 단상 - 1: 신화급 탱커 아이템</h1>
+                                            <p class="middle-text middle-text-ani">기획자 RiotMadnessHeroo가 새로운 신화급 탱커 아이템이 협곡에 어떻게 자리를 잡았는지 말씀드립니다.</p>
                                         </div>
-                                        <!-- <div id="canvas"></div> -->
+                                        <div class="news-list-canvas-wrapper news-list-canvas-wrapper2">
+                                            <canvas id="new-list-canvas-3" class="news-list-canvas" width="400" height="202" style="width: 400.891px; height: 202px; left: -2px; top: -2px;"></canvas>
+                                        </div>
                                     </a>
                                 </article>
                             </div>
                             <a id="news-list-all-link" href="">
                                 <span id="news-list-all-text">모두 보기</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" id="news-list-all-arrow" class="style__Arrow-llbdtx-2 dCeYdP"><path d="M3.47 53.47A3.47 3.47 0 116.94 50a3.47 3.47 0 01-3.47 3.47zM26.24 46.53h60.47l-23-23 4.91-4.91L100 50 68.62 81.38l-4.91-4.91 23-23H26.24z"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" id="news-list-all-arrow"
+                                    class="style__Arrow-llbdtx-2 dCeYdP">
+                                    <path
+                                        d="M3.47 53.47A3.47 3.47 0 116.94 50a3.47 3.47 0 01-3.47 3.47zM26.24 46.53h60.47l-23-23 4.91-4.91L100 50 68.62 81.38l-4.91-4.91 23-23H26.24z">
+                                    </path>
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -590,9 +610,695 @@
                             공식 소셜 채널 살펴보기
                         </div>
                         <div id="official-social-icons">
-                            <a id="official-social-icon-facebook" class="official-social-icon-link" href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.86 17.16" class="style__SocialIcon-nyu1wb-5-s gJEymj official-social-icon"><path class="st0" d="M2.62 17.16v-.31-7.52-.1H.11C0 9.24 0 9.24 0 9.13V6.31c0-.09.03-.11.11-.11h2.51v-.09c0-.78 0-1.56.01-2.34.01-.63.13-1.24.4-1.81C3.4 1.2 3.99.64 4.78.32 5.31.09 5.87-.01 6.44 0c.65.01 1.31.04 1.96.06.12 0 .24.03.36.03.07 0 .09.03.09.1v2.54c0 .08-.02.1-.1.1-.5 0-.99-.01-1.49 0-.22.01-.45.04-.67.09-.43.09-.68.37-.76.8-.04.16-.06.34-.06.51-.01.64 0 1.27 0 1.91v.07h2.86c.12 0 .12 0 .11.11-.06.5-.13 1-.2 1.5l-.15 1.26c-.02.16-.02.16-.18.16H5.77V17.16H2.62z"></path></svg></a>
-                            <a id="official-social-icon-instagram" class="official-social-icon-link" href="official-social-icon-instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.47 40.47" class="style__SocialIcon-nyu1wb-5-Component hdGuQD official-social-icon"><path class="st0" d="M33.47 9.43c0-1.35-1.09-2.43-2.43-2.43s-2.43 1.09-2.43 2.43 1.09 2.43 2.43 2.43 2.43-1.09 2.43-2.43"></path><path class="st0" d="M40.35 11.89c-.1-2.16-.44-3.63-.94-4.91a9.817 9.817 0 00-2.33-3.59c-1.12-1.12-2.25-1.81-3.58-2.33-1.29-.5-2.76-.84-4.91-.94C26.42.02 25.73 0 20.23 0c-5.49 0-6.19.02-8.34.12-2.15.1-3.62.44-4.91.94-1.33.52-2.46 1.21-3.58 2.33-1.13 1.13-1.82 2.26-2.34 3.59-.5 1.28-.84 2.76-.94 4.91-.1 2.16-.12 2.85-.12 8.35 0 5.49.02 6.18.12 8.34.1 2.15.44 3.62.94 4.91.52 1.33 1.21 2.46 2.34 3.58a9.989 9.989 0 003.58 2.34c1.29.5 2.76.84 4.91.94 2.16.1 2.85.12 8.34.12 5.5 0 6.19-.02 8.34-.12 2.16-.1 3.62-.44 4.91-.94 1.33-.52 2.46-1.21 3.58-2.34 1.13-1.12 1.82-2.26 2.33-3.58.5-1.29.84-2.76.94-4.91.1-2.16.12-2.85.12-8.34.02-5.5 0-6.19-.1-8.35zM36.7 28.41c-.09 1.97-.42 3.04-.69 3.76-.37.94-.81 1.62-1.52 2.33-.7.71-1.38 1.15-2.32 1.51-.71.28-1.79.61-3.76.7-2.13.09-2.77.11-8.17.11s-6.04-.02-8.17-.11c-1.97-.09-3.04-.42-3.76-.7-.95-.36-1.62-.8-2.33-1.51s-1.15-1.38-1.51-2.33c-.27-.71-.61-1.78-.69-3.76-.1-2.13-.12-2.78-.12-8.17 0-5.41.02-6.05.12-8.18.09-1.97.42-3.04.69-3.76.36-.94.8-1.61 1.51-2.32.7-.71 1.37-1.15 2.32-1.52.71-.28 1.78-.6 3.76-.7 2.13-.09 2.77-.12 8.17-.12 5.41 0 6.04.02 8.17.12 1.97.09 3.05.42 3.76.7.94.37 1.62.81 2.32 1.51.71.71 1.15 1.38 1.52 2.32.27.72.6 1.79.69 3.76.1 2.13.12 2.77.12 8.18.02 5.41-.01 6.05-.11 8.18z"></path><path class="st0" d="M20.23 9.84c-5.74 0-10.39 4.66-10.39 10.4 0 5.73 4.65 10.39 10.39 10.39s10.39-4.65 10.39-10.39-4.65-10.4-10.39-10.4zm0 17.14c-3.72 0-6.74-3.02-6.74-6.74 0-3.73 3.02-6.75 6.74-6.75s6.75 3.02 6.75 6.75c0 3.72-3.02 6.74-6.75 6.74z"></path></svg></a>
+                            <a id="official-social-icon-facebook" class="official-social-icon-link" href=""><svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.86 17.16"
+                                    class="style__SocialIcon-nyu1wb-5-s gJEymj official-social-icon">
+                                    <path class="st0"
+                                        d="M2.62 17.16v-.31-7.52-.1H.11C0 9.24 0 9.24 0 9.13V6.31c0-.09.03-.11.11-.11h2.51v-.09c0-.78 0-1.56.01-2.34.01-.63.13-1.24.4-1.81C3.4 1.2 3.99.64 4.78.32 5.31.09 5.87-.01 6.44 0c.65.01 1.31.04 1.96.06.12 0 .24.03.36.03.07 0 .09.03.09.1v2.54c0 .08-.02.1-.1.1-.5 0-.99-.01-1.49 0-.22.01-.45.04-.67.09-.43.09-.68.37-.76.8-.04.16-.06.34-.06.51-.01.64 0 1.27 0 1.91v.07h2.86c.12 0 .12 0 .11.11-.06.5-.13 1-.2 1.5l-.15 1.26c-.02.16-.02.16-.18.16H5.77V17.16H2.62z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a id="official-social-icon-instagram" class="official-social-icon-link"
+                                href="official-social-icon-instagram"><svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 40.47 40.47"
+                                    class="style__SocialIcon-nyu1wb-5-Component hdGuQD official-social-icon">
+                                    <path class="st0"
+                                        d="M33.47 9.43c0-1.35-1.09-2.43-2.43-2.43s-2.43 1.09-2.43 2.43 1.09 2.43 2.43 2.43 2.43-1.09 2.43-2.43">
+                                    </path>
+                                    <path class="st0"
+                                        d="M40.35 11.89c-.1-2.16-.44-3.63-.94-4.91a9.817 9.817 0 00-2.33-3.59c-1.12-1.12-2.25-1.81-3.58-2.33-1.29-.5-2.76-.84-4.91-.94C26.42.02 25.73 0 20.23 0c-5.49 0-6.19.02-8.34.12-2.15.1-3.62.44-4.91.94-1.33.52-2.46 1.21-3.58 2.33-1.13 1.13-1.82 2.26-2.34 3.59-.5 1.28-.84 2.76-.94 4.91-.1 2.16-.12 2.85-.12 8.35 0 5.49.02 6.18.12 8.34.1 2.15.44 3.62.94 4.91.52 1.33 1.21 2.46 2.34 3.58a9.989 9.989 0 003.58 2.34c1.29.5 2.76.84 4.91.94 2.16.1 2.85.12 8.34.12 5.5 0 6.19-.02 8.34-.12 2.16-.1 3.62-.44 4.91-.94 1.33-.52 2.46-1.21 3.58-2.34 1.13-1.12 1.82-2.26 2.33-3.58.5-1.29.84-2.76.94-4.91.1-2.16.12-2.85.12-8.34.02-5.5 0-6.19-.1-8.35zM36.7 28.41c-.09 1.97-.42 3.04-.69 3.76-.37.94-.81 1.62-1.52 2.33-.7.71-1.38 1.15-2.32 1.51-.71.28-1.79.61-3.76.7-2.13.09-2.77.11-8.17.11s-6.04-.02-8.17-.11c-1.97-.09-3.04-.42-3.76-.7-.95-.36-1.62-.8-2.33-1.51s-1.15-1.38-1.51-2.33c-.27-.71-.61-1.78-.69-3.76-.1-2.13-.12-2.78-.12-8.17 0-5.41.02-6.05.12-8.18.09-1.97.42-3.04.69-3.76.36-.94.8-1.61 1.51-2.32.7-.71 1.37-1.15 2.32-1.52.71-.28 1.78-.6 3.76-.7 2.13-.09 2.77-.12 8.17-.12 5.41 0 6.04.02 8.17.12 1.97.09 3.05.42 3.76.7.94.37 1.62.81 2.32 1.51.71.71 1.15 1.38 1.52 2.32.27.72.6 1.79.69 3.76.1 2.13.12 2.77.12 8.18.02 5.41-.01 6.05-.11 8.18z">
+                                    </path>
+                                    <path class="st0"
+                                        d="M20.23 9.84c-5.74 0-10.39 4.66-10.39 10.4 0 5.73 4.65 10.39 10.39 10.39s10.39-4.65 10.39-10.39-4.65-10.4-10.39-10.4zm0 17.14c-3.72 0-6.74-3.02-6.74-6.74 0-3.73 3.02-6.75 6.74-6.75s6.75 3.02 6.75 6.75c0 3.72-3.02 6.74-6.75 6.74z">
+                                    </path>
+                                </svg>
+                            </a>
                         </div>
+                    </div>
+                    <div class="official-social-canvas-wrapper">
+                        <canvas id="official-social-canvas-style" class="style__Canvas-sc-1c9bc3r-1 hsvRhV" width="1121" height="52" style="/* width: 1402.01px; height: 65.9531px; */ left: -2px; top: -2px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="champion-area-wrapper"> <!-- 챔피언 영역 및 스킨 -->
+            <section id="champion-area">
+                <div id="champion-area-flex"> <!-- flex -->
+                    <div id="champion-vertical-wapper"> <!-- 세로 글자 -->
+                        <div class="vertical-area-class">
+                            <div id="champion-vertical-text" class="vertical-text-class">챔피언</div>
+                        </div>
+                    </div>
+                    <div id="champion-category-wrapper"> <!-- 챔피언 목록 영역 -->
+                        <div id="champion-category-area"> <!-- 챔피언 영역 -->
+                            <div id="champion-role-background"> <!-- 챔피언 뒷 배경 역할군 -->
+                                <svg id="role-sylbol-assassion" class="role-background-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><path d="M56.59 73.71l1.67-2.88c5.75-9.34 5.51-16 3.83-20.59a39.78 39.78 0 01-9.1 16 2 2 0 01-1.43.48H48.2a2.17 2.17 0 01-1.67-.72 39.78 39.78 0 01-9.1-16c-1.68 4.55-1.68 11.26 3.83 20.59l1.68 2.88-3.36 5.75 10.06 17.72L59.7 79.22z"></path><path d="M73.11 38.74c-3.35-4.31-6-10-6-18.91 0-4.07-3.59-8.15-7.66-12-4.79-4.31-5.75-5.74-9.58-5.74s-4.79 1.43-9.34 5.74c-4.07 3.83-7.66 7.91-7.66 12 0 8.86-2.88 14.6-6 18.68L12.76 52.87 2.23 45.69v12.93S2.47 84 39.58 97.89c0 0-14.13-7.18-16.28-31.13-.24-1.67-.24-9.1-.24-10.29A119.77 119.77 0 0036.71 74c-.72-1.2-1.44-2.64-2.16-3.83-5-10.54-4.07-18.2-1.67-23.47a22.77 22.77 0 017.42-8.86l9.58 9.58 9.58-9.58a22.77 22.77 0 017.42 8.86c2.4 5.27 3.59 12.93-1.43 23.23-.72 1.38-1.45 2.58-2.16 4.07a119.77 119.77 0 0013.65-17.53c0 1.19 0 8.62-.24 10.29-2.39 23.95-16.28 31.13-16.28 31.13C97.53 84 97.77 58.62 97.77 58.62V45.69l-10.53 7.18z"></path></svg>
+                                <svg id="role-sylbol-fighter" class="role-background-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M67.84 56.35v5.5c8.62-8.62 14.37 0 14.37 0C112.14 40.78 90.35 2 90.35 2s-.72 17.24-15.08 27.77v16.52c-.24 4.79-3.84 7.9-7.43 10.06M17.79 62.09s4.07-6.46 10.78-2.63L20.91 48.2l6.7-16c-17.24-10.54-18-29.93-18-29.93S-12.14 41 17.79 62.09M26.89 83.89l5.51-18.68-.24-.48L19.23 77.9A17.78 17.78 0 017.5 83.17H3l-1 2.39 12 11.5zM92.27 83.89a16.24 16.24 0 01-11.74-5.27L68.8 66.88l3.83 17.72L85.8 98l12-11.49-1-2.4zM55.87 42.7c0 .24-.24.48-.24.71h.72c5.75.48 7.66 2.64 9.1 7.67a9.35 9.35 0 002.39-1.92c1-1 1.68-1.67 1.68-2.63V28.09a2 2 0 00-1.68-1.92l-31.37-5.74H36a2.39 2.39 0 00-2.39 2.39v6.71l24.9 3.35z"></path><path d="M60.18 54c-1.2-5.27-1.44-4.55-5.75-4.79L40.78 48v-3.87h5.51A4.09 4.09 0 0050.36 41l1-3.35L32.4 35l-5 12.22 11.74 17-5.54 18.47L49.88 98l16.53-15.07s-6.23-28.5-6.23-29M49.88 2.23l-4.79 10.29 4.79 3.83 4.79-3.83zM62.1 9.41l1.43 6h6l2.87-11zM30.25 15.4h6l.24-.72 1.2-5.27-10.3-5z"></path></svg>
+                                <svg id="role-sylbol-mage" class="role-background-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M84.48 77.3h13.41l-3.83-12.93h-9.58a36.73 36.73 0 00-27.54 12.45L50 85l-6.94-8.14a36.73 36.73 0 00-27.54-12.49H5.94L2.11 77.3h13.41a36.73 36.73 0 0127.54 12.45l.71.72h-9.1v7.42h30.9v-7.42h-9.1l.71-.72a35.85 35.85 0 0127.3-12.45"></path><path d="M56.23 54.31L50 62.21l-6.23-7.9a5.42 5.42 0 01-.24-6.47L50 37.31l6.47 10.53a5.42 5.42 0 01-.24 6.47M42.58 28.93l-7.91 12.69a13.37 13.37 0 00.72 15.09L50 75.14l14.61-18.43a13 13 0 00.72-15.09L50 17l-.48.72a5.58 5.58 0 01-4.31 1.68c-4.07 0-7.18-8.62 4.55-17.24 0 0-28.74 5.5-14.85 30.41z"></path></svg>
+                                <svg id="role-sylbol-marksmen" class="role-background-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M28.69 27.25h6.94l1.92-6.94-13.41-7.91zM71.31 27.25l4.55-14.85-13.41 7.91 1.92 6.94zM71.31 35.39c-1.43 0-12.21-3.83-12.21-3.83L50 42.34l-9.1-10.78s-10.54 3.83-12.21 3.83c-7.67 0-4.79-7.18-4.79-7.18S4.26 48.32 2.11 64.13c0 0 5.74-8.86 24.42-13.17a26.22 26.22 0 0013.89 12.93c-.72-3.11-1.44-6.71-2.15-10.06a22.36 22.36 0 01-3.84-4.31c.72 0 7.19-.72 8.15-.72.71 2.64 4.55 28.74 4.55 28.74l-7 10.3v10L50 93.82l9.82 4.07V87.6l-7-10.3s3.84-26.1 4.55-28.74c.72 0 7.19.72 8.15.72a16.52 16.52 0 01-3.84 4.31 98.08 98.08 0 00-2.15 10.06 25.33 25.33 0 0013.94-12.93c18.68 4.55 24.42 13.17 24.42 13.17C95.74 48.32 76.1 28 76.1 28s2.88 7.42-4.79 7.42"></path><path d="M50 2.11l-7.66 21.31h.24L50 33.24l7.42-9.82h.24z"></path></svg>
+                                <svg id="role-sylbol-support" class="role-background-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M90.4 2.11c0 27.3-25.4 36.63-25.4 36.63L60.94 61a8.39 8.39 0 00-.48 2.39 6.95 6.95 0 0013.89 0 6.7 6.7 0 00-5.75-6.7c6.71-11.5 16.29-6 16.29-6 1.43-1.44 2.63-2.88 3.83-4.07l-7.19-2.88h9.34a38.5 38.5 0 005.75-11.25L87 28.69h10.3a33 33 0 00-6.9-26.58M35.32 38.74S9.93 29.41 9.93 2.11c0 0-9.82 10.77-7.42 26.1h10.3L3.23 32a41.09 41.09 0 004.07 8.9h11l-8.61 3.59a39.83 39.83 0 005.27 6s9.58-5.51 16.29 6a6.7 6.7 0 00-5.75 6.7 6.95 6.95 0 1013.41-2.39zM45.14 22.7l2.63-6.7h4.79l2.63 6.94-5 13.89zm-1-16l-7 16 10.15 25.38v23.71l-5 16 5 10H53l5-10-5-16V48.08L63.1 22.7l-7-16z"></path></svg>
+                                <svg id="role-sylbol-tank" class="role-background-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M85.92 63.89L55 90V67.48h7.42v-9.1H37.55v9.1H45v22.75L14.08 63.89 8.33 21l27.54-10.51a39.13 39.13 0 0128.26 0L91.67 21zM66.28 5a47.61 47.61 0 00-32.56 0L2.11 17.19l6.7 49.57L41.86 95A13 13 0 0050 97.89 12.5 12.5 0 0058.14 95l33.05-28.24 6.7-49.57z"></path><path d="M78.74 32.28L62 21.26v5.27H38v-5.27l-16.26 7.19a2.9 2.9 0 00-1.67 3.11l4.31 19.16a3.22 3.22 0 002.15 2.15l11.26 2.4V50h23.94v5.27l11.5-2.4a2.52 2.52 0 002.15-2.15l4.31-15.57a2.39 2.39 0 00-1-2.87M57.42 20.07H42.58L50 11.68z"></path></svg>
+                            </div>
+                            <div id="champion-choose-title-wrapper"> <!-- 챔피언을 선택하세요 -->
+                                <h1 id="champion-title-wrapper">
+                                    <span id="champion-title-container">
+                                        <div id="champion-title-text-wrapper" class="default-ani default-ani-show-nw">
+                                            <span id="chapion-title-text">챔피언을</span>
+                                        </div>
+                                    </span>
+                                    <strong id="choose-title-wrapper">
+                                        <div id="choose-title-text-wrapper" class="default-ani default-ani-show-se">
+                                            <span id="choose-title-text">선택하세요</span>
+                                        </div>
+                                    </strong>
+                                </h1>
+                                <p id="champion-title-description">적진으로 돌격하거나 팀원을 보조하는 등, 소환사의 협곡에는 다양한 역할군이 있습니다.</p>
+                            </div>
+                            <div id="champions-play-btn-wrapper"> <!-- 더 많은 챔피언 알아보기 지금 플레이 버튼 -->
+                                <a id="more-champion-btn-wrapper" class="champion-btn-class" href=""> <!-- 더 많은 챔피언 버튼 -->
+                                    <div id="more-champion-btn-canvas-wrapper" class="champion-btn-wrapper">
+                                        <canvas id="champion-btn-canvas-more" class="champion-btn-canvas" width="222" height="33" style="width: 222px; height: 33.5px; left: -2px; top: -2px;"></canvas>
+                                    </div>
+                                    <span>더 많은 챔피언 알아보기</span>
+                                </a>
+                                <a id="now-play-btn-wrapper" class="champion-btn-class" href=""> <!-- 지금 플레이 버튼 -->
+                                    <div id="now-play-btn-canvas-wrapper" class="champion-btn-wrapper">
+                                        <canvas id="champion-btn-canvas-now" class="champion-btn-canvas" width="222" height="33" style="width: 222px; height: 33.5px; left: -2px; top: -2px;"></canvas>
+                                    </div>
+                                    <span>지금 플레이하기</span>
+                                </a>
+                            </div>
+                            <div id="champion-role-flex"> <!-- 챔피언 소개 flex -->
+                                <nav id="champion-role-nav"> <!-- 직업군 네비바 -->
+                                    <div id="champion-role-nav-wrapper"> <!-- 직업군 네비바 영역 -->
+                                        <div id="champion-role-nav-flex"> <!-- 직업군 네비바 flex -->
+                                            <div id="left-edge-wrapper"> <!-- left edge wrapper -->
+                                                <div id="left-edg"></div> <!-- left edge -->
+                                            </div>
+                                            <div id="champion-role-btn-flex"> <!-- 직업군 버튼 flex -->
+                                                <button id="role-assassins-btn-flex" class="role-btn-flex"> <!-- 암살자 버튼 flex -->
+                                                    <span id="role-assassins-btn-icon-wrapper" class="role-btn-icon-wrapper"> <!-- 암살자 버튼 아이콘 -->
+                                                        <span id="role-assassins-btn-symbol" class="role-btn-icon-symbol"> <!-- 직업군 심볼 아이콘 -->
+                                                            <svg class="role-icon-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M56.59 73.71l1.67-2.88c5.75-9.34 5.51-16 3.83-20.59a39.78 39.78 0 01-9.1 16 2 2 0 01-1.43.48H48.2a2.17 2.17 0 01-1.67-.72 39.78 39.78 0 01-9.1-16c-1.68 4.55-1.68 11.26 3.83 20.59l1.68 2.88-3.36 5.75 10.06 17.72L59.7 79.22z"></path><path d="M73.11 38.74c-3.35-4.31-6-10-6-18.91 0-4.07-3.59-8.15-7.66-12-4.79-4.31-5.75-5.74-9.58-5.74s-4.79 1.43-9.34 5.74c-4.07 3.83-7.66 7.91-7.66 12 0 8.86-2.88 14.6-6 18.68L12.76 52.87 2.23 45.69v12.93S2.47 84 39.58 97.89c0 0-14.13-7.18-16.28-31.13-.24-1.67-.24-9.1-.24-10.29A119.77 119.77 0 0036.71 74c-.72-1.2-1.44-2.64-2.16-3.83-5-10.54-4.07-18.2-1.67-23.47a22.77 22.77 0 017.42-8.86l9.58 9.58 9.58-9.58a22.77 22.77 0 017.42 8.86c2.4 5.27 3.59 12.93-1.43 23.23-.72 1.38-1.45 2.58-2.16 4.07a119.77 119.77 0 0013.65-17.53c0 1.19 0 8.62-.24 10.29-2.39 23.95-16.28 31.13-16.28 31.13C97.53 84 97.77 58.62 97.77 58.62V45.69l-10.53 7.18z"></path></svg>
+                                                        </span> 
+                                                        <span id="role-assassins-btn-border-box" class="role-btn-icon-border-box"> <!-- 아이콘 테두리 아이콘 -->
+                                                            <svg class="role-icon-border-box" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                                                        </span>
+                                                    </span>
+                                                    <span id="role-assassins-text-flex" class="role-text-flex">암살자</span> <!-- 직업군 텍스트 flex -->
+                                                    <span class="optionline"></span> <!-- 직업군 옵션라인 -->
+                                                    <span class="option-bulletContainer"> <!-- 직업군 option-blletContainer -->
+                                                        <span class="bullet-inCircle-disable"></span> <!-- style-bullet -->
+                                                    </span>
+                                                </button>
+                                                <button id="role-fighters-btn-flex" class="role-btn-flex"> <!-- 전사 버튼 flex -->
+                                                    <span id="role-fighters-btn-icon-wrapper" class="role-btn-icon-wrapper"> <!-- 전사 버튼 아이콘 -->
+                                                        <span id="role-fighters-btn-symbol" class="role-btn-icon-symbol"> <!-- 직업군 심볼 아이콘 -->
+                                                            <svg class="role-icon-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M67.84 56.35v5.5c8.62-8.62 14.37 0 14.37 0C112.14 40.78 90.35 2 90.35 2s-.72 17.24-15.08 27.77v16.52c-.24 4.79-3.84 7.9-7.43 10.06M17.79 62.09s4.07-6.46 10.78-2.63L20.91 48.2l6.7-16c-17.24-10.54-18-29.93-18-29.93S-12.14 41 17.79 62.09M26.89 83.89l5.51-18.68-.24-.48L19.23 77.9A17.78 17.78 0 017.5 83.17H3l-1 2.39 12 11.5zM92.27 83.89a16.24 16.24 0 01-11.74-5.27L68.8 66.88l3.83 17.72L85.8 98l12-11.49-1-2.4zM55.87 42.7c0 .24-.24.48-.24.71h.72c5.75.48 7.66 2.64 9.1 7.67a9.35 9.35 0 002.39-1.92c1-1 1.68-1.67 1.68-2.63V28.09a2 2 0 00-1.68-1.92l-31.37-5.74H36a2.39 2.39 0 00-2.39 2.39v6.71l24.9 3.35z"></path><path d="M60.18 54c-1.2-5.27-1.44-4.55-5.75-4.79L40.78 48v-3.87h5.51A4.09 4.09 0 0050.36 41l1-3.35L32.4 35l-5 12.22 11.74 17-5.54 18.47L49.88 98l16.53-15.07s-6.23-28.5-6.23-29M49.88 2.23l-4.79 10.29 4.79 3.83 4.79-3.83zM62.1 9.41l1.43 6h6l2.87-11zM30.25 15.4h6l.24-.72 1.2-5.27-10.3-5z"></path></svg>
+                                                        </span> 
+                                                        <span id="role-fighters-btn-border-box" class="role-btn-icon-border-box"> <!-- 아이콘 테두리 아이콘 -->
+                                                            <svg class="role-icon-border-box" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                                                        </span>
+                                                    </span>
+                                                    <span id="role-fighters-text-flex" class="role-text-flex">전사</span> <!-- 직업군 텍스트 flex -->
+                                                    <span class="optionline"></span> <!-- 직업군 옵션라인 -->
+                                                    <span class="option-bulletContainer"> <!-- 직업군 option-blletContainer -->
+                                                        <span class="bullet-inCircle-disable"></span> <!-- style-bullet -->
+                                                    </span>
+                                                </button>
+                                                <button id="role-mages-btn-flex" class="role-btn-flex"> <!-- 마법사 버튼 flex -->
+                                                    <span id="role-mages-btn-icon-wrapper" class="role-btn-icon-wrapper"> <!-- 마법사 버튼 아이콘 -->
+                                                        <span id="role-mages-btn-symbol" class="role-btn-icon-symbol"> <!-- 직업군 심볼 아이콘 -->
+                                                            <svg class="role-icon-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M84.48 77.3h13.41l-3.83-12.93h-9.58a36.73 36.73 0 00-27.54 12.45L50 85l-6.94-8.14a36.73 36.73 0 00-27.54-12.49H5.94L2.11 77.3h13.41a36.73 36.73 0 0127.54 12.45l.71.72h-9.1v7.42h30.9v-7.42h-9.1l.71-.72a35.85 35.85 0 0127.3-12.45"></path><path d="M56.23 54.31L50 62.21l-6.23-7.9a5.42 5.42 0 01-.24-6.47L50 37.31l6.47 10.53a5.42 5.42 0 01-.24 6.47M42.58 28.93l-7.91 12.69a13.37 13.37 0 00.72 15.09L50 75.14l14.61-18.43a13 13 0 00.72-15.09L50 17l-.48.72a5.58 5.58 0 01-4.31 1.68c-4.07 0-7.18-8.62 4.55-17.24 0 0-28.74 5.5-14.85 30.41z"></path></svg>
+                                                        </span> 
+                                                        <span id="role-mages-btn-border-box" class="role-btn-icon-border-box"> <!-- 아이콘 테두리 아이콘 -->
+                                                            <svg class="role-icon-border-box" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                                                        </span>
+                                                    </span>
+                                                    <span id="role-mages-text-flex" class="role-text-flex">마법사</span> <!-- 직업군 텍스트 flex -->
+                                                    <span class="optionline"></span> <!-- 직업군 옵션라인 -->
+                                                    <span class="option-bulletContainer"> <!-- 직업군 option-blletContainer -->
+                                                        <span class="bullet-inCircle-disable"></span> <!-- style-bullet -->
+                                                    </span>
+                                                </button>
+                                                <button id="role-marksmens-btn-flex" class="role-btn-flex"> <!-- 원거리 딜러 버튼 flex -->
+                                                    <span id="role-marksmens-btn-icon-wrapper" class="role-btn-icon-wrapper"> <!-- 원거리 딜러 버튼 아이콘 -->
+                                                        <span id="role-marksmens-btn-symbol" class="role-btn-icon-symbol"> <!-- 직업군 심볼 아이콘 -->
+                                                            <svg class="role-icon-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M28.69 27.25h6.94l1.92-6.94-13.41-7.91zM71.31 27.25l4.55-14.85-13.41 7.91 1.92 6.94zM71.31 35.39c-1.43 0-12.21-3.83-12.21-3.83L50 42.34l-9.1-10.78s-10.54 3.83-12.21 3.83c-7.67 0-4.79-7.18-4.79-7.18S4.26 48.32 2.11 64.13c0 0 5.74-8.86 24.42-13.17a26.22 26.22 0 0013.89 12.93c-.72-3.11-1.44-6.71-2.15-10.06a22.36 22.36 0 01-3.84-4.31c.72 0 7.19-.72 8.15-.72.71 2.64 4.55 28.74 4.55 28.74l-7 10.3v10L50 93.82l9.82 4.07V87.6l-7-10.3s3.84-26.1 4.55-28.74c.72 0 7.19.72 8.15.72a16.52 16.52 0 01-3.84 4.31 98.08 98.08 0 00-2.15 10.06 25.33 25.33 0 0013.94-12.93c18.68 4.55 24.42 13.17 24.42 13.17C95.74 48.32 76.1 28 76.1 28s2.88 7.42-4.79 7.42"></path><path d="M50 2.11l-7.66 21.31h.24L50 33.24l7.42-9.82h.24z"></path></svg>
+                                                        </span> 
+                                                        <span id="role-marksmens-btn-border-box" class="role-btn-icon-border-box"> <!-- 아이콘 테두리 아이콘 -->
+                                                            <svg class="role-icon-border-box" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                                                        </span>
+                                                    </span>
+                                                    <span id="role-marksmens-text-flex" class="role-text-flex">원거리 딜러</span> <!-- 직업군 텍스트 flex -->
+                                                    <span class="optionline"></span> <!-- 직업군 옵션라인 -->
+                                                    <span class="option-bulletContainer"> <!-- 직업군 option-blletContainer -->
+                                                        <span class="bullet-inCircle-disable"></span> <!-- style-bullet -->
+                                                    </span>
+                                                </button>
+                                                <button id="role-supports-btn-flex" class="role-btn-flex"> <!-- 서포터 버튼 flex -->
+                                                    <span id="role-supports-btn-icon-wrapper" class="role-btn-icon-wrapper"> <!-- 서포터 버튼 아이콘 -->
+                                                        <span id="role-supports-btn-symbol" class="role-btn-icon-symbol"> <!-- 직업군 심볼 아이콘 -->
+                                                            <svg class="role-icon-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M90.4 2.11c0 27.3-25.4 36.63-25.4 36.63L60.94 61a8.39 8.39 0 00-.48 2.39 6.95 6.95 0 0013.89 0 6.7 6.7 0 00-5.75-6.7c6.71-11.5 16.29-6 16.29-6 1.43-1.44 2.63-2.88 3.83-4.07l-7.19-2.88h9.34a38.5 38.5 0 005.75-11.25L87 28.69h10.3a33 33 0 00-6.9-26.58M35.32 38.74S9.93 29.41 9.93 2.11c0 0-9.82 10.77-7.42 26.1h10.3L3.23 32a41.09 41.09 0 004.07 8.9h11l-8.61 3.59a39.83 39.83 0 005.27 6s9.58-5.51 16.29 6a6.7 6.7 0 00-5.75 6.7 6.95 6.95 0 1013.41-2.39zM45.14 22.7l2.63-6.7h4.79l2.63 6.94-5 13.89zm-1-16l-7 16 10.15 25.38v23.71l-5 16 5 10H53l5-10-5-16V48.08L63.1 22.7l-7-16z"></path></svg>
+                                                        </span> 
+                                                        <span id="role-supports-btn-border-box" class="role-btn-icon-border-box"> <!-- 아이콘 테두리 아이콘 -->
+                                                            <svg class="role-icon-border-box" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                                                        </span>
+                                                    </span>
+                                                    <span id="role-supports-text-flex" class="role-text-flex">서포터</span> <!-- 직업군 텍스트 flex -->
+                                                    <span class="optionline"></span> <!-- 직업군 옵션라인 -->
+                                                    <span class="option-bulletContainer"> <!-- 직업군 option-blletContainer -->
+                                                        <span class="bullet-inCircle-disable"></span> <!-- style-bullet -->
+                                                    </span>
+                                                </button>
+                                                <button id="role-tanks-btn-flex" class="role-btn-flex"> <!-- 탱커 버튼 flex -->
+                                                    <span id="role-tanks-btn-icon-wrapper" class="role-btn-icon-wrapper"> <!-- 탱커 버튼 아이콘 -->
+                                                        <span id="role-tanks-btn-symbol" class="role-btn-icon-symbol"> <!-- 직업군 심볼 아이콘 -->
+                                                            <svg id="role-tank-symbol"class="role-icon-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M85.92 63.89L55 90V67.48h7.42v-9.1H37.55v9.1H45v22.75L14.08 63.89 8.33 21l27.54-10.51a39.13 39.13 0 0128.26 0L91.67 21zM66.28 5a47.61 47.61 0 00-32.56 0L2.11 17.19l6.7 49.57L41.86 95A13 13 0 0050 97.89 12.5 12.5 0 0058.14 95l33.05-28.24 6.7-49.57z"></path><path d="M78.74 32.28L62 21.26v5.27H38v-5.27l-16.26 7.19a2.9 2.9 0 00-1.67 3.11l4.31 19.16a3.22 3.22 0 002.15 2.15l11.26 2.4V50h23.94v5.27l11.5-2.4a2.52 2.52 0 002.15-2.15l4.31-15.57a2.39 2.39 0 00-1-2.87M57.42 20.07H42.58L50 11.68z"></path></svg>
+                                                        </span> 
+                                                        <span id="role-tanks-btn-border-box" class="role-btn-icon-border-box"> <!-- 아이콘 테두리 아이콘 -->
+                                                            <svg class="role-icon-border-box" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                                                        </span>
+                                                    </span>
+                                                    <span id="role-tanks-text-flex" class="role-text-flex">탱커</span> <!-- 직업군 텍스트 flex -->
+                                                    <span class="optionline"></span> <!-- 직업군 옵션라인 -->
+                                                    <span class="option-bulletContainer"> <!-- 직업군 option-blletContainer -->
+                                                        <span class="bullet-inCircle-disable"></span> <!-- style-bullet -->
+                                                    </span>
+                                                </button>
+                                                <div id="bullet-baseline"> <!-- bullet-baseline -->
+                                                    <div id="bullet-outCircle" style="left: 8.33333%;"> <!-- bullet-outline -->
+                                                        <span id="bullet-inCircle"></span> <!-- bullet-inline -->
+                                                    </div>
+                                                </div>
+                                                <div id="role-video-wrapper"> <!-- 직업군 비디오wrapper *6--> 
+                                                    <div id="role-video-container"> <!-- 직업군 비디오container -->
+                                                        <div id="role-video-area"> <!-- 직업군 비디오area -->
+                                                            <div class="role-video-content"> <!-- 암살자 직업군 비디오content -->
+                                                                <video class="role-video" autoplay loop muted> <!-- 직업군 비디오 -->
+                                                                    <source src="./resources/Video/role_assassins_video.webm">
+                                                                </video>
+                                                            </div>
+                                                            <div class="role-video-content"> <!-- 전사 직업군 비디오content -->
+                                                                <video class="role-video" autoplay loop muted> <!-- 직업군 비디오 -->
+                                                                    <source src="./resources/Video/role_fighters_video.webm">
+                                                                </video>
+                                                            </div>
+                                                            <div class="role-video-content"> <!-- 마법사 직업군 비디오content -->
+                                                                <video class="role-video" autoplay loop muted> <!-- 직업군 비디오 -->
+                                                                    <source src="./resources/Video/role_mages_video.webm">
+                                                                </video>
+                                                            </div>
+                                                            <div class="role-video-content"> <!-- 원거리딜러 직업군 비디오content -->
+                                                                <video class="role-video" autoplay loop muted> <!-- 직업군 비디오 -->
+                                                                    <source src="./resources/Video/role_marksmen_video.webm">
+                                                                </video>
+                                                            </div>
+                                                            <div class="role-video-content"> <!-- 서포터 직업군 비디오content -->
+                                                                <video class="role-video" autoplay loop muted> <!-- 직업군 비디오 -->
+                                                                    <source src="./resources/Video/role_supports_video.webm">
+                                                                </video>
+                                                            </div>
+                                                            <div class="role-video-content"> <!-- 탱커 직업군 비디오content -->
+                                                                <video class="role-video" autoplay loop muted> <!-- 직업군 비디오 -->
+                                                                    <source src="./resources/Video/role_tanks_video.webm">
+                                                                </video>
+                                                            </div>
+                                                            <div id="role-video-canvas-wrapper">
+                                                                <canvas id="role-video-canvas" class="style__Canvas-sc-1c9bc3r-1 hsvRhV" width="433" height="275" style="height: 275.781px; left: 8px; top: -12px; width: 433.188px;"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="right-edge-wrapper"><!-- right edge wrapper-->
+                                                <div id="right-edge"></div><!-- right edge -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <div id="role-img-area-wrapper"> <!-- 직업군 img-area wrapper-->
+                                    <div id="role-img-area-container"> <!-- 직업군  img-area container-->
+                                        <div id="role-img-area-content-wrapper"> <!-- 직업군  img-area content wrapper-->
+                                            <div id="role-img-canvas-wapper"> <!-- 직업군 img canvas wapper-->
+                                                <canvas id="role-img-canvas" class="style__Canvas-sc-1c9bc3r-1 hsvRhV" width="869" height="870" style="width: 869.969px; height: 870.969px; left: -2px; top: -2px;"></canvas><!--   직업군 img canvas -->
+                                            </div>
+                                            <div id="role-img-text-wrapper"><!-- 직업군 img-text wrapper-->
+                                                <div id="role-champion-img-wrapper"> <!-- 직업군 img wrapper -->
+                                                    <div id="role-img-wrapper-assassion" class="role-img-wrapper default-ani"> <!-- 직업(암살자) img warpper -->
+                                                        <figure class="role-img-content"> <!-- 직업군 img content -->
+                                                            <img class="role-img" src="./resources/Image/assassin-akali.png" alt=""> <!-- 직업군 img -->
+                                                        </figure>
+                                                    </div>
+                                                    <div id="role-img-wrapper-fighter" class="role-img-wrapper default-ani"> <!-- 직업(전사) img warpper -->
+                                                        <figure class="role-img-content"> <!-- 직업군 img content -->
+                                                            <img class="role-img" src="./resources/Image/fighter-yasuo.png" alt=""> <!-- 직업군 img -->
+                                                        </figure>
+                                                    </div>
+                                                    <div id="role-img-wrapper-mage" class="role-img-wrapper default-ani"> <!-- 직업(마법사) img warpper -->
+                                                        <figure class="role-img-content"> <!-- 직업군 img content -->
+                                                            <img class="role-img" src="./resources/Image/mage-lux.png" alt=""> <!-- 직업군 img -->
+                                                        </figure>
+                                                    </div>
+                                                    <div id="role-img-wrapper-marksman" class="role-img-wrapper default-ani"> <!-- 직업(원거리딜러) img warpper -->
+                                                        <figure class="role-img-content"> <!-- 직업군 img content -->
+                                                            <img class="role-img" src="./resources/Image/marksman-jinx.png" alt=""> <!-- 직업군 img -->
+                                                        </figure>
+                                                    </div>
+                                                    <div id="role-img-wrapper-support" class="role-img-wrapper default-ani"> <!-- 직업(서포터) img warpper -->
+                                                        <figure class="role-img-content"> <!-- 직업군 img content -->
+                                                            <img class="role-img" src="./resources/Image/support-thresh.png" alt=""> <!-- 직업군 img -->
+                                                        </figure>
+                                                    </div>
+                                                    <div id="role-img-wrapper-tank" class="role-img-wrapper default-ani"> <!-- 직업(탱커) img warpper -->
+                                                        <figure class="role-img-content"> <!-- 직업군 img content -->
+                                                            <img class="role-img" src="./resources/Image/tank-leona.png" alt=""> <!-- 직업군 img -->
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <div id="champion-text-wrapper"> <!-- 챔피언 text wrapper -->
+                                                    <p class="champion-name-wrapper"> <!-- 챔피언 name wrapper -->
+                                                        <strong class="champion-name">아칼리</strong> <!-- 챔피언 name -->
+                                                        <span class="champion-nick">섬기는 이 없는 암살자</span> <!-- 챔피언 nick -->
+                                                    </p>
+                                                </div>
+                                                <div id="champion-text-wrapper"> <!-- 챔피언 text wrapper -->
+                                                    <p class="champion-name-wrapper"> <!-- 챔피언 name wrapper -->
+                                                        <strong class="champion-name">야스오</strong> <!-- 챔피언 name -->
+                                                        <span class="champion-nick">용서받지 못한 자</span> <!-- 챔피언 nick -->
+                                                    </p>
+                                                </div>
+                                                <div id="champion-text-wrapper"> <!-- 챔피언 text wrapper -->
+                                                    <p class="champion-name-wrapper"> <!-- 챔피언 name wrapper -->
+                                                        <strong class="champion-name">럭스</strong> <!-- 챔피언 name -->
+                                                        <span class="champion-nick">광명의 소녀</span> <!-- 챔피언 nick -->
+                                                    </p>
+                                                </div>
+                                                <div id="champion-text-wrapper"> <!-- 챔피언 text wrapper -->
+                                                    <p class="champion-name-wrapper"> <!-- 챔피언 name wrapper -->
+                                                        <strong class="champion-name">징크스</strong> <!-- 챔피언 name -->
+                                                        <span class="champion-nick">난폭한 말괄량이</span> <!-- 챔피언 nick -->
+                                                    </p>
+                                                </div>
+                                                <div id="champion-text-wrapper"> <!-- 챔피언 text wrapper -->
+                                                    <p class="champion-name-wrapper"> <!-- 챔피언 name wrapper -->
+                                                        <strong class="champion-name">쓰레쉬</strong> <!-- 챔피언 name -->
+                                                        <span class="champion-nick">지옥의 간수</span> <!-- 챔피언 nick -->
+                                                    </p>
+                                                </div>
+                                                <div id="champion-text-wrapper"> <!-- 챔피언 text wrapper -->
+                                                    <p class="champion-name-wrapper"> <!-- 챔피언 name wrapper -->
+                                                        <strong class="champion-name">레오나</strong> <!-- 챔피언 name -->
+                                                        <span class="champion-nick">여명의 빛</span> <!-- 챔피언 nick -->
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div id="skins-flex"><!-- skins flex-->
+                <div id="skins-vertical-text-wrapper"><!-- 챔피언 스킨스 세로 문구 wapper-->
+                    <div class="vertical-area-class"> <!-- 챔피언 스킨스  content-->
+                        <div id="champion-skins-vertical-text" class="vertical-text-class"> <!-- 챔피언 스킨스 text -->
+                            챔피언 스킨
+                        </div>
+                    </div>
+                </div>
+                <div id="skins-wrapper"> <!-- 챔피언 스킨스 wapper -->
+                    <div id="skins-background"> <!-- 챔피언 스킨스 백그라운드 -->
+                        <div id="skins-background-wrapper"> <!-- 챔피언 스킨스 백그라운드-wrapper -->
+                            <div id="skins-background-img-wrapper"> <!-- 챔피언 스킨스 백그라운드-img-wrapper -->
+                                <div id="skins-background-img-1-wrapper" class="skins-background-imgs-wrapper"> <!-- 챔피언 스킨스 백그라운드-img-1-wrapper -->
+                                    <div id="skins-background-img-1-area" class="skins-background-imgs-area">  <!-- 챔피언 스킨스 백그라운드-img-1-area -->
+                                        <img id="skins-background-img-1" class="skins-background-imgs" src="./resources/Image/skins-background-1.png" alt=""> <!-- 챔피언 스킨스 백그라운드-1 -->
+                                    </div>
+                                </div>
+                                <div id="skins-background-img-2-wrapper" class="skins-background-imgs-wrapper"> <!-- 챔피언 스킨스 백그라운드-img-2-wrapper -->
+                                    <div id="skins-background-img-2-area" class="skins-background-imgs-area">  <!-- 챔피언 스킨스 백그라운드-img-2-area -->
+                                        <img id="skins-background-img-1" class="skins-background-imgs" src="./resources/Image/skins-background-2.png" alt=""> <!-- 챔피언 스킨스 백그라운드-img-2 -->
+                                    </div>
+                                </div>  
+                            </div>
+                            <div id="skins-background-canvas-wrapper"> <!-- 챔피언 스킨스 백그라운드-canvas-wrapper 뒤에 보라색 점박이들 날아다니는-->
+                                <canvas id="skins-background-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="skins-foreground"> <!-- 챔피언 스킨스 포지그라운드 -->
+                        <div id="skins-foreground-flex"> <!-- 챔피언 스킨스 포지그라운드 flex -->
+                            <div id="skins-foreground-title-btn-wrapper"> <!-- 챔피언 스킨스 포지그라운드 title-btn-wrapper -->
+                                <div id="skins-foreground-title-wrapper"> <!-- 챔피언 스킨스 포지그라운드 title-wrapper -->
+                                    <h1 id="skins-foreground-title-content-wrapper"> <!-- 챔피언 스킨스 포지그라운드 title-content-wrapper -->
+                                        <span id="skins-foreground-top-title-wrapper"> <!-- 챔피언 스킨스 포지그라운드 top-title-wrapper -->
+                                            <div id="skins-foreground-top-title-text-content" class="default-ani default-ani-show-nw"> <!-- 챔피언 스킨스 포지그라운드 top-title-text-content -->
+                                                <span id="skins-foreground-top-title-text">개성 있는</span> <!-- 챔피언 스킨스 top-title-text -->
+                                            </div>
+                                        </span>
+                                        <strong id="skins-foreground-middle-title-wrapper"> <!-- 챔피언 스킨스 포지그라운드 middle-title-wrapper-->
+                                            <div id="skins-foreground-middle-titlee-text-content" class="default-ani default-ani-show-se"> <!-- 챔피언 스킨스 포지그라운드 middle-title-text-content -->
+                                                <span id="skins-foreground-middle-title-text">챔피언</span><!-- 챔피언 스킨스 포지그라운드middle-title-text -->
+                                            </div>
+                                        </strong>
+                                    </h1>
+                                    <p id="skins-foreground-title-description">스킨으로 좋아하는 챔피언의 외형을 변경해 보세요.</p><!-- 챔피언 스킨스 포지그라운드 title-description -->
+                                </div>
+                                <a id="skins-foreground-title-btn-container" href=""> <!-- 챔피언 스킨스 포지그라운드 title-btn-wrapper -->
+                                    <div id="skins-foreground-title-btn-canvas-wrapper"> <!-- 챔피언 스킨스 포지그라운드 title-btn-container -->
+                                        <canvas id="skins-foreground-title-btn-canvas" class="style__Canvas-sc-1c9bc3r-1 hsvRhV" width="172" height="33" style="width: 172px; height: 33.5px; left: -2px; top: -2px;"></canvas>
+                                    </div>
+                                    <span id="skins-foreground-title-btn-text">지금 플레이하기</span> <!-- 챔피언 스킨스 포지그라운드 title-btn-text -->
+                                </a> 
+                            </div>
+                            <div id="skins-foreground-img-wrapper-flex"> <!-- 챔피언 스킨스 포지그라운드 img-wrapper-flex -->
+                                <div id="skins-foreground-img-wrapper"><!-- 챔피언 스킨스 포지그라운드 img-wrapper -->
+                                    <div id="skins-foreground-img-canvas-wrapper"> <!-- 챔피언 스킨스 포지그라운드 img-canvas-wrapper -->
+                                        <div id="skins-foreground-img-canvas-area"> <!-- 챔피언 스킨스 포지그라운드 img-canvas-area -->
+                                            <canvas id="skins-foreground-img-canvas"class="style__Canvas-sc-1c9bc3r-1 hsvRhV" width="708" height="708" style="width: 708.278px; height: 708.278px; left: -105.139px; top: -105.139px;"></canvas>
+                                        </div>
+                                    </div> 
+                                    <div id="skins-foreground-img-container"><!-- 챔피언 스킨스 포지그라운드 img-container -->
+                                        <div id="skins-foreground-img-content-wrapper">
+                                            <div id="skins-foreground-img-wrapper-akali-trueDamage" class="akali-img-wrapper-skins" style="animation-duration: 1800ms; animation-delay: 0ms; animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);"> <!-- 챔피언 스킨스 포지그라운드 img-wrapper-akali-trueDamage -->
+                                                <img id="skins-foreground-akali-trueDamage" class="akali-skins-img" src="./resources/Image/akali-trueDamage.png" alt=""> <!-- 챔피언 스킨스 포지그라운드 img-akali-trueDamage -->
+                                            </div>
+                                            <div id="skins-foreground-img-wrapper-akali-kda" class="akali-img-wrapper-skins" style="animation-duration: 1800ms; animation-delay: 0ms; animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);"> <!-- 챔피언 스킨스 포지그라운드 img-wrapper-akali-kda -->
+                                                <img id="skins-foreground-akali-kda" class="akali-skins-img" src="./resources/Image/akali-kda.png" alt=""><!-- 챔피언 스킨스 포지그라운드 img-akali-kda -->
+                                            </div>
+                                            <div id="skins-foreground-img-wrapper-akali-sashimi" class="akali-img-wrapper-skins" style="animation-duration: 1800ms; animation-delay: 0ms; animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);"> <!-- 챔피언 스킨스 포지그라운드 img-wrapper-akali-sashimi -->
+                                                <img id="skins-foreground-akali-sashimi" class="akali-skins-img" src="./resources/Image/akali-sashimi.png" alt=""><!-- 챔피언 스킨스 포지그라운드 img-akali-sashimi -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gamemode"> <!-- 게임모드 영역-->
+           <div id="gamemode-flex"> <!-- gamemode-flex -->
+                <div id="vertical-text-gamemode-wrapper"> <!-- vertiacl-gamoemode-text -->
+                    <div id="vertical-text-gamemode-centent" class="vertical-area-class">
+                        <div id="vertical-text-gamemode" class="vertical-text-class">
+                            게임모드
+                        </div>
+                    </div>
+                </div>
+                <div id="gamemode-wrapper"> <!-- gamemode-wrapper -->
+                    <div id="gamemode-container"> <!-- gamemode-container -->
+                        <div id="gamemode-background-area"> <!-- gamemode-background-area -->
+                            <div id="gamemode-background-img-wrapper"> <!-- gamemode-background-img-wrapper -->
+                                <div class="gamemode-background-content">
+                                    <img class="gamemode-background-img" src="./resources/Image/summoners_rift_background.jpg" alt=""> <!-- 소환사협곡 뒷배경 -->
+                                </div>
+                                <div class="gamemode-background-content">
+                                    <img class="gamemode-background-img" src="./resources/Image/howlingabyss_background.jpg" alt=""> <!-- 칼바람나락 뒷배경 -->
+                                </div>
+                                <div class="gamemode-background-content">
+                                    <img class="gamemode-background-img" src="./resources/Image/teamfighttactics_background.jpg" alt=""> <!-- 롤체 뒷배경 -->
+                                </div>
+                            </div>
+                            <div id="gamemode-background-top-area"></div> <!-- gamemode-background-top-area -->
+                            <div id="gamemode-background-bottom-area"></div> <!-- gamemode-background-bottom-area -->
+                        </div>
+                        <div id="gamemode-intersection-area"></div><!-- gamemode-intersection-area -->
+                        <div id="gamemode-content-wrapper"> <!-- gamemode-content-wrapper -->
+                            <div id="gamemode-content-container"> <!-- gamemode-content-container -->
+                                <div id="gamemode-content-canvase-wrapper"> <!-- gamemode-content-canvase-wrapper -->
+                                    <canvas id="gamemode-content-canvase" width="1682" height="399" style="width: 1682px; height: 399.078px; left: -2px; top: -2px;"></canvas>
+                                </div>
+                                <div id="gamemode-title-group"> <!-- gamemode-title-group -->
+                                    <div id="gamemode-title-wrapper"> <!-- gamemode-title-wrapper -->
+                                        <h1 id="gamemode-title-content"> <!-- gamode-title-content -->
+                                            <span id="gamemode-title-multiple-wrapper"> <!-- gameode-title-multiple-wrapper -->
+                                                <div id="gamemode-title-multiple-area"> <!-- gamemode-title-muliple-area -->
+                                                    
+                                                    <span id="gamemode-title-multiple-text">다양하게</span><!-- gamemode-title-muliple-text -->
+                                                </div>
+                                            </span> 
+                                            <strong id="gamemode-title-play-wrapper"> <!-- gamemode-title-play-wrapper-->
+                                                <div id="gamemode-title-play-area"> <!-- gamemode-title-pley-area -->
+                                                    <span id="gamemode-title-play-text">플레이</span> <!-- gamemode-title-play-text -->
+                                                </div>
+                                            </strong>
+                                        </h1>
+                                    </div>
+                                    <a id="gamemode-title-btn-nowPlay-wrapper" class="gamemode-title-btn-nowPlay-wrapper2" text="지금 플레이하기" href=""> <!-- gamemode-title-btn-nowPlay-wrapper -->
+                                        <div id="gamemode-title-btn-nowPlay-canvas-wrapper"> <!-- gamemode-title-btn-nowPlay-canvas-wrapper -->
+                                            <canvas id="gamemode-title-btn-nowPlay-canvas" width="172" height="33" style="width: 172px; height: 33.5px; left: -2px; top: -2px;"></canvas> <!-- gamemode-title-btn-nowPlay-canvas -->
+                                        </div>
+                                        <span id="gamemode-title-btn-nowPlay-text">지금 플레이하기</span> <!-- gamemode-title-btn-nowPlay-text -->
+                                    </a>
+                                </div>
+                                <div id="gamemode-center-wrapper"><!-- gamemode-center-wrapper -->
+                                    <div id="gamemode-center-video-wrapper"><!-- gamemode-center-video-wrapper -->
+                                        <div id="gamemode-center-video-1-wrapper" class="gamemode-center-video-centent-wrapper default-ani"> <!-- gamemode-center-video-1-wrapper *3-->
+                                            <div id="gamemode-center-video-1-content" class="gamemode-center-video-content"> <!-- gamemode-center-video-1-content -->
+                                                <video id="gamemode-center-video-1" class="gamemode-center-video" loop autoplay muted> <!-- gamemodecenter-video-1 -->
+                                                    <source src="./resources/Video/summoners_rift_video.mp4">
+                                                </video> 
+                                            </div>
+                                        </div>
+                                        <div id="gamemode-center-video-2-wrapper" class="gamemode-center-video-centent-wrapper default-ani"> <!-- gamemode-center-video-1-wrapper *3-->
+                                            <div id="gamemode-center-video-2-content" class="gamemode-center-video-content"> <!-- gamemode-center-video-1-content -->
+                                                <video id="gamemode-center-video-2" class="gamemode-center-video" loop autoplay muted> <!-- gamemodecenter-video-1 -->
+                                                    <source src="./resources/Video/howlingabyss_video.mp4">
+                                                </video> 
+                                            </div>
+                                        </div>
+                                        <div id="gamemode-center-video-3-wrapper" class="gamemode-center-video-centent-wrapper  default-ani"> <!-- gamemode-center-video-1-wrapper *3-->
+                                            <div id="gamemode-center-video-3-content" class="gamemode-center-video-content"> <!-- gamemode-center-video-1-content -->
+                                                <video id="gamemode-center-video-3" class="gamemode-center-video" loop autoplay muted> <!-- gamemodecenter-video-1 -->
+                                                    <source src="./resources/Video/teamfighttactics_video.mp4">
+                                                </video> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="gamemode-center-canvas-wrapper"> <!-- gamemode-center-canvas-wrapper -->
+                                        <canvas></canvas>
+                                    </div>
+                                    <svg id="animaition-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="style__OuterRing-i08x1e-4-SvgOuterRing svLzU"><path class="cls-1" d="M50 .5A49.49 49.49 0 00.67 46l4 4-4 4a49.49 49.49 0 0098.66 0l-4-4 4-4A49.49 49.49 0 0050 .5z"></path></svg>
+                                    <div id="dotted-circle-wrapper">
+                                        <svg id="dotted-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="style__DialRing-i08x1e-6-SvgDialRing dwpNPm"><path d="M49.22 100v-1h.08v1zm1.51-1h.09v1h-.08zm-3 1v-1h.08v1zm4.52-1h.09v1h-.08zm-6 .91l.07-1h.09l-.08 1zm7.54-1h.08l.07 1h-.08zm-9.06.86l.11-1h.08l-.11 1zm10.55-1h.08l.11 1h-.09zm-12.06.82l.13-1h.09l-.14 1zm13.54-1h.08l.14 1h-.08zm-15 .77l.16-1h.09l-.17 1zm16.53-1h.08l.17 1h-.09zm-18 .71l.2-1h.08l-.2 1zm19.5-1h.08l.19 1h-.08zm-21 .66l.23-1h.08l-.23 1zm22.45-1h.08l.22 1h-.07zm-23.93.6l.26-1h.07l-.25 1zm25.38-1h.08l.25 1h-.07zm-26.85.55L36 97h.08l-.29 1zM64 97h.08l.28 1h-.08zm-29.75.5l.32-1h.08l-.31 1zm31.17-1h.08l.32 1h-.08zM32.8 97l.35-1h.08l-.34 1zm34-.94h.08l.34 1h-.08zm-35.45.39l.38-.93h.07l-.37.93zm36.85-.92h.08l.37.94h-.08zm-38.2.31l.4-.93h.08l-.4.92zm39.63-.92h.08l.4.93h-.08zm-41 .28l.43-.9h.07l-.43.91zM71 94.29h.08l.43.91h-.08zm-43.74.24l.46-.89h.07l-.45.9zm45.09-.9h.07l.46.9h-.08zm-46.43.19l.48-.88h.08l-.49.88zm47.76-.9h.06l.48.88h-.07zm-49.08.14l.51-.86h.07l-.51.87zm50.37-.87h.07l.51.87h-.07zm-51.67.08l.54-.85h.07l-.54.85zm52.94-.87h.07l.54.85h-.07zM22 91.43l.56-.83.07.05-.57.83zm55.46-.85h.07l.57.83h-.07zm-56.71 0l.59-.82.06.05-.58.82zm57.94-.83h.06l.6.81-.07.05zm-59.16-.08l.61-.8.07.05-.62.8zm60.36-.82h.06l.62.8h-.07zm-61.56-.15l.64-.78.03.08-.64.77zm62.73-.8l.06-.05.64.77-.07.06zm-63.89-.18l.66-.76.06.06-.66.75zm65-.79l.06-.05.66.76h-.06zM16 86.7l.69-.74.06.06-.68.74zm67.28-.77l.06-.05.69.74h-.07zm-68.38-.28l.71-.72.06.06-.71.72zm69.46-.75l.06-.06.71.72-.06.06zm-70.53-.34l.73-.7.06.07-.73.69zm71.58-.72v-.06l.73.69-.06.06zm-72.62-.4l.75-.67.06.06-.75.68zm73.63-.7l.06-.06.75.67-.06.06zm-74.63-.45l.77-.65.05.07-.76.65zm75.61-.67l.06-.07.77.65-.06.07zm-76.58-.51l.79-.62v.06l-.78.63zm77.53-.65l.05-.06.79.62v.07zm-78.43-.55l.81-.61v.07L10 80zm79.37-.63v-.07l.81.6-.05.07zM9 78.67l.82-.58.05.07-.83.58zm81.14-.6V78l.83.58-.05.06zm-82-.66l.86-.56.05.08-.85.55zM91 76.83v-.07l.84.55v.08zm-83.65-.71l.86-.53v.07l-.86.53zm84.45-.55v-.07l.86.53v.07zM6.57 74.8l.87-.5v.08l-.88.5zm86-.51v-.07l.88.5v.07zm-86.74-.82l.89-.47v.08l-.89.47zM93.28 73v-.07l.89.47v.08zm-88.14-.89l.9-.45v.08l-.91.44zM94 71.66v-.08l.9.45v.07zm-89.52-.93l.92-.42v.07l-.92.42zm90.12-.42v-.07l.91.41v.08zm-90.73-1l.92-.38V69l-.93.39zM95.2 69v-.08l.93.39v.08zM3.3 68l.94-.35v.07l-.91.28zm92.45-.33v-.08l.94.36v.08zm-93-1.1l1-.33v.08l-1 .33zm93.5-.31v-.07l1 .33v.08zM2.29 65l1-.29v.08l-1 .3zm94.45-.26v-.08l1 .3v.08zM1.85 63.55l1-.27v.08l-1 .28zm95.32-.24v-.08l1 .27v.09zM1.46 62.08l1-.24v.08l-1 .24zm96.09-.21v-.08l1 .24v.08zM1.12 60.59l1-.21v.08l-1 .22zm96.77-.18v-.08l1 .22v.08zM.82 59.1l1-.18V59l-1 .18zm97.36-.1v-.08l1 .18v.08zM.57 57.6l1-.16v.09l-1 .15zm97.86-.12v-.09l1 .15v.09zM.36 56.09l1-.13v.09l-1 .12zM98.63 56v-.09l1 .12v.09zM.2 54.57l1-.09v.08l-1 .09zm98.59-.06v-.08l1 .09v.08zM.09 53.05l1-.06v.08l-1 .06zm98.82 0v-.08l1 .06v.08zM0 51.52h1v.09H0zm99 0v-.09h1v.09zm0-3.07h1v.09h-1zm-99 .04v-.08h1v.09zM98.9 47l1-.06V47h-1zM.09 47v-.08l1 .06V47zm98.7-1.5l1-.09v.08l-1 .1zM.2 45.45v-.09l1 .1v.08zM98.63 44l1-.13V44l-1 .12zM.36 43.94v-.09l1 .12v.08zm98.07-1.43l1-.16v.09l-1 .15zM.57 42.42v-.08l1 .15v.09zM98.18 41l1-.18v.08l-1 .18zM.82 40.92v-.08l1 .18v.08zm97.06-1.35l1-.22v.09l-1 .21zm-96.76-.15v-.08l1 .22v.08zm96.43-1.31l1-.24v.08l-1 .24zm-96.09-.17v-.08l1 .24v.08zm95.7-1.27l1-.28v.09l-1 .27zm-95.31-.21v-.08l1 .28v.08zm94.88-1.22l1-.31v.08l-1 .31zM2.28 35v-.08l1 .31v.08zm94-1.19l.95-.33v.08l-.95.33zm-93.5-.26v-.08l1 .33v.09zm93-1.14l.94-.37v.08l-.94.36zm-92.49-.29v-.08l.94.36v.08zm.56-1.41v-.08l.93.39v.08zm91.33.29l.93-.39v.07l-.93.39zM4.46 29.31v-.07l.91.42v.07zm90.12.33l.92-.41v.07l-.91.42zm-89.47-1.7v-.07l.9.44v.08zm88.83.35l.9-.44v.07l-.9.45zM5.8 26.59v-.08l.89.48v.07zm87.45.41l.89-.47v.07l-.89.47zM6.54 25.25v-.07l.87.5v.07zm86 .4l.87-.5v.07l-.87.5zM7.31 23.94l.05-.07.85.53v.07zm84.45.42l.86-.52v.07l-.86.53zm-83.63-1.7v-.07l.84.55v.07zM91 23.1l.84-.55v.07l-.84.55zM9 21.4v-.07l.82.58v.06zm81.14.47l.82-.58v.07l-.82.57zM9.87 20.16l.05-.07.81.61-.05.06zm79.37.5l.81-.61v.07l-.81.6zM10.8 19v-.06l.79.62-.05.07zm77.53.52l.78-.63.06.07-.79.63zm-76.57-1.7l.06-.06.77.65-.06.06zm75.62.55l.76-.66.06.07-.77.65zm-74.62-1.7l.06-.06.75.67-.06.07zm73.63.57l.75-.67.06.06-.75.67zM13.8 15.5l.06-.06.72.7-.05.06zm71.58.6l.72-.7.06.06-.73.7zm-70.51-1.68l.06-.06.7.72-.06.05zm69.46.58l.7-.71h.06l-.71.72zM16 13.36v-.06l.68.74-.06.06zm67.24.64l.69-.74.06.06-.69.74zM17.1 12.34l.06-.06.66.76-.06.06zm65 .67l.66-.76.06.05-.66.76zm-63.84-1.66h.07l.64.78-.07.05zM81 12l.64-.78.06.06-.64.78zm-61.54-1.6l.06-.05.62.8h-.07zm60.36.72l.61-.8h.07l-.62.8zM20.68 9.49l.07-.05.59.81-.07.05zm57.94.74l.59-.82.07.05-.59.81zM21.93 8.61H22l.56.84h-.07zm55.47.76l.6-.83h.07l-.56.84zm-54.2-1.6h.08l.54.85h-.08zm53 .78l.54-.85h.07l-.54.85zM24.51 7h.07l.51.87h-.07zm50.37.81l.51-.87h.07l-.46.88zm-49-1.57h.08l.48.88h-.07zm47.7.76l.49-.88h.07l-.49.88zm-46.4-1.51h.07l.46.89h-.07zm45.08.85l.46-.9h.08l-.46.9zM28.55 4.82h.08l.43.91h-.08zm42.38.86l.43-.91h.07l-.43.95zm-41-1.5h.08l.4.92h-.08zm39.63.89l.4-.93h.08l-.4.92zM31.35 3.59h.08l.37.93h-.08zm36.85.9l.37-.93h.08l-.38.93zM66.8 4l.35-1h.08l-.35 1zM32.78 3h.08l.34 1h-.08zm32.61.43l.31-1h.09l-.32 1zm-31.17-.89h.08l.32 1h-.08zM64 3l.29-1h.08L64 3zm-28.32-.92h.08L36 3zm26.84.54l.26-1h.08l-.26 1zm-25.38-1h.09l.25 1h-.08zm23.93.6l.23-1h.08l-.22 1zm-22.44-1h.08l.22 1h-.08zm21 .65l.2-1h.08l-.2 1zM40.12 1h.08l.2 1h-.09zm18 .71l.17-1h.08l-.16 1zM41.61.69h.09l.16 1h-.08zm15.06.76l.13-1h.09l-.14 1zM43.12.46h.09l.13 1h-.08zm12.06.81l.11-1h.08l-.1 1zM44.64.28h.08l.11 1h-.09zm9 .86l.08-1h.08l-.07 1zm-7.52-1h.07l.07 1h-.08zm6 .91v-1h.08v1zm-4.52-1h.08l.05 1h-.09zM49.2 0h.08v1h-.08zm1.51 1V0h.08v1z"></path></svg>
+                                    </div>
+                                </div>
+                                <div id="gamemode-right-list-wrapper"><!-- gamemode-right-list-wrapper -->
+                                    <div id="gamemode-right-list-container"><!-- gamemode-right-list-container -->
+                                        <ul id="gamemode-right-ul-list"><!-- gamemode-right-list -->
+                                            <li id="gamemode-right-list-1" class="gamemode-right-list" style="left: -4px; top: 50%; transition: transform 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms; transform: translate3d(0%, -50%, 0px);"> <!-- gamemode-right-list-1 *3-->
+                                                <button id="gamemode-right-list-1-btn-flex" class="gamemode-right-btn-flex"><!-- gamemode-right-list-1-btn-flex -->
+                                                    <label id="gamemode-right-list-1-btn-text" class="gamemode-right-list-btn-text" for="">소환사의 협곡</label><!-- gamemode-right-list-1-btn-text -->
+                                                    <div id="gamemode-right-list-1-btn-box-wrapper" class="gamemode-right-list-btn-box-wrapper"><!-- gamemode-right-list-1-btn-box-wrapper -->
+                                                        <div id="gamemode-right-list-1-btn-box" class="gamemode-right-list-btn-box default-ani" style="animation-duration: 800ms; animation-delay: 0ms; animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);"> <!-- gamemode-right-list-1-btn-box -->
+                                                            <span id="gamemode-right-list-1-btn-text-selected-flex" class="gamemode-right-list-btn-text-selected-flex"> <!-- gamemode-right-list-1-btn-text-selected-flex -->
+                                                                <label id="gamemode-right-list-1-btn-text-selected" class="gamemode-right-list-btn-text-selected" for="">소환사의 협곡</label><!-- gamemode-right-list-1-btn-text-selected -->
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="gamemode-right-list-1-img-wrapper" class="gamemode-right-list-img-wrapper"> <!-- gamemode-right-list-1-img-wrapper -->
+                                                        <img id="gamemode-right-list-1-img" class="gamemode-right-list-img" src="./resources/Image/summonersrift_right_box_img.jpg" alt=""> <!-- gamemode-right-list-1-img -->
+                                                    </div>
+                                                </button>
+                                            </li>
+                                            <li id="gamemode-right-list-2" class="gamemode-right-list" style="left: -4px; top: 50%; transition: transform 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms; transform: translate3d(0%, 50%, 0px);"> <!-- gamemode-right-list-1 *3-->
+                                                <button id="gamemode-right-list-2-btn-flex" class="gamemode-right-btn-flex"><!-- gamemode-right-list-1-btn-flex -->
+                                                    <label id="gamemode-right-list-2-btn-text" class="gamemode-right-list-btn-text" for="">무작위 총력전</label><!-- gamemode-right-list-1-btn-text -->
+                                                    <div id="gamemode-right-list-2-btn-box-wrapper" class="gamemode-right-list-btn-box-wrapper"><!-- gamemode-right-list-1-btn-box-wrapper -->
+                                                        <div id="gamemode-right-list-2-btn-box" class="gamemode-right-list-btn-box default-ani" style="animation-duration: 1200ms;animation-delay: 0ms;animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);"> <!-- gamemode-right-list-1-btn-box -->
+                                                            <span id="gamemode-right-list-2-btn-text-selected-flex" class="gamemode-right-list-btn-text-selected-flex"> <!-- gamemode-right-list-1-btn-text-selected-flex -->
+                                                                <label id="gamemode-right-list-2-btn-text-selected" class="gamemode-right-list-btn-text-selected" for="">무작위 총력전</label><!-- gamemode-right-list-1-btn-text-selected -->
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="gamemode-right-list-2-img-wrapper" class="gamemode-right-list-img-wrapper"> <!-- gamemode-right-list-1-img-wrapper -->
+                                                        <img id="gamemode-right-list-2-img" class="gamemode-right-list-img" src="./resources/Image/howlingabyss_right_box_img.jpg" alt=""> <!-- gamemode-right-list-1-img -->
+                                                    </div>
+                                                </button>
+                                            </li>
+                                            <li id="gamemode-right-list-3" class="gamemode-right-list" style="left: -4px; top: 50%; transition: transform 1000ms cubic-bezier(0.215, 0.61, 0.355, 1) 0ms; transform: translate3d(0%, 150%, 0px);"> <!-- gamemode-right-list-1 *3-->
+                                                <button id="gamemode-right-list-3-btn-flex" class="gamemode-right-btn-flex"><!-- gamemode-right-list-1-btn-flex -->
+                                                    <label id="gamemode-right-list-3-btn-text" class="gamemode-right-list-btn-text" for="">전략적 팀 전투</label><!-- gamemode-right-list-1-btn-text -->
+                                                    <div id="gamemode-right-list-3-btn-box-wrapper" class="gamemode-right-list-btn-box-wrapper"><!-- gamemode-right-list-1-btn-box-wrapper -->
+                                                        <div id="gamemode-right-list-3-btn-box" class="gamemode-right-list-btn-box default-ani" style="animation-duration: 800ms; animation-delay: 0ms; animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);"> <!-- gamemode-right-list-1-btn-box -->
+                                                            <span id="gamemode-right-list-3-btn-text-selected-flex" class="gamemode-right-list-btn-text-selected-flex"> <!-- gamemode-right-list-1-btn-text-selected-flex -->
+                                                                <label id="gamemode-right-list-3-btn-text-selected" class="gamemode-right-list-btn-text-selected" for="">전략적 팀 전투</label><!-- gamemode-right-list-1-btn-text-selected -->
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="gamemode-right-list-3-img-wrapper" class="gamemode-right-list-img-wrapper"> <!-- gamemode-right-list-1-img-wrapper -->
+                                                        <img id="gamemode-right-list-3-img" class="gamemode-right-list-img" src="./resources/Image/teamfighttactics_right_box_img.jpg" alt=""> <!-- gamemode-right-list-1-img -->
+                                                    </div>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="gamemode-bottom-text-wrapper"> <!-- gamemode-bottom-text-wrapper -->
+                                    <div id="gamemode-bottom-text-1-content" class="gamemode-bottom-text-content"> <!-- gamemode-bottom-text-1-wrapper -->
+                                        <p id="gamemode-bottom-text-title-1" class="gamemode-bottom-text-title"> <!-- gamemode-bottom-text-title-1 -->
+                                            최고의 인기 게임 모드
+                                        </p> 
+                                        <p id="gamemode-bottom-text-discription-1" class="gamemode-bottom-text-discription"> <!-- gamemode-bottom-text-discription-1 -->
+                                            공격로에서 상대를 격파하고 5:5 팀 전투에 뛰어들어 적 넥서스를 파괴해 보세요.
+                                        </p>
+                                    </div>
+                                    <div id="gamemode-bottom-text-2-content" class="gamemode-bottom-text-content"> <!-- gamemode-bottom-text-1-wrapper -->
+                                        <p id="gamemode-bottom-text-title-2" class="gamemode-bottom-text-title"> <!-- gamemode-bottom-text-title-1 -->
+                                            모두 무작위, 단일 공격로
+                                        </p> 
+                                        <p id="gamemode-bottom-text-discription-2" class="gamemode-bottom-text-discription"> <!-- gamemode-bottom-text-discription-1 -->
+                                            얼어붙은 다리 위에서 펼쳐지는 박진감 넘치는 5:5 게임 모드입니다. 무작위 챔피언으로 팀을 구성해 적의 넥서스를 파괴해 보세요.
+                                        </p>
+                                    </div>
+                                    <div id="gamemode-bottom-text-3-content" class="gamemode-bottom-text-content"> <!-- gamemode-bottom-text-1-wrapper -->
+                                        <p id="gamemode-bottom-text-title-3" class="gamemode-bottom-text-title"> <!-- gamemode-bottom-text-title-1 -->
+                                            8인 난투전
+                                        </p> 
+                                        <p id="gamemode-bottom-text-discription-3" class="gamemode-bottom-text-discription"> <!-- gamemode-bottom-text-discription-1 -->
+                                            챔피언들로 전략적인 팀을 구성해 결투장으로 진격시키세요. 총 7명의 상대와 겨루어 끝까지 살아남아야 합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div> 
+        </div>
+        <div id="play_legend_wrapper"> <!-- 전설의 시작 플레이 방법 -->
+            <section id="play_legend_area">
+                <div id="play_legend_flex"> <!-- flex -->
+                    <div id="play-guide-wrapper"> <!-- 플레이방법 -->
+                        <div id="play-guide-area" class="vertical-area-class">
+                            <div id="play-guide-text" class="vertical-text-class">플레이 방법</div>
+                        </div>
+                    </div> 
+                    <div id="legend-start-img">  <!-- 전설의 시작 및 이미지 -->
+                        <div id="legend-start-flex"> <!-- flex -->
+                            <div id="legend-start-map-wrapper"> <!-- 맵 -->
+                                <div id="legend-start-map-over-area"> <!-- 맵 오버 영역 -->
+                                    <div id="legend-start-map-width-over-area"> <!-- 맵 위드 오버 영역 -->
+                                        <div id="legend-start-map-img-wrapper"> <!-- 맵 이미지 wrapper -->
+                                            <div id="legend-start-map-centent-wrapper"s tyle="transform: translate3d(-13.8661px, -1.54143px, 0px);"> <!-- 맵  이미지 centent wrapper-->
+                                                <div id="legend-start-map-img-centent-area"> <!-- 맵 이미지 centent area -->
+                                                    <img id="map-img" src="./resources/Image/summoner's_rift_map.png" alt=""> <!-- 맵 이미지 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="legend-start"><!-- 전설의 시작 -->
+                                <div id="legend-start-wrapper"> <!-- 전설의 시작 텍스트 wrapper -->
+                                    <h1 id="legend-title-wrapper"> <!-- 전설의 title wrapper -->
+                                        <span id="legend-top-title-wrapper"> <!-- 전설의 top-title-wrapper-->
+                                            <div id="legend-top-title-text-wrapper" class="default-ani default-ani-show-nw"> <!-- 전설의 top-title-text-wrapper -->
+                                                <span id="legend-top-title-text">전설의</span> <!-- top-title-text -->
+                                            </div> 
+                                        </span> 
+                                        <strong id="start-text-wrapper"> <!-- 시작-text-wrapper -->
+                                            <div id="start-title-wrapper" class="default-ani default-ani-show-se"> <!-- 시작-title-wrapper -->
+                                                <span id="start-title-text">시작</span> <!-- 시작-title-text -->
+                                            </div>
+                                        </strong>
+                                    </h1>
+                                    <p id="legend-start-middle-text">리그 오브 레전드가 처음이신가요? 가장 인기 있는 게임 모드를 간략히 배워 보세요.</p><!-- 전설의 시작-middle-tex -->
+                                </div>
+                                <div id="start-legend-btn-wrapper"> <!-- 전설의 시작 btn-wrapper -->
+                                    <a id="start-btn-a" class="start-legend-btn-class" href="">
+                                        <span class="start-legend-btn-flex">
+                                            <div class="start-legend-btn-background-wrapper default-ani default-ani-show-se">
+                                                <span class="start-legend-btn-background" id="legend-start-btn-background-start"></span>
+                                            </div>
+                                            <span id="start-btn-text" class="start-legend-btn-text">시작하기</span>
+                                        </span>
+                                        <div class="start-legend-btn-canvas-wrapper">
+                                            <canvas id="start-legend-btn-start-canvas" class="start-legend-btn-canvas" width="205" height="66" style="width: 205px; height: 66px; left: -6px; top: -6px;"></canvas>
+                                    </div>
+                                    </a>
+                                    <a id="legend-btn-a" class="start-legend-btn-class" href="">
+                                        <span class="start-legend-btn-flex">
+                                            <div class="start-legend-btn-background-wrapper default-ani default-ani-show-ne">
+                                                <span class="start-legend-btn-background"  id="legend-start-btn-background-free-play"></span>
+                                            </div>
+                                            <span id="legend-btn-text" class="start-legend-btn-text default-ani default-ani-show-nw">무료로 플레이하기</span>
+                                        </span>
+                                        <div class="start-legend-btn-canvas-wrapper">
+                                            <canvas id="start-legend-btn-free-canvas" class="start-legend-btn-canvas" width="205" height="66" style="width: 205px; height: 66px; left: -6px; top: -6px;"></canvas>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="more-to-discover-featured-wrapper"><!-- 더 자세히 알아보기 및 추천 영역-->
+            <div id="more-to-discover-featured-flex"><!-- flex -->
+                <div id="featured-wrapper"><!-- 추천 -->
+                    <div id="featured-area" class="vertical-area-class">
+                        <div id="featured-text" class="vertical-text-class">
+                            추천
+                        </div>
+                    </div>
+                </div>
+                <div id="more-to-discover-wrapper"><!-- 더 자세히 알아보기 wrapper -->
+                    <div id="more-to-discover-centent-wrapper"> <!-- 더 자세히 알아보기 centent-wrapper -->
+                        <section id="more-to-discover-centent-area"> <!-- 더 자세히 알아보기 영역 -->
+                            <div id="more-to-discover-title-wrapper"> <!-- 더 자세히 알아보기 타이틀 -->
+                                <h1 id="more-to-discover-title">
+                                    <span id="more-to-wrapper">
+                                        <div id="more-to-area" class="default-ani default-ani-show">
+                                            <span id="more-to-text">더 자세히</span>
+                                        </div>
+                                    </span>
+                                    <strong id="discover-wrapper">
+                                        <div id="discover-area" class="default-ani default-ani-show-se">
+                                            <span id="discover-text">알아보기</span>
+                                        </div>
+                                    </strong>
+                                </h1>
+                            </div>
+                            <ul id="more-to-discover-list-flex"> <!-- 더 자세히 알아보기 리스트(flex) -->
+                                <li id="more-to-discover-list-1" class="more-to-discover-list" data-aos="fade-up"> <!-- 자바스크립트 transform y값 변경 -->
+                                    <article class="more-to-discover-list-content-wrapper">
+                                        <a class="more-to-discover-list-content-flex" href="">
+                                            <div class="more-to-discover-list-img-wrapper">
+                                                <div class="more-to-discover-list-img-area">
+                                                    <img class="more-to-discover-list-img" src="./resources/Image/africa_tft.jpg" alt="">
+                                                </div>
+                                            </div> 
+                                            <div class="more-to-discover-list-text">'아프리카TV 전략적 팀 전투 시리즈: 괴물습격' 개최 안내</div>
+                                            <div class="more-to-discover-list-canvas-wrapper">
+                                                <canvas id="more-to-discover-list1" class="more-to-discover-list-canvas" width="442" height="461" style="width: 442px; height: 461px; left: -2px; top: -2px;"></canvas>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </li>
+                                <li id="more-to-discover-list-2" class="more-to-discover-list" data-aos="fade-up">
+                                    <article class="more-to-discover-list-content-wrapper">
+                                        <a class="more-to-discover-list-content-flex" href="">
+                                            <div class="more-to-discover-list-img-wrapper">
+                                                <div class="more-to-discover-list-img-area">
+                                                    <img class="more-to-discover-list-img" src="./resources/Image/star_guardian.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="more-to-discover-list-text">별 수호자 지난 이야기</div>
+                                            <div class="more-to-discover-list-canvas-wrapper">
+                                                <canvas id="more-to-discover-list2" class="more-to-discover-list-canvas" width="442" height="461" style="width: 442px; height: 461px; left: -2px; top: -2px;"></canvas>
+                                            </div> 
+                                        </a>
+                                    </article>
+                                </li>
+                            </ul>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -600,29 +1306,45 @@
         <div id="end-content-wrapper"> <!-- 마지막 동영상 버튼 미추가 -->
             <section id="end-content-video">
                 <div id="video-container-flex">
-                    <div id="video-container-wrapper">
+                    <div id="video-container-wrapper" data-aos="fade-down">
                         <video id="end-video" loop muted autoplay>
                             <source src="./resources/Video/ss2020_galio_lux_1920x1080.mp4">
                         </video>
                     </div>
                 </div>
-                <div id="btn-container-flex"></div>
+                <div id="end-video-btn-flex">
+                    <a id="end-video-btn-wrapper" href="" data-aos="fade-down">
+                        <span id="end-video-btn-box-flex"> <!-- flex -->
+                            <div id="end-video-btn-box-wrapper" class="default-ani default-ani-show-nw" style="animation-duration: 1000ms; animation-delay: 0ms; animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);">
+                                <span id="end-video-btn-box-background"></span>
+                            </div>
+                            <span id="end-video-btn-box-text">
+                                무료로 플레이하기
+                            </span>
+                        </span>
+                        <div id="end-video-btn-box-canvas-wrapper">
+                            <canvas id="end-video-btn-box-canvas" class="style__Canvas-sc-1c9bc3r-1 hsvRhV" width="205" height="66" style="width: 205px; height: 66px; left: -6px; top: -6px;"></canvas>
+                        </div>
+                    </a>
+                </div>
             </section>
         </div>
-        <div id="lol-app-wrapper">
+        <div id="lol-app-wrapper"> <!-- 롤 앱 다운로드 -->
             <section id="lol-app-area">
                 <div id="lol-app-flex">
                     <h1 id="lol-app-left"> 언제나 리그 오브 레전드와 함께</h1>
                     <div id="lol-app-center">리그 오브 레전드 앱을 다운로드해 친구들과 대화하고 최신 게임 및 e스포츠 소식을 확인해 보세요.</div>
                     <div id="lol-app-right">
-                        <a id="lol-app-apple" class="lol-app-download" href=""><img id="lol-app-apple-img" src="./resources/Image/apple_appStore.svg" alt=""></a>
-                        <a id="lol-app-google" class="lol-app-download" href=""><img id="lol-app-google-img" src="./resources/Image/google_play.svg" alt=""></a>
+                        <a id="lol-app-apple" class="lol-app-download" href=""><img id="lol-app-apple-img"
+                                src="./resources/Image/apple_appStore.svg" alt=""></a>
+                        <a id="lol-app-google" class="lol-app-download" href=""><img id="lol-app-google-img"
+                                src="./resources/Image/google_play.svg" alt=""></a>
                     </div>
                 </div>
             </section>
         </div>
     </div>
-    <div id="footer">
+    <div id="footer"> <!-- footer -->
         <div id="riotbar-links">
             <ul>
                 <li><a href="" class="footer-legal-a-btnStyle">고객지원</a></li>
@@ -633,21 +1355,57 @@
         </div>
         <div id="riotbar-social-links">
             <ul>
-                <li><a href=""><svg class="" viewBox="0 0 16.67 11.67"><title>youtube</title><path d="M14.85.36a2.08 2.08 0 011.47 1.47 20.5 20.5 0 01.34 4 22.19 22.19 0 01-.34 4 2.1 2.1 0 01-1.47 1.47 51.13 51.13 0 01-6.52.34 48.46 48.46 0 01-6.52-.36A2.07 2.07 0 01.34 9.82a23.82 23.82 0 010-8A2.11 2.11 0 011.81.34a49.68 49.68 0 016.52-.35 48.31 48.31 0 016.52.37zm-3.84 5.48l-4.34 2.5v-5z"></path></svg></a></li>
-                <li><a href=""><svg class="" viewBox="0 0 13.26 13.3"><title>instagram</title><path d="M6.63 3.29a3.43 3.43 0 103.42 3.44 3.43 3.43 0 00-3.42-3.44zm0 5.65a2.22 2.22 0 112.22-2.22 2.21 2.21 0 01-2.22 2.22z" fill="#fdfefe" fill-rule="evenodd"></path><path d="M10.96 3.13a.8.8 0 11-.8-.8.8.8 0 01.8.8z" fill="#fdfefe"></path><path d="M6.63.05H3.88a5 5 0 00-1.62.31 3.31 3.31 0 00-1.18.77 3.31 3.31 0 00-.77 1.18 5.29 5.29 0 00-.35 1.62v5.5a5.22 5.22 0 00.35 1.62 3.35 3.35 0 00.77 1.19 3.42 3.42 0 001.18.76 4.75 4.75 0 001.62.31h5.5a4.75 4.75 0 001.58-.32 3.15 3.15 0 001.18-.76 3.35 3.35 0 00.82-1.18 5 5 0 00.31-1.61V3.93a5 5 0 00-.31-1.62 3.46 3.46 0 00-2-2A5 5 0 009.33.05a26.88 26.88 0 01-2.7 0zm0 1.2h2.69a3.78 3.78 0 011.24.23 2.21 2.21 0 011.27 1.27 3.67 3.67 0 01.23 1.23v5.39a3.78 3.78 0 01-.23 1.24 2.21 2.21 0 01-1.27 1.27 3.77 3.77 0 01-1.24.22H3.96a3.77 3.77 0 01-1.24-.22 2.21 2.21 0 01-1.27-1.27 3.78 3.78 0 01-.23-1.24V3.98a3.67 3.67 0 01.21-1.23A2.21 2.21 0 012.7 1.48a3.78 3.78 0 011.26-.23c.68.01.89 0 2.67 0z" fill="#fdfefe" fill-rule="evenodd"></path></svg></a></li>
-                <li><a href=""><svg class="" viewBox="0 0 15 15"><title>facebook</title><path d="M15 7.54A7.5 7.5 0 106.33 15V9.73h-1.9V7.54h1.9V5.91a2.65 2.65 0 012.83-3 12.09 12.09 0 011.68.14v1.86H9.9a1.09 1.09 0 00-1.23 1.18V7.5h2.08l-.33 2.19H8.67v5.27A7.54 7.54 0 0015 7.54z"></path></svg></a></li>
-                <li><a href=""><svg class="" viewBox="0 0 16.67 13.54"><title>twitter</title><path d="M5.24 13.54a9.66 9.66 0 009.73-9.73v-.44a6.85 6.85 0 001.71-1.77 6.79 6.79 0 01-2 .54A3.45 3.45 0 0016.19.25a7.33 7.33 0 01-2.17.83 3.42 3.42 0 00-5.83 3.11 9.63 9.63 0 01-7-3.57 3.39 3.39 0 00-.37 2.49 3.43 3.43 0 001.43 2.08A3.5 3.5 0 01.7 4.76a3.4 3.4 0 002.74 3.35 3.34 3.34 0 01-1.54.06 3.41 3.41 0 001.21 1.7 3.48 3.48 0 002 .68 6.82 6.82 0 01-4.25 1.46 5.51 5.51 0 01-.81-.05 9.63 9.63 0 005.24 1.54"></path></svg></a></li>
-                <li><a href=""><svg class="" viewBox="0 0 24 24"><title>reddit</title><path fill="#FFF" d="M14.2 15.3c.1.1.1.2 0 .3-.5.5-1.2.7-2.2.7-1 0-1.8-.2-2.2-.7-.1-.1-.1-.2 0-.3.1-.1.2-.1.3 0 .4.4 1 .6 1.9.6.9 0 1.5-.2 1.9-.6h.3zm-3.4-2.4c0-.5-.4-.9-.9-.9s-.9.4-.9.9.4.9.9.9.9-.4.9-.9zM24 12c0 6.6-5.4 12-12 12S0 18.6 0 12 5.4 0 12 0s12 5.4 12 12zm-5-.1c0-.9-.7-1.5-1.5-1.5-.4 0-.8.2-1.1.4-1.1-.7-2.5-1.1-4.1-1.2l.9-2.7 2.3.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3-.6-1.3-1.3-1.3c-.5 0-1 .3-1.2.8l-2.5-.6c-.1 0-.2 0-.3.1l-1 3c-1.7 0-3.2.5-4.3 1.2-.3-.3-.6-.4-1-.4-.8.1-1.5.8-1.5 1.7 0 .6.3 1.1.8 1.3 0 .2-.1.3-.1.5 0 2.3 2.8 4.1 6.3 4.1s6.3-1.9 6.3-4.1v-.5c.4-.2.7-.7.7-1.3zm-4.9.1c-.5 0-.9.4-.9.9s.4.9.9.9.9-.4.9-.9c.1-.5-.4-.9-.9-.9z"></path></svg></a></li>
+                <li><a href=""><svg class="" viewBox="0 0 16.67 11.67">
+                            <title>youtube</title>
+                            <path
+                                d="M14.85.36a2.08 2.08 0 011.47 1.47 20.5 20.5 0 01.34 4 22.19 22.19 0 01-.34 4 2.1 2.1 0 01-1.47 1.47 51.13 51.13 0 01-6.52.34 48.46 48.46 0 01-6.52-.36A2.07 2.07 0 01.34 9.82a23.82 23.82 0 010-8A2.11 2.11 0 011.81.34a49.68 49.68 0 016.52-.35 48.31 48.31 0 016.52.37zm-3.84 5.48l-4.34 2.5v-5z">
+                            </path>
+                        </svg></a></li>
+                <li><a href=""><svg class="" viewBox="0 0 13.26 13.3">
+                            <title>instagram</title>
+                            <path
+                                d="M6.63 3.29a3.43 3.43 0 103.42 3.44 3.43 3.43 0 00-3.42-3.44zm0 5.65a2.22 2.22 0 112.22-2.22 2.21 2.21 0 01-2.22 2.22z"
+                                fill="#fdfefe" fill-rule="evenodd"></path>
+                            <path d="M10.96 3.13a.8.8 0 11-.8-.8.8.8 0 01.8.8z" fill="#fdfefe"></path>
+                            <path
+                                d="M6.63.05H3.88a5 5 0 00-1.62.31 3.31 3.31 0 00-1.18.77 3.31 3.31 0 00-.77 1.18 5.29 5.29 0 00-.35 1.62v5.5a5.22 5.22 0 00.35 1.62 3.35 3.35 0 00.77 1.19 3.42 3.42 0 001.18.76 4.75 4.75 0 001.62.31h5.5a4.75 4.75 0 001.58-.32 3.15 3.15 0 001.18-.76 3.35 3.35 0 00.82-1.18 5 5 0 00.31-1.61V3.93a5 5 0 00-.31-1.62 3.46 3.46 0 00-2-2A5 5 0 009.33.05a26.88 26.88 0 01-2.7 0zm0 1.2h2.69a3.78 3.78 0 011.24.23 2.21 2.21 0 011.27 1.27 3.67 3.67 0 01.23 1.23v5.39a3.78 3.78 0 01-.23 1.24 2.21 2.21 0 01-1.27 1.27 3.77 3.77 0 01-1.24.22H3.96a3.77 3.77 0 01-1.24-.22 2.21 2.21 0 01-1.27-1.27 3.78 3.78 0 01-.23-1.24V3.98a3.67 3.67 0 01.21-1.23A2.21 2.21 0 012.7 1.48a3.78 3.78 0 011.26-.23c.68.01.89 0 2.67 0z"
+                                fill="#fdfefe" fill-rule="evenodd"></path>
+                        </svg></a></li>
+                <li><a href=""><svg class="" viewBox="0 0 15 15">
+                            <title>facebook</title>
+                            <path
+                                d="M15 7.54A7.5 7.5 0 106.33 15V9.73h-1.9V7.54h1.9V5.91a2.65 2.65 0 012.83-3 12.09 12.09 0 011.68.14v1.86H9.9a1.09 1.09 0 00-1.23 1.18V7.5h2.08l-.33 2.19H8.67v5.27A7.54 7.54 0 0015 7.54z">
+                            </path>
+                        </svg></a></li>
+                <li><a href=""><svg class="" viewBox="0 0 16.67 13.54">
+                            <title>twitter</title>
+                            <path
+                                d="M5.24 13.54a9.66 9.66 0 009.73-9.73v-.44a6.85 6.85 0 001.71-1.77 6.79 6.79 0 01-2 .54A3.45 3.45 0 0016.19.25a7.33 7.33 0 01-2.17.83 3.42 3.42 0 00-5.83 3.11 9.63 9.63 0 01-7-3.57 3.39 3.39 0 00-.37 2.49 3.43 3.43 0 001.43 2.08A3.5 3.5 0 01.7 4.76a3.4 3.4 0 002.74 3.35 3.34 3.34 0 01-1.54.06 3.41 3.41 0 001.21 1.7 3.48 3.48 0 002 .68 6.82 6.82 0 01-4.25 1.46 5.51 5.51 0 01-.81-.05 9.63 9.63 0 005.24 1.54">
+                            </path>
+                        </svg></a></li>
+                <li><a href=""><svg class="" viewBox="0 0 24 24">
+                            <title>reddit</title>
+                            <path fill="#FFF"
+                                d="M14.2 15.3c.1.1.1.2 0 .3-.5.5-1.2.7-2.2.7-1 0-1.8-.2-2.2-.7-.1-.1-.1-.2 0-.3.1-.1.2-.1.3 0 .4.4 1 .6 1.9.6.9 0 1.5-.2 1.9-.6h.3zm-3.4-2.4c0-.5-.4-.9-.9-.9s-.9.4-.9.9.4.9.9.9.9-.4.9-.9zM24 12c0 6.6-5.4 12-12 12S0 18.6 0 12 5.4 0 12 0s12 5.4 12 12zm-5-.1c0-.9-.7-1.5-1.5-1.5-.4 0-.8.2-1.1.4-1.1-.7-2.5-1.1-4.1-1.2l.9-2.7 2.3.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3-.6-1.3-1.3-1.3c-.5 0-1 .3-1.2.8l-2.5-.6c-.1 0-.2 0-.3.1l-1 3c-1.7 0-3.2.5-4.3 1.2-.3-.3-.6-.4-1-.4-.8.1-1.5.8-1.5 1.7 0 .6.3 1.1.8 1.3 0 .2-.1.3-.1.5 0 2.3 2.8 4.1 6.3 4.1s6.3-1.9 6.3-4.1v-.5c.4-.2.7-.7.7-1.3zm-4.9.1c-.5 0-.9.4-.9.9s.4.9.9.9.9-.4.9-.9c.1-.5-.4-.9-.9-.9z">
+                            </path>
+                        </svg></a></li>
             </ul>
         </div>
         <div id="riotbar-rigotlogobar">
             <div id="riotbar-logo">
-                <a href=""><svg width="99" height="32" class="" viewBox="0 0 587.93 165"><title> Riot Games </title><title>riotLogo-mobile21</title><path d="M98.77.33L0 46.07l24.61 93.66 18.73-2.3-5.15-58.89 6.15-2.74L54.96 136l32.01-3.93-5.69-65 6.09-2.71 11.68 66.23 32.38-3.98-6.23-71.25 6.16-2.74 12.77 72.43 32.01-3.93V19.71L98.77.33zm2.32 142.05l1.63 9.22 73.42 12.24v-30.68l-75.01 9.22h-.04zm144.49-19.22v12.63h15.57a14.84 14.84 0 01-1.92 7.31 13 13 0 01-5.6 5.11 20 20 0 01-8.9 1.8 17.53 17.53 0 01-10-2.8 17.87 17.87 0 01-6.44-8.14 33.06 33.06 0 01-2.27-12.93 31.81 31.81 0 012.32-12.81 18.14 18.14 0 016.5-8 17.27 17.27 0 019.82-2.78 19.31 19.31 0 015.36.71 14.15 14.15 0 014.33 2.09 12.92 12.92 0 013.18 3.29 15.61 15.61 0 012 4.44h17.27a27.22 27.22 0 00-3.46-10.28 28.84 28.84 0 00-7.05-8.1 32.6 32.6 0 00-9.91-5.29 37.91 37.91 0 00-12.06-1.86 37.32 37.32 0 00-14 2.6 32.6 32.6 0 00-11.36 7.61 35 35 0 00-7.61 12.21 46.15 46.15 0 00-2.73 16.44q0 11.94 4.54 20.59a32.4 32.4 0 0012.69 13.27 39.84 39.84 0 0035.84.84 28.39 28.39 0 0011.67-11q4.25-7.19 4.24-17.2v-9.76zm215.03 40.81V88.53h51.67v13.96h-34.62v16.76h27.99v13.96h-27.99v16.8h34.7v13.96h-51.75zm101.83-53.3a9 9 0 00-3.54-6.64c-2.09-1.59-5-2.38-8.69-2.38a16.63 16.63 0 00-6.26 1 8.62 8.62 0 00-3.83 2.78 6.74 6.74 0 00-1.33 4 6.2 6.2 0 00.79 3.29 7.27 7.27 0 002.4 2.45 16.54 16.54 0 003.7 1.79 40.14 40.14 0 004.64 1.31l6.63 1.54a47.19 47.19 0 019.45 3.08 27.46 27.46 0 017.2 4.68 18.84 18.84 0 014.58 6.39 20.37 20.37 0 011.61 8.29 20.65 20.65 0 01-3.54 12.11 22.56 22.56 0 01-10.15 7.85 41.31 41.31 0 01-15.93 2.76 42.69 42.69 0 01-16.17-2.81 23.22 23.22 0 01-10.72-8.48q-3.83-5.66-4-14.12h16.43a10.68 10.68 0 007.05 9.94 19.37 19.37 0 007.24 1.26 18.44 18.44 0 006.66-1.09 10 10 0 004.33-3 7.22 7.22 0 001.57-4.48 6.16 6.16 0 00-1.42-4 10.86 10.86 0 00-4.14-2.81 42.07 42.07 0 00-6.89-2.14l-8.07-1.95q-9.65-2.3-15.23-7.26t-5.54-13.44a19.86 19.86 0 013.72-12.12 24.74 24.74 0 0110.33-8.11 36.74 36.74 0 0115-2.91 35.62 35.62 0 0114.92 2.91 23.43 23.43 0 019.91 8.14 21.54 21.54 0 013.6 12.12zm-113.99 53.3h-16.87v-57.35l-1.73-.02-17.04 57.37h-16.86l-16.58-57.37-2.15.02v57.35h-16.87V88.53h28.67l14.48 50.56h1.75l14.48-50.56h28.72v75.44zm-114.66 0h18.27l-25.33-75.43h-23.15l-25.37 75.43h18.3l4.93-16.54h27.42zm-28.43-29.7l8.22-27.65h3.1l8.26 27.65zm278.58-37.76a4 4 0 01-3.67-2.44 4 4 0 010-3.1 4 4 0 01.85-1.27 4.25 4.25 0 011.27-.86 4.15 4.15 0 013.1 0 4.13 4.13 0 011.27.86 4.08 4.08 0 01.86 1.27 4 4 0 010 3.1 4.08 4.08 0 01-.86 1.27 4 4 0 01-1.27.86 4 4 0 01-1.55.31zm0-1.09a2.84 2.84 0 001.47-.39 2.94 2.94 0 001.05-1 2.93 2.93 0 000-2.92 3 3 0 00-1.06-1 2.93 2.93 0 00-2.92 0 3 3 0 00-1 1 2.86 2.86 0 000 2.92 3 3 0 001 1 2.83 2.83 0 001.46.39zm-1.46-1.15V90.6h1.78a1.52 1.52 0 01.69.15 1.13 1.13 0 01.47.42 1.24 1.24 0 01.17.66 1.16 1.16 0 01-.18.66 1 1 0 01-.48.41 1.56 1.56 0 01-.7.14h-1.2v-.72h1a.52.52 0 00.36-.12.5.5 0 00.14-.37.47.47 0 00-.14-.37.52.52 0 00-.36-.12h-.55v2.93zm2.39-1.68l.82 1.68h-1.11l-.75-1.68zM282.41 1.03h17.05v75.44h-17.05zm98.02 37.72q0 12.42-4.71 21a32.67 32.67 0 01-12.79 13.17 38.57 38.57 0 01-36.31 0 32.75 32.75 0 01-12.79-13.2q-4.71-8.66-4.71-21t4.71-21.05a32.67 32.67 0 0112.75-13.14 38.65 38.65 0 0136.31 0 32.67 32.67 0 0112.79 13.17q4.71 8.64 4.71 21.05m-17.35 0a33.35 33.35 0 00-2.23-13 17.47 17.47 0 00-6.33-8 18.57 18.57 0 00-19.45 0 17.57 17.57 0 00-6.35 8 38.59 38.59 0 000 26 17.49 17.49 0 006.35 8 18.57 18.57 0 0019.45 0 17.39 17.39 0 006.33-8 33.4 33.4 0 002.23-13M246.58 50.17l8.76 26.3h18.71l-9.74-28.33h-13.23l-.79-2.44c2.52-.49 6.83-1.25 10.65-3.85a20 20 0 008.75-16.39 24.15 24.15 0 00-3.26-12.75 21.9 21.9 0 00-9.36-8.64 32.56 32.56 0 00-14.64-3H212v75.4h17.06v-26.3zm-.32-15.61a19.35 19.35 0 01-7.26 1.18h-9.94V14.88h9.91a18.68 18.68 0 017.25 1.24 9.12 9.12 0 014.4 3.7 10 10 0 011.5 5.64 9.65 9.65 0 01-1.48 5.55 8.86 8.86 0 01-4.38 3.55M382.04 1.03v14h29.3l.8 2.45c-2.48.48-6.67 1.22-10.43 3.7v55.31h16.87v-61.5h19.62v-14z"></path></svg></a>
+                <a href=""><svg width="99" height="32" class="" viewBox="0 0 587.93 165">
+                        <title> Riot Games </title>
+                        <title>riotLogo-mobile21</title>
+                        <path
+                            d="M98.77.33L0 46.07l24.61 93.66 18.73-2.3-5.15-58.89 6.15-2.74L54.96 136l32.01-3.93-5.69-65 6.09-2.71 11.68 66.23 32.38-3.98-6.23-71.25 6.16-2.74 12.77 72.43 32.01-3.93V19.71L98.77.33zm2.32 142.05l1.63 9.22 73.42 12.24v-30.68l-75.01 9.22h-.04zm144.49-19.22v12.63h15.57a14.84 14.84 0 01-1.92 7.31 13 13 0 01-5.6 5.11 20 20 0 01-8.9 1.8 17.53 17.53 0 01-10-2.8 17.87 17.87 0 01-6.44-8.14 33.06 33.06 0 01-2.27-12.93 31.81 31.81 0 012.32-12.81 18.14 18.14 0 016.5-8 17.27 17.27 0 019.82-2.78 19.31 19.31 0 015.36.71 14.15 14.15 0 014.33 2.09 12.92 12.92 0 013.18 3.29 15.61 15.61 0 012 4.44h17.27a27.22 27.22 0 00-3.46-10.28 28.84 28.84 0 00-7.05-8.1 32.6 32.6 0 00-9.91-5.29 37.91 37.91 0 00-12.06-1.86 37.32 37.32 0 00-14 2.6 32.6 32.6 0 00-11.36 7.61 35 35 0 00-7.61 12.21 46.15 46.15 0 00-2.73 16.44q0 11.94 4.54 20.59a32.4 32.4 0 0012.69 13.27 39.84 39.84 0 0035.84.84 28.39 28.39 0 0011.67-11q4.25-7.19 4.24-17.2v-9.76zm215.03 40.81V88.53h51.67v13.96h-34.62v16.76h27.99v13.96h-27.99v16.8h34.7v13.96h-51.75zm101.83-53.3a9 9 0 00-3.54-6.64c-2.09-1.59-5-2.38-8.69-2.38a16.63 16.63 0 00-6.26 1 8.62 8.62 0 00-3.83 2.78 6.74 6.74 0 00-1.33 4 6.2 6.2 0 00.79 3.29 7.27 7.27 0 002.4 2.45 16.54 16.54 0 003.7 1.79 40.14 40.14 0 004.64 1.31l6.63 1.54a47.19 47.19 0 019.45 3.08 27.46 27.46 0 017.2 4.68 18.84 18.84 0 014.58 6.39 20.37 20.37 0 011.61 8.29 20.65 20.65 0 01-3.54 12.11 22.56 22.56 0 01-10.15 7.85 41.31 41.31 0 01-15.93 2.76 42.69 42.69 0 01-16.17-2.81 23.22 23.22 0 01-10.72-8.48q-3.83-5.66-4-14.12h16.43a10.68 10.68 0 007.05 9.94 19.37 19.37 0 007.24 1.26 18.44 18.44 0 006.66-1.09 10 10 0 004.33-3 7.22 7.22 0 001.57-4.48 6.16 6.16 0 00-1.42-4 10.86 10.86 0 00-4.14-2.81 42.07 42.07 0 00-6.89-2.14l-8.07-1.95q-9.65-2.3-15.23-7.26t-5.54-13.44a19.86 19.86 0 013.72-12.12 24.74 24.74 0 0110.33-8.11 36.74 36.74 0 0115-2.91 35.62 35.62 0 0114.92 2.91 23.43 23.43 0 019.91 8.14 21.54 21.54 0 013.6 12.12zm-113.99 53.3h-16.87v-57.35l-1.73-.02-17.04 57.37h-16.86l-16.58-57.37-2.15.02v57.35h-16.87V88.53h28.67l14.48 50.56h1.75l14.48-50.56h28.72v75.44zm-114.66 0h18.27l-25.33-75.43h-23.15l-25.37 75.43h18.3l4.93-16.54h27.42zm-28.43-29.7l8.22-27.65h3.1l8.26 27.65zm278.58-37.76a4 4 0 01-3.67-2.44 4 4 0 010-3.1 4 4 0 01.85-1.27 4.25 4.25 0 011.27-.86 4.15 4.15 0 013.1 0 4.13 4.13 0 011.27.86 4.08 4.08 0 01.86 1.27 4 4 0 010 3.1 4.08 4.08 0 01-.86 1.27 4 4 0 01-1.27.86 4 4 0 01-1.55.31zm0-1.09a2.84 2.84 0 001.47-.39 2.94 2.94 0 001.05-1 2.93 2.93 0 000-2.92 3 3 0 00-1.06-1 2.93 2.93 0 00-2.92 0 3 3 0 00-1 1 2.86 2.86 0 000 2.92 3 3 0 001 1 2.83 2.83 0 001.46.39zm-1.46-1.15V90.6h1.78a1.52 1.52 0 01.69.15 1.13 1.13 0 01.47.42 1.24 1.24 0 01.17.66 1.16 1.16 0 01-.18.66 1 1 0 01-.48.41 1.56 1.56 0 01-.7.14h-1.2v-.72h1a.52.52 0 00.36-.12.5.5 0 00.14-.37.47.47 0 00-.14-.37.52.52 0 00-.36-.12h-.55v2.93zm2.39-1.68l.82 1.68h-1.11l-.75-1.68zM282.41 1.03h17.05v75.44h-17.05zm98.02 37.72q0 12.42-4.71 21a32.67 32.67 0 01-12.79 13.17 38.57 38.57 0 01-36.31 0 32.75 32.75 0 01-12.79-13.2q-4.71-8.66-4.71-21t4.71-21.05a32.67 32.67 0 0112.75-13.14 38.65 38.65 0 0136.31 0 32.67 32.67 0 0112.79 13.17q4.71 8.64 4.71 21.05m-17.35 0a33.35 33.35 0 00-2.23-13 17.47 17.47 0 00-6.33-8 18.57 18.57 0 00-19.45 0 17.57 17.57 0 00-6.35 8 38.59 38.59 0 000 26 17.49 17.49 0 006.35 8 18.57 18.57 0 0019.45 0 17.39 17.39 0 006.33-8 33.4 33.4 0 002.23-13M246.58 50.17l8.76 26.3h18.71l-9.74-28.33h-13.23l-.79-2.44c2.52-.49 6.83-1.25 10.65-3.85a20 20 0 008.75-16.39 24.15 24.15 0 00-3.26-12.75 21.9 21.9 0 00-9.36-8.64 32.56 32.56 0 00-14.64-3H212v75.4h17.06v-26.3zm-.32-15.61a19.35 19.35 0 01-7.26 1.18h-9.94V14.88h9.91a18.68 18.68 0 017.25 1.24 9.12 9.12 0 014.4 3.7 10 10 0 011.5 5.64 9.65 9.65 0 01-1.48 5.55 8.86 8.86 0 01-4.38 3.55M382.04 1.03v14h29.3l.8 2.45c-2.48.48-6.67 1.22-10.43 3.7v55.31h16.87v-61.5h19.62v-14z">
+                        </path>
+                    </svg></a>
             </div>
         </div>
         <div id="riotbar-copylight">
             <p class="copylight-class">
-                ™ & © 2023 Riot Games, Inc.  League of Legends and all related logos, characters, names and distinctive likenesses thereof are exclusive property of Riot Games, Inc.  All Rights Reserved.
+                ™ & © 2023 Riot Games, Inc. League of Legends and all related logos, characters, names and distinctive
+                likenesses thereof are exclusive property of Riot Games, Inc. All Rights Reserved.
             </p>
             <div id="markup" class="copylight-class">
                 <br>
@@ -671,10 +1429,56 @@
         </div>
         <div id="riotbar-game-ratings">
             <div id="riotbar-game-rating">
-                <a href="https://www.grac.or.kr/default.aspx" target="_blank"><img src=https://images.contentstack.io/v3/assets/blt0eb2a2986b796d29/blt347042469caad5ee/5e8639455bca9a639e7dd8c1/kr-rating.png?&height=100&disable=upscale" alt=""></a>
+                <a href="https://www.grac.or.kr/default.aspx" target="_blank"><img
+                        src=https://images.contentstack.io/v3/assets/blt0eb2a2986b796d29/blt347042469caad5ee/5e8639455bca9a639e7dd8c1/kr-rating.png?&height=100&mark=upscale"
+                        alt=""></a>
             </div>
         </div>
     </div>
+    <!-- <script type="module" src="./resources/JavaScript/canvas.js"></script>  -->
+    <script src="./resources/JavaScript/canvasFunc.js"></script> 
+    <script src="./resources/JavaScript/canvasTest.js"></script> 
+    <script src="./resources/JavaScript/champList.js"></script>
+    <script src="./resources/JavaScript/canvasCircle.js"></script>
+    <script src="./resources/JavaScript/skins.js"></script>
+    <script src="./resources/JavaScript/gamemodeList.js"></script>
+    <script src="./resources/JavaScript/imgCursor.js"></script>
+    <script src="./resources/JavaScript/end-video.js"></script>
+    <script>AOS.init();</script>
+    <script>
+        // 로고 클릭했을때 네비바 내려오고 올라가는 부분
+        document
+        .getElementById("riotbar_logo")
+        .addEventListener("click", function () {
+          document.getElementById("header4_bkg").style.animation =
+            "navibar .15s forwards linear";
+          document.getElementById("header4_1").style.animation =
+            'portal 1s .15s forwards';
+          document.getElementById("header4_1_1").style.animation =
+          'portal .25s forwards';
+          document.getElementById("header4_0").style.height = "530.391px";
+          document.getElementById("header4").style.zIndex = "300000001";
+        });
+      document
+        .getElementById("header_riotgames")
+        .addEventListener("click", function () {
+          document.getElementById("header4_bkg").style.animation = "none";
+          document.getElementById("header4_1").style.animation = 'none';
+          document.getElementById("header4_1_1").style.animation = 'none';
+          document.getElementById("header4_0").style.height = "0px";
+          document.getElementById("header4").style.zIndex = "0";
+        });
+      document
+        .getElementById("header_xBox")
+        .addEventListener("click", function () {
+          document.getElementById("header4_bkg").style.animation = "none";
+          document.getElementById("header4_1").style.animation = 'none';
+          document.getElementById("header4_1_1").style.animation = 'none';
+          document.getElementById("header4_0").style.height = "0px";
+          document.getElementById("header4").style.zIndex = "0";
+        });
+        </script>
 </body>
 <!-- 처음 보는 태그 : <svg> , body에 있는 <title> , <path> , <section> , canvas , article-->
+
 </html>

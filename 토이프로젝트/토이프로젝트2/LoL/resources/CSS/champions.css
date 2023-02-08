@@ -1,0 +1,508 @@
+/* 챔피언 CSS */
+#champion-area{
+    padding: 140px 0px 15vw;
+}
+#champion-area-flex{
+   display: flex; 
+   width: 100%;
+   height: 100%;
+}
+#champion-area-flex::after{
+    display: block;
+    content: "";
+    width: 60px;
+}
+#champion-vertical-wapper{
+   width: 60px; 
+   float: 0 0 auto;
+   position: relative;
+}
+#champion-vertical-text{
+    color:rgb(28, 29, 42)
+}
+#champion-category-wrapper{
+    flex: 1 1 100%;
+    min-width: 0px;
+}
+.role-background-symbol{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    fill: rgb(247, 247, 247);
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.role-background-symbol-active{
+    opacity: 1;
+    transition-duration: 1s;
+    transition-delay: 0.2s;
+}
+#champion-category-area{
+    position: relative;
+    z-index: 1;
+    max-width: 1680px;
+    margin: 0px auto;
+}
+#champion-role-background{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 34.375rem;
+    height: 34.375rem;
+    margin: -17.1875rem 0px 0px -17.1875rem;
+}
+
+#champion-choose-title-wrapper{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    columns: rgb(1, 1, 1);
+}
+#champion-title-wrapper{
+    margin: 0px;
+    font-weight: normal;
+}
+#champion-title-container{
+    line-height: 1.1;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+#champion-title-text-wrapper{
+    animation-duration: 2800ms;
+    animation-delay: 100ms;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-block;
+}
+#choose-title-wrapper{
+    font-size: 72px;
+    line-height: 1.1;
+    display: block;
+}
+#choose-title-text-wrapper{
+    animation-duration: 2000ms;
+    animation-delay: 0ms;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-block;
+}
+#choose-title-text{
+    display: block;
+    padding: 0px 15px 10px;
+    margin-bottom: -10px;
+}
+#champion-title-description{
+    line-height: 1.6;
+    position: relative;
+    max-width: 600px;
+    text-align: center;
+    padding: 0px 10%;
+    margin: 12px auto 0px;
+    font-size: 0.875rem;
+    box-sizing: initial !important;
+    transition: opacity 500ms ease-out 400ms;
+    /* opacity: 1; */
+}
+#champions-play-btn-wrapper{
+    position: relative;
+    z-index: 2;
+    margin-top: 0.9375rem;
+    text-align: center;
+}
+.champion-btn-class{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin: 8px;
+    min-width: 220px;
+    position: relative;
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.625rem;
+    font-weight: 500;
+    text-align: center;
+    border: 0px;
+}
+.champion-btn-wrapper{
+    position: absolute;
+    inset: 1px;
+    pointer-events: none;
+}
+.champion-btn-class>span{
+    animation: 900ms cubic-bezier(0.165, 0.84, 0.44, 1) 450ms 1 normal forwards running visible-opacity-ani;
+    position: relative;
+    z-index: 1;
+    display: block;
+    opacity: 0;
+    transform: translateZ(0px);
+}
+@media (min-width: 1024px){
+    @media (min-width: 1440px){
+        #champion-role-flex{
+            margin-top: -130px;
+        }
+    }
+}
+@media (min-width: 1024px){
+    @media (min-width: 1024px){
+        #champion-role-flex{
+            margin-top: calc(181.54px + 21.63vw);
+        }
+    }
+}
+@media (min-width: 1024px){
+    #champion-role-flex{
+        margin-top: -40px;
+    }
+}
+@media (min-width: 1801px){
+    #champion-role-flex{
+        margin-left: calc(-60px - ((100vw - 1800px) / 2));
+        width: calc(100% + 60px + (100vw - 1800px) / 2);
+    }
+}
+@media (min-width: 1024px) and (max-width:1800px){
+    #champion-role-flex{
+        margin-left: -60px;
+        width: calc(100%+60px);
+    }
+}
+#champion-role-flex{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#champion-role-nav{
+    position: relative;
+    flex: 2 1 150%;
+    transform: translateY(calc(-50% + 16.5px));
+}
+#champion-role-nav-wrapper{
+    width: 100%;
+}
+#champion-role-nav-flex{
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+#left-edge-wrapper{
+    flex: 1 1 auto;
+    position: relative;
+}
+#left-edg{
+    position: absolute;
+    bottom: 16.5px;
+    left: 0px;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(186, 194, 204);
+}
+#champion-role-btn-flex{
+    position: relative;
+    display: inline-flex;
+}
+.role-btn-flex{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    border: 0px;
+    background-color: transparent;
+    color: rgb(186, 194, 204);
+    appearance: button;
+}
+.role-btn-icon-wrapper{
+    position: relative;
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0px auto 10px;
+}
+
+.role-btn-icon-symbol{
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    will-change: transform;
+    transform-origin: center bottom;
+    transform: translateY(15px) scale(0.75, 0.75);
+    transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 0s, fill 0.2s ease-in-out 0s;
+}
+.role-icon-symbol{
+    fill:rgb(186, 194, 204);
+    transition: fill 0.15s ease-in-out 0s;
+}
+.role-btn-icon-border-box{
+    fill: rgb(195, 144, 49);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 200ms ease 0s;
+}
+
+.role-btn-icon-border-box-active{
+    /* background-color: red; */
+}
+.role-text-flex{
+    flex: 1 0 auto;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    transition: color 300ms ease 0s;
+}
+@media (min-width: 600px){
+    .role-text-flex:hover .role-text-flex{
+        transition: color 600ms ease 0s;
+        color: rgb(1, 1, 1);
+    }
+}
+.optionline{ /* 버튼 클릭시 트랜스폼과 opacity 변경 */
+    display: block;
+    width: 1px;
+    height: 20px;
+    margin: 0px auto;
+    background-color: rgb(195, 144, 49);
+    opacity: 0;
+    transform: scaleY(0);
+    will-change: transform;
+    transform-origin: center bottom;
+    transition-property: opacity, transform;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.option-bulletContainer{
+    display: block;
+    position: relative;
+    width: calc(100% + 24px);
+    margin-top: 5.5px;
+    margin-left: -12px;
+    z-index: 1;
+}
+.option-bulletContainer::after{
+    right: 0px;
+    content: "";
+    position: absolute;
+    bottom: 4.5px;
+    width: 50%;
+    height: 1px;
+    background-color: currentColor;
+    z-index: -1;
+    transition: width 0ms ease 0ms;
+}
+.option-bulletContainer::before{
+    left: 0px;
+    content: "";
+    position: absolute;
+    bottom: 4.5px;
+    width: 50%;
+    height: 1px;
+    background-color: currentColor;
+    z-index: -1;
+    transition: width 0ms ease 0ms;
+}
+#bullet-baseline{
+    position: absolute;
+    bottom: 16.5px;
+    left: 0px;
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
+}
+.bullet-inCircle-disable{
+    margin: 0px auto;
+    opacity: 1;
+    display: block;
+    width: 9px;
+    height: 9px;
+    background-color: currentColor;
+    border-radius: 50%;
+    transition: color 300ms ease 0s;
+
+}
+#bullet-outCircle{
+    position: absolute;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0px 0px -10px;
+    will-change: left;
+    transition: left 600ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+    border: 2px solid currentColor;
+    border-radius: 100%;
+    color: rgb(195, 144, 49);
+} 
+#bullet-inCircle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 9px;
+    height: 9px;
+    background-color: currentColor;
+    border-radius: 50%;
+    transition: color 300ms ease 0s;
+}
+#role-video-wrapper{
+    position: absolute;
+    top: 135%;
+    left: 50px;
+    width: 80%;
+    /* transform: translateX(-50%); */
+}
+#role-video-container{
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+#role-video-area{
+    position: absolute;
+    inset: 0px;
+}
+.role-video-content{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* opacity: 0; */
+    transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 300ms;
+}
+.role-video-content-active{
+    z-index: 1;
+    opacity: 1;
+    transition-delay: 0ms;
+}
+.role-video{
+    object-fit: cover;
+    object-position: center center;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+#role-video-canvas-wrapper{
+    z-index: 1;
+    position: absolute;
+    inset: 1px;
+    pointer-events: none;
+}
+#role-video-canvas{
+    position: absolute;
+    display: block;
+}
+#right-edge-wrapper{
+    flex: 1 1 auto;
+    position: relative;
+}
+#right-edge{
+    position: absolute;
+    bottom: 16.5px;
+    left: 0px;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(186, 194, 204);
+}
+#role-img-area-wrapper{
+    flex: 1 1 140%;
+    width: 100%;
+}
+#role-img-area-container{
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+#role-img-area-content-wrapper{
+    position: absolute;
+    inset: 0px 1px 0px 0px;
+}
+#role-img-canvas-wapper{
+    position: absolute;
+    inset: 1px;
+    pointer-events: none;
+}
+#role-img-canvas{
+    position: absolute;
+    display: block;
+}
+#role-img-text-wrapper{
+    position: absolute;
+    left: -5%;
+    top: 0px;
+    z-index: 1;
+    width: 110%;
+    height: 110%;
+}
+#role-champion-img-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.role-img-wrapper{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+.role-img-content{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.role-img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    border-style: none;
+}
+#champion-text-wrapper{
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    width: 100%;
+    margin-top: 0.625rem;
+    text-align: center;
+}
+.champion-name-wrapper{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    margin: 0px;
+    opacity: 0;
+    transition: opacity 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+.champion-name-wrapper-active{
+    opacity: 1;
+    transition-duration: 0.7s;
+}
+.champion-name{
+    display: block;
+    color: rgb(1, 1, 1);
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+.champion-nick{
+    display: block;
+    margin-top: 0.0625rem;
+    color: rgb(1, 1, 1);
+    font-size: 0.875rem;
+}
+/* 처음 본 속성 : will-change*/
